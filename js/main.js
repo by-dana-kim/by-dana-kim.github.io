@@ -319,6 +319,20 @@ function renderEntries(id, items) {
 }
 
 /* ============================================================
+   Mobile navigation (hamburger)
+   ============================================================ */
+function initNav() {
+  const toggle = document.querySelector(".nav-toggle");
+  const nav = document.getElementById("primary-nav");
+  if (!toggle || !nav) return;
+  toggle.addEventListener("click", () => {
+    const open = nav.classList.toggle("is-open");
+    toggle.classList.toggle("is-open", open);
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+}
+
+/* ============================================================
    Reveal on scroll
    ============================================================ */
 function initReveal() {
@@ -354,6 +368,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderEntries("grantList", grants);
   renderEntries("activityList", activities);
   renderProjects();
+  initNav();
   initReveal();
   document.querySelectorAll("[data-year]").forEach((el) => {
     el.textContent = new Date().getFullYear();
