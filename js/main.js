@@ -5,7 +5,7 @@
 
 /* --- Profile: education (학력) ------------------------------ */
 const education = [
-  { year: "2024–26", title: "MA, Graduate School of Metaverse", venue: "KAIST" },
+  { year: "2024–26", title: "MA, Graduate School of Culture Technology", venue: "KAIST · TX Creative AI Lab (Advisor: Prof. Jinjoon Lee)" },
   { year: "2012–17", title: "BA, Communication", venue: "Yonsei University" },
 ];
 
@@ -24,16 +24,40 @@ const researchAreas = ["New Media Art", "Immersive Film", "Visual Anthropology"]
 ------------------------------------------------------------- */
 const works = [
   {
+    title: "Quantum Memory Space (VR)",
+    year: "2025",
+    medium: "VR / interactive media · Arts Korea Lab, Seoul",
+    size: "lg",
+    img: "", // assets/works/ 에 스틸컷을 넣고 경로를 지정하세요 (예: "assets/works/qms-vr.jpg")
+    tone: "#d7dae0",
+  },
+  {
+    title: "Bench Scene",
+    year: "2025",
+    medium: "Single-channel video projection, 4 min · Arts Korea Lab, Seoul",
+    size: "md",
+    img: "",
+    tone: "#ded9cd",
+  },
+  {
+    title: "Memory Sphere",
+    year: "2025",
+    medium: "Single-channel video, projection on canvas, 35 sec · Arts Korea Lab, Seoul",
+    size: "sm",
+    img: "",
+    tone: "#e3ddd0",
+  },
+  {
     title: "숲길을 걷는 시간 — The Time of Walking in the Forest Path",
     year: "2023",
     medium: "Documentary short, 12 min · DMZ Docs 2023",
     size: "wide",
-    img: "", // assets/works/ 에 스틸컷을 넣고 경로를 지정하세요 (예: "assets/works/forest.jpg")
+    img: "",
     tone: "#dbdccf",
     link: "https://dmzdocs.com/kor/addon/00000002/history_film_view.asp?m_idx=102855&QueryYear=2023",
   },
-  // 작품을 추가하려면 위 형식으로 객체를 더 넣으세요.
-  // link 가 있으면 클릭 시 해당 페이지로, 없으면 라이트박스(확대)로 열립니다.
+  // 작품 추가: 위 형식으로 객체를 더 넣으세요.
+  // img 가 있으면 클릭 시 라이트박스(확대), link 가 있으면 해당 페이지로 이동합니다.
 ];
 
 /* --- Publish: publications ---------------------------------- */
@@ -111,10 +135,14 @@ function renderWorks() {
             <span class="work__sub">${esc(w.year)} · ${esc(w.medium)}</span>
           </span>
         </div>`;
-      // link 가 있으면 외부 페이지로 이동, 없으면 라이트박스로 확대
-      return w.link
-        ? `<a class="${cls}" href="${esc(w.link)}" target="_blank" rel="noopener" aria-label="${esc(w.title)} — 자세히 보기">${inner}</a>`
-        : `<button class="${cls}" data-index="${i}" aria-label="${esc(w.title)} 크게 보기">${inner}</button>`;
+      // link → 외부 페이지 이동 / 이미지 있음 → 라이트박스 확대 / 그 외 → 정적 카드
+      if (w.link) {
+        return `<a class="${cls}" href="${esc(w.link)}" target="_blank" rel="noopener" aria-label="${esc(w.title)} — 자세히 보기">${inner}</a>`;
+      }
+      if (w.img) {
+        return `<button class="${cls}" data-index="${i}" aria-label="${esc(w.title)} 크게 보기">${inner}</button>`;
+      }
+      return `<div class="${cls}">${inner}</div>`;
     })
     .join("");
 

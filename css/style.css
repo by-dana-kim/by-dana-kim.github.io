@@ -302,6 +302,7 @@ code {
   display: block;
   width: 100%;
 }
+div.work { cursor: default; } /* 이미지·링크 없는 카드는 클릭 대상이 아님 */
 /* size variants → ragged, non-uniform rows */
 .work.is-sm  { grid-column: span 4; }
 .work.is-md  { grid-column: span 5; }
