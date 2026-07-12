@@ -5,7 +5,7 @@
 
 /* --- Profile: education (학력) ------------------------------ */
 const education = [
-  { year: "2024–26", title: "MA, Graduate School of Metaverse", venue: "KAIST (Minor in Culture Technology)" },
+  { year: "2024–26", title: "MS, Graduate School of Metaverse", venue: "KAIST (Minor in Culture Technology)" },
   { year: "2012–17", title: "BA, Communication", venue: "Yonsei University" },
 ];
 
