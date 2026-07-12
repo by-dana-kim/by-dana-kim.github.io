@@ -5,13 +5,7 @@
 
 /* --- Profile: education (학력) ------------------------------ */
 const education = [
-  {
-    year: "2024–26",
-    title: "MA, Graduate School of Metaverse",
-    // venueHtml: 링크 등 서식이 필요한 경우 사용 (없으면 venue 사용)
-    venueHtml:
-      'KAIST · Minor in Culture Technology<br>Researcher, <a href="https://tx.kaist.ac.kr/" target="_blank" rel="noopener">TX Creative AI Lab</a> · Advisor: Prof. Jinjoon Lee',
-  },
+  { year: "2024–26", title: "MA, Graduate School of Metaverse", venue: "KAIST (Minor in Culture Technology)" },
   { year: "2012–17", title: "BA, Communication", venue: "Yonsei University" },
 ];
 
