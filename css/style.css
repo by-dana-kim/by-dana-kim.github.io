@@ -308,6 +308,7 @@ code {
 }
 .wl__head:hover { transform: translateY(-3px); }
 .wl__year { font-variant-numeric: tabular-nums; color: var(--ink-soft); font-size: 0.9rem; }
+.wl__kind { display: block; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--clay); margin-bottom: 8px; }
 .wl__title { display: block; font-family: var(--serif); font-size: clamp(1.2rem, 2.6vw, 1.7rem); font-weight: 400; line-height: 1.25; }
 .wl__medium { display: block; color: var(--ink-soft); font-size: 0.85rem; margin-top: 6px; }
 /* plus / minus toggle */

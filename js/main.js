@@ -129,6 +129,19 @@ const activities = [
   },
 ];
 
+/* --- Project: projects (expandable; optional embedded demo) -- */
+const projects = [
+  {
+    year: "2025",
+    title: "Metaverse Implementation of Digital Memory Using Moiré Patterns of 2D Materials",
+    tag: "Funded Research",
+    meta: "KAIST Office of Research · Master's & Ph.D. Adventurous Research Program · Apr–Nov 2025",
+    desc: "This research develops a system to visualize and interact with collective memory in virtual reality by drawing on the moiré patterns and superposition principles of graphene, a 2D material, together with its quantum-physical properties.",
+    demo: "https://quantum-memory-interference.ai.studio",
+    links: [],
+  },
+];
+
 /* ============================================================
    Helpers
    ============================================================ */
@@ -221,6 +234,60 @@ function renderWorks() {
 }
 
 /* ============================================================
+   Project rendering (expandable list with optional demo)
+   ============================================================ */
+function renderProjects() {
+  const list = document.getElementById("projectList");
+  if (!list) return;
+  list.innerHTML = projects
+    .map((p, i) => {
+      const kind = p.tag ? `<span class="wl__kind">[${esc(p.tag)}]</span>` : "";
+      const meta = p.meta ? `<span class="wl__medium">${esc(p.meta)}</span>` : "";
+      const desc = p.desc ? `<p class="wl__desc">${esc(p.desc)}</p>` : "";
+      const demo = p.demo
+        ? `<div class="demo__head">
+             <p class="acad-group__title">Interactive Demo</p>
+             <a class="demo__open" href="${esc(p.demo)}" target="_blank" rel="noopener">Open in new tab ↗</a>
+           </div>
+           <div class="demo__frame"><iframe src="${esc(p.demo)}" title="${esc(p.title)} — interactive demo" loading="lazy" allowfullscreen></iframe></div>
+           <p class="demo__note">If the demo does not load in this frame, open it in a new tab.</p>`
+        : "";
+      const links =
+        p.links && p.links.length
+          ? `<div class="wl__links">${p.links
+              .map((l) => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`)
+              .join("")}</div>`
+          : "";
+      return `
+      <article class="wl reveal">
+        <button class="wl__head" aria-expanded="false" aria-controls="pj-panel-${i}">
+          <span class="wl__year">${esc(p.year)}</span>
+          <span class="wl__meta">
+            ${kind}
+            <span class="wl__title">${esc(p.title)}</span>
+            ${meta}
+          </span>
+          <span class="wl__toggle" aria-hidden="true"></span>
+        </button>
+        <div class="wl__panel" id="pj-panel-${i}">
+          <div class="wl__panel-inner">
+            ${desc}${demo}${links}
+          </div>
+        </div>
+      </article>`;
+    })
+    .join("");
+
+  list.querySelectorAll(".wl__head").forEach((head) => {
+    head.addEventListener("click", () => {
+      const item = head.closest(".wl");
+      const open = item.classList.toggle("is-open");
+      head.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+  });
+}
+
+/* ============================================================
    Academic rendering (publications / grants / activities)
    ============================================================ */
 function renderEntries(id, items) {
@@ -286,6 +353,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderEntries("pubList", publications);
   renderEntries("grantList", grants);
   renderEntries("activityList", activities);
+  renderProjects();
   initReveal();
   document.querySelectorAll("[data-year]").forEach((el) => {
     el.textContent = new Date().getFullYear();
