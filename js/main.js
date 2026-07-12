@@ -39,6 +39,16 @@ const works = [
 /* --- Publish: publications ---------------------------------- */
 const publications = [
   {
+    year: "2026",
+    title:
+      "Quantum Memory Space: A Model of Superposition and Observation in Place Memory and Its Visual Implementation",
+    desc: "Master's Thesis, Graduate School of Metaverse, KAIST. 양자 기억 공간: 장소기억의 중첩과 관측에 대한 모델과 시각화 구현.",
+    tag: "Master's Thesis",
+    link: "",
+    abstract:
+      "This thesis proposes Quantum Memory Space (QMS), a model that draws on the concepts of superposition and observation in quantum mechanics to represent place memory as a state in which multiple memory components latently coexist and manifest differently depending on the conditions of observation. In place, memories surface anew each time, shaped by the present context, yet existing digital media organize memory as fixed files and folder entries. Attending to this gap, the thesis explores a media form that reconnects personal archives with the experience of remembering in place. To this end, the QMS model is applied to the superposition of scenes. Scenes of the same place recorded at different times are trained together in 3D Gaussian Splatting so that their superposition becomes visible. The visualization proceeds in three forms of viewpoint-conditioned observation, emotion-based scene construction, and viewpoint-conditioned observation combined with emotion-based visual modulation. The model is realized as a practice case built on the researcher's personal records of Seoul's Gyeongui Line Forest Park, where memories have accumulated over several years. A first-person analysis follows, taking the experience of walking in the actual place as a baseline and comparing how remembering is shaped under the three media conditions of photographs, video, and QMS. QMS lets the multiple times of a place coexist in a latent state, to be encountered anew within present perception.",
+  },
+  {
     year: "2025",
     title: "Mourning Dew: Storytelling of Nectar Ritual Painting through the Digital Moktak",
     desc: "Kim, D., Choi, Y., & Lee, J. Proceedings of the International Symposium on Electronic/Emerging Art (ISEA), 554–559.",
@@ -122,11 +132,15 @@ function renderPublications() {
         ? `<a class="pub__link" href="${esc(p.link)}" target="_blank" rel="noopener">${esc(p.title)}</a>`
         : esc(p.title);
       const tag = p.tag ? `<span class="pub__tag">${esc(p.tag)}</span>` : "";
+      const abstract = p.abstract
+        ? `<details class="pub__abstract"><summary>Abstract</summary><p>${esc(p.abstract)}</p></details>`
+        : "";
       return `
       <article class="pub reveal">
         <span class="pub__year">${esc(p.year)}</span>
         <h2 class="pub__title">${title}</h2>
         <p class="pub__desc">${esc(p.desc)}${tag}</p>
+        ${abstract}
       </article>`;
     })
     .join("");

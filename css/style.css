@@ -405,6 +405,31 @@ code {
 .pub__desc .pub__tag { display: inline-block; margin-top: 12px; font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--clay); }
 .pub__link { color: var(--clay); border-bottom: 1px solid transparent; transition: border-color 0.2s; }
 .pub__link:hover { border-color: var(--clay); }
+/* collapsible abstract */
+.pub__abstract { grid-column: 1 / -1; margin-top: 14px; }
+.pub__abstract > summary {
+  cursor: pointer;
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--clay);
+  user-select: none;
+}
+.pub__abstract > summary::-webkit-details-marker { display: none; }
+.pub__abstract > summary::after { content: "+"; font-size: 1rem; line-height: 1; }
+.pub__abstract[open] > summary::after { content: "\2212"; } /* minus */
+.pub__abstract > p {
+  margin-top: 16px;
+  max-width: 72ch;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
 /* every other entry nudged for irregular rhythm */
 .pub:nth-child(even) .pub__title { padding-left: clamp(0px, 4vw, 40px); }
 
