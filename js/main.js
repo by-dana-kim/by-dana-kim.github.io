@@ -3,70 +3,79 @@
    Edit the data arrays below to update the site.
    ============================================================ */
 
-/* --- Profile: education (학력) ------------------------------ */
+/* --- Profile: education ------------------------------------- */
 const education = [
   { year: "2024–26", title: "MS, Graduate School of Metaverse", venue: "KAIST (Double Major in Culture Technology)" },
   { year: "2012–17", title: "BA, Communication", venue: "Yonsei University (Minor in Business Administration)" },
 ];
 
-/* --- Profile: career / experience (경력) ------------------- */
+/* --- Profile: career / experience --------------------------- */
 const experience = [
   { year: "2019–24", title: "Marketing Planning", venue: "KT (Korea Telecom)" },
 ];
 
-/* --- Profile: research area (연구 분야) --------------------- */
+/* --- Profile: research area --------------------------------- */
 const researchAreas = ["New Media Art", "Immersive Film", "Visual Anthropology"];
 
 /* --- Artwork: works ----------------------------------------
-   size: "sm" | "md" | "lg" | "wide"  (그리드에서 차지하는 크기)
-   img : 이미지 경로 (예: "assets/works/work1.jpg"). 없으면 placeholder 표시.
-   tone: placeholder 배경색 (이미지 없을 때만 사용, 선택).
+   image   : still / thumbnail (URL or assets/works/xxx.jpg)
+   desc    : short text shown when the item is expanded
+   details : bullet list (screenings, awards, exhibition notes)
+   links   : [{ label, url }] shown when expanded
+   Clicking a row expands it; clicking again collapses it.
 ------------------------------------------------------------- */
-const ARTS_KOREA_LAB =
-  "https://www.artskorealab.kr/bbs/view.do?pstSn=2511180001&key=2303300002&orderBy=ntcPstYn&pageIndex=4";
-
 const works = [
   {
     title: "Quantum Memory Space (VR)",
     year: "2025",
     medium: "VR / interactive media · Arts Korea Lab, Seoul",
-    size: "lg",
-    img: "", // assets/works/ 에 스틸컷을 넣고 경로를 지정하세요 (예: "assets/works/qms-vr.jpg")
-    tone: "#d7dae0",
-    link: ARTS_KOREA_LAB,
+    image: "https://img.youtube.com/vi/oKY3vPOFfLc/hqdefault.jpg",
+    desc: "A VR environment that combines viewpoint-conditioned observation with emotion-based visual modulation, built on the Quantum Memory Space (QMS) model.",
+    links: [{ label: "Watch", url: "https://youtu.be/oKY3vPOFfLc" }],
   },
   {
     title: "Bench Scene",
     year: "2025",
     medium: "Single-channel video projection, 4 min · Arts Korea Lab, Seoul",
-    size: "md",
-    img: "",
-    tone: "#ded9cd",
-    link: ARTS_KOREA_LAB,
+    image: "https://img.youtube.com/vi/oKY3vPOFfLc/hqdefault.jpg",
+    desc: "A single-channel realization of viewpoint-conditioned observation within the QMS model.",
+    links: [{ label: "Watch", url: "https://youtu.be/oKY3vPOFfLc" }],
   },
   {
     title: "Memory Sphere",
     year: "2025",
     medium: "Single-channel video, projection on canvas, 35 sec · Arts Korea Lab, Seoul",
-    size: "sm",
-    img: "",
-    tone: "#e3ddd0",
-    link: ARTS_KOREA_LAB,
+    image: "https://img.youtube.com/vi/oKY3vPOFfLc/hqdefault.jpg",
+    desc: "A short piece presenting the latent structure of memory through the principles of Gaussians and spherical harmonics (SH).",
+    links: [{ label: "Watch", url: "https://youtu.be/oKY3vPOFfLc" }],
   },
   {
-    title: "숲길을 걷는 시간 — The Time of Walking in the Forest Path",
-    year: "2023",
-    medium: "Documentary short, 12 min · DMZ Docs 2023",
-    size: "wide",
-    img: "",
-    tone: "#dbdccf",
-    link: "https://dmzdocs.com/kor/addon/00000002/history_film_view.asp?m_idx=102855&QueryYear=2023",
+    title: "Face to Face",
+    year: "2024",
+    medium: "Projection mapping · KAIST Dept. of Industrial Design",
+    image: "https://img.youtube.com/vi/ziaP3HuxB0M/hqdefault.jpg",
+    desc: "A projection-mapping project illuminating Daeseong-dong — the northernmost village in Korea — from far and near.",
+    links: [{ label: "Watch", url: "https://www.youtube.com/watch?v=ziaP3HuxB0M" }],
   },
-  // 작품 추가: 위 형식으로 객체를 더 넣으세요.
-  // img 가 있으면 클릭 시 라이트박스(확대), link 가 있으면 해당 페이지로 이동합니다.
+  {
+    title: "숲길을 걷는 시간 (The Time of Walking in the Forest Path)",
+    year: "2023",
+    medium: "Documentary short, 12 min",
+    image: "https://img.youtube.com/vi/2NYD9IhMjkU/hqdefault.jpg",
+    desc: "A documentary short reflecting on what we discover or lose while walking a forest path.",
+    details: [
+      "Selected, Korean Competition — 15th DMZ International Documentary Film Festival (2023)",
+      "Screened, 2nd Banjjak Documentary Festival (2024)",
+      "Screened, 4th Seongbuk Cheongchun Bulpae Film Festival (2024)",
+    ],
+    links: [
+      { label: "Watch", url: "https://youtu.be/2NYD9IhMjkU" },
+      { label: "DMZ Docs", url: "https://dmzdocs.com/kor/addon/00000002/history_film_view.asp?m_idx=102855&QueryYear=2023" },
+    ],
+  },
 ];
 
-/* --- Publish: publications ---------------------------------- */
+/* --- Academic: publications (papers, thesis, talks) --------- */
 const publications = [
   {
     year: "2026",
@@ -84,8 +93,6 @@ const publications = [
     desc: "The 20th TaPRA (Theatre and Performance Research Association), University of Warwick, 27–29 Aug 2025. Session: Telling Times — Multiform Disruption and Documentary Practices.",
     tag: "Conference Presentation",
     link: "",
-    abstract:
-      "본 작업은 실존 인물의 일기를 기반으로 한 AI 합성 음성과 공간 음향 설치를 통해, 부재한 존재가 머물렀던 공간을 다층적 음성으로 재구성하며 기억의 매개와 거리두기 효과를 탐구하는 다중 스피커 퍼포먼스이다.",
   },
   {
     year: "2025",
@@ -98,18 +105,40 @@ const publications = [
   },
 ];
 
-/* ============================================================
-   Rendering
-   ============================================================ */
-const sizeClass = { sm: "is-sm", md: "is-md", lg: "is-lg", wide: "is-wide" };
+/* --- Academic: funded research / grants --------------------- */
+const grants = [
+  {
+    year: "2025",
+    title: "Metaverse Implementation of Digital Memory Using Moiré Patterns of 2D Materials",
+    desc: "KAIST Office of Research — Master's & Ph.D. Adventurous Research Program (Apr–Nov 2025).",
+    tag: "Funded Research",
+    link: "project.html",
+    abstract:
+      "This research develops a system to visualize and interact with collective memory in virtual reality by drawing on the moiré patterns and superposition principles of graphene, a 2D material, together with its quantum-physical properties.",
+  },
+];
 
+/* --- Academic: activities ----------------------------------- */
+const activities = [
+  {
+    year: "2026",
+    title: "Teaching Assistant — 2026 KAIST–MIT Quantum Information Winter School",
+    desc: "Jan 5–16, 2026. Lectures and poster sessions across quantum information science with KAIST–MIT faculty; student guidance and event support.",
+    tag: "Academic Activity",
+    link: "https://www.youtube.com/watch?v=xVER_JpaYEw",
+  },
+];
+
+/* ============================================================
+   Helpers
+   ============================================================ */
 function esc(s) {
   return String(s).replace(/[&<>"]/g, (c) =>
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])
   );
 }
 
-// 저자 표기에서 김단아 본인 이름만 굵게 (이미 esc 처리된 문자열에 적용)
+// Bold the artist's own name in citations (applied to already-escaped text)
 const AUTHOR_NAMES = ["Kim, D.", "Dana Kim", "김단아"];
 function boldAuthor(html) {
   return AUTHOR_NAMES.reduce(
@@ -118,14 +147,9 @@ function boldAuthor(html) {
   );
 }
 
-function mediaMarkup(item) {
-  if (item.img) {
-    return `<div class="work__frame"><img class="work__media" src="${esc(item.img)}" alt="${esc(item.title)}" loading="lazy" /></div>`;
-  }
-  const tone = item.tone ? ` style="--tone:${esc(item.tone)}"` : "";
-  return `<div class="work__frame"><div class="work__ph"${tone}>no image</div></div>`;
-}
-
+/* ============================================================
+   Profile rendering
+   ============================================================ */
 function renderCV(id, items) {
   const el = document.getElementById(id);
   if (!el) return;
@@ -146,46 +170,72 @@ function renderResearch() {
   el.innerHTML = researchAreas.map((t) => `<li>${esc(t)}</li>`).join("");
 }
 
+/* ============================================================
+   Artwork rendering (expandable list — hover lifts, click opens)
+   ============================================================ */
 function renderWorks() {
   const list = document.getElementById("workGrid");
   if (!list) return;
   list.innerHTML = works
     .map((w, i) => {
-      const go = w.link ? `<span class="worklist__go" aria-hidden="true">→</span>` : "";
-      const inner = `
-        <span class="worklist__year">${esc(w.year)}</span>
-        <span class="worklist__body">
-          <span class="worklist__title">${esc(w.title)}</span>
-          <span class="worklist__medium">${esc(w.medium)}</span>
-        </span>
-        ${go}`;
-      // link → 외부 페이지 이동 / 이미지 있음 → 라이트박스 확대 / 그 외 → 정적 행
-      if (w.link) {
-        return `<a class="worklist__item reveal" href="${esc(w.link)}" target="_blank" rel="noopener" aria-label="${esc(w.title)} — 자세히 보기">${inner}</a>`;
-      }
-      if (w.img) {
-        return `<button class="worklist__item reveal" data-index="${i}" aria-label="${esc(w.title)} 크게 보기">${inner}</button>`;
-      }
-      return `<div class="worklist__item reveal">${inner}</div>`;
+      const img = w.image
+        ? `<img class="wl__img" src="${esc(w.image)}" alt="${esc(w.title)}" loading="lazy" />`
+        : "";
+      const desc = w.desc ? `<p class="wl__desc">${esc(w.desc)}</p>` : "";
+      const details =
+        w.details && w.details.length
+          ? `<ul class="wl__details">${w.details.map((d) => `<li>${esc(d)}</li>`).join("")}</ul>`
+          : "";
+      const links =
+        w.links && w.links.length
+          ? `<div class="wl__links">${w.links
+              .map((l) => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`)
+              .join("")}</div>`
+          : "";
+      return `
+      <article class="wl reveal">
+        <button class="wl__head" aria-expanded="false" aria-controls="wl-panel-${i}">
+          <span class="wl__year">${esc(w.year)}</span>
+          <span class="wl__meta">
+            <span class="wl__title">${esc(w.title)}</span>
+            <span class="wl__medium">${esc(w.medium)}</span>
+          </span>
+          <span class="wl__toggle" aria-hidden="true"></span>
+        </button>
+        <div class="wl__panel" id="wl-panel-${i}">
+          <div class="wl__panel-inner">
+            ${img}${desc}${details}${links}
+          </div>
+        </div>
+      </article>`;
     })
     .join("");
 
-  list.querySelectorAll("button.worklist__item").forEach((btn) => {
-    btn.addEventListener("click", () => openLightbox(works[+btn.dataset.index]));
+  list.querySelectorAll(".wl__head").forEach((head) => {
+    head.addEventListener("click", () => {
+      const item = head.closest(".wl");
+      const open = item.classList.toggle("is-open");
+      head.setAttribute("aria-expanded", open ? "true" : "false");
+    });
   });
 }
 
-function renderPublications() {
-  const el = document.getElementById("pubList");
+/* ============================================================
+   Academic rendering (publications / grants / activities)
+   ============================================================ */
+function renderEntries(id, items) {
+  const el = document.getElementById(id);
   if (!el) return;
-  el.innerHTML = publications
+  el.innerHTML = items
     .map((p) => {
+      const external = p.link && /^https?:/i.test(p.link);
       const title = p.link
-        ? `<a class="pub__link" href="${esc(p.link)}" target="_blank" rel="noopener">${esc(p.title)}</a>`
+        ? `<a class="pub__link" href="${esc(p.link)}"${external ? ' target="_blank" rel="noopener"' : ""}>${esc(p.title)}</a>`
         : esc(p.title);
       const kind = p.tag ? `<span class="pub__kind">[${esc(p.tag)}]</span>` : "";
+      const desc = p.desc ? `<p class="pub__desc">${boldAuthor(esc(p.desc))}</p>` : "";
       const abstract = p.abstract
-        ? `<details class="pub__abstract"><summary>Abstract</summary><p>${esc(p.abstract)}</p></details>`
+        ? `<details class="pub__abstract"><summary>${esc(p.abstractLabel || "Abstract")}</summary><p>${esc(p.abstract)}</p></details>`
         : "";
       return `
       <article class="pub reveal">
@@ -193,49 +243,12 @@ function renderPublications() {
         <div class="pub__body">
           ${kind}
           <h2 class="pub__title">${title}</h2>
-          <p class="pub__desc">${boldAuthor(esc(p.desc))}</p>
+          ${desc}
           ${abstract}
         </div>
       </article>`;
     })
     .join("");
-}
-
-/* ============================================================
-   Lightbox (artwork page)
-   ============================================================ */
-let lastFocused = null;
-
-function openLightbox(work) {
-  const box = document.getElementById("lightbox");
-  const media = document.getElementById("lightboxMedia");
-  const cap = document.getElementById("lightboxCap");
-  if (!box || !media || !cap) return;
-
-  lastFocused = document.activeElement;
-  media.innerHTML = work.img
-    ? `<img src="${esc(work.img)}" alt="${esc(work.title)}" />`
-    : `<div class="work__ph" style="--tone:${esc(work.tone || "#e4dece")}">no image</div>`;
-  cap.innerHTML = `<strong>${esc(work.title)}</strong><span>${esc(work.year)} · ${esc(work.medium)}</span>`;
-  box.hidden = false;
-  document.body.style.overflow = "hidden";
-  document.getElementById("lightboxClose")?.focus();
-}
-
-function closeLightbox() {
-  const box = document.getElementById("lightbox");
-  if (!box || box.hidden) return;
-  box.hidden = true;
-  document.body.style.overflow = "";
-  lastFocused?.focus();
-}
-
-function initLightbox() {
-  const box = document.getElementById("lightbox");
-  if (!box) return;
-  document.getElementById("lightboxClose")?.addEventListener("click", closeLightbox);
-  box.addEventListener("click", (e) => { if (e.target === box) closeLightbox(); });
-  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeLightbox(); });
 }
 
 /* ============================================================
@@ -251,7 +264,10 @@ function initReveal() {
   const io = new IntersectionObserver(
     (entries, obs) => {
       entries.forEach((en) => {
-        if (en.isIntersecting) { en.target.classList.add("is-in"); obs.unobserve(en.target); }
+        if (en.isIntersecting) {
+          en.target.classList.add("is-in");
+          obs.unobserve(en.target);
+        }
       });
     },
     { rootMargin: "0px 0px -8% 0px" }
@@ -267,8 +283,9 @@ document.addEventListener("DOMContentLoaded", () => {
   renderCV("experienceList", experience);
   renderResearch();
   renderWorks();
-  renderPublications();
-  initLightbox();
+  renderEntries("pubList", publications);
+  renderEntries("grantList", grants);
+  renderEntries("activityList", activities);
   initReveal();
   document.querySelectorAll("[data-year]").forEach((el) => {
     el.textContent = new Date().getFullYear();

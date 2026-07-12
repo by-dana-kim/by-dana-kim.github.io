@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,11 +14,12 @@
   <header class="masthead">
     <div class="masthead__inner">
       <a href="index.html" class="wordmark">Dana&nbsp;Kim</a>
-      <nav class="nav" aria-label="주 메뉴">
+      <nav class="nav" aria-label="Primary">
         <a href="index.html">Home</a>
         <a href="profile.html">Profile</a>
         <a href="artwork.html">Artwork</a>
         <a href="academic.html" aria-current="page">Academic</a>
+        <a href="project.html">Project</a>
       </nav>
     </div>
   </header>
@@ -27,12 +28,29 @@
     <section class="pagehead">
       <p class="pagehead__index">Papers &amp; Research</p>
       <h1 class="pagehead__title">Academic</h1>
-      <p class="pagehead__lead">학술 논문, 학위논문, 학회 발표 등 연구 활동을 정리합니다.</p>
+      <p class="pagehead__lead">Papers, thesis, talks, funded research and academic activities.</p>
     </section>
 
-    <section class="pubs" id="pubList" aria-label="연구 활동 목록">
-      <!-- js/main.js 의 publications 배열에서 생성됩니다 -->
-    </section>
+    <div class="acad-group">
+      <p class="acad-group__title">Publications</p>
+      <section class="pubs" id="pubList" aria-label="Publications">
+        <!-- generated from the publications array in js/main.js -->
+      </section>
+    </div>
+
+    <div class="acad-group">
+      <p class="acad-group__title">Funded Research</p>
+      <section class="pubs" id="grantList" aria-label="Funded research">
+        <!-- generated from the grants array in js/main.js -->
+      </section>
+    </div>
+
+    <div class="acad-group">
+      <p class="acad-group__title">Academic Activities</p>
+      <section class="pubs" id="activityList" aria-label="Academic activities">
+        <!-- generated from the activities array in js/main.js -->
+      </section>
+    </div>
   </main>
 
   <footer class="colophon">
