@@ -7,7 +7,8 @@ Dana Kim의 개인 포트폴리오 · 전시 작품 아카이브. 순수 HTML / 
 
 ```
 .
-├── index.html      # Profile 탭 (소개 · 전시 이력 · 연락처)
+├── index.html      # Home 탭 (메인/커버 · 섹션 바로가기)
+├── profile.html    # Profile 탭 (소개 · 학력 · 경력 · 관심사 · 연락처)
 ├── artwork.html    # Artwork 탭 (작품 아카이브, 클릭 시 확대)
 ├── publish.html    # Publish 탭 (도록 · 출판물 · 텍스트)
 ├── css/style.css   # 디자인 (색상 토큰 · 타이포 · 비정형 그리드)
@@ -16,7 +17,7 @@ Dana Kim의 개인 포트폴리오 · 전시 작품 아카이브. 순수 HTML / 
 
 ## 내용 수정하기 (대부분 `js/main.js` 상단만 편집)
 
-- **전시 이력**: `exhibitions` 배열
+- **학력**: `education` 배열 · **경력**: `experience` 배열 · **관심사**: `interests` 배열
 - **작품**: `works` 배열
   - `size`: `"sm" | "md" | "lg" | "wide"` — 그리드에서 차지하는 크기
   - `img`: 이미지 경로 (예: `assets/works/work1.jpg`). 비우면 placeholder 표시

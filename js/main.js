@@ -3,12 +3,21 @@
    Edit the data arrays below to update the site.
    ============================================================ */
 
-/* --- Profile: exhibitions ---------------------------------- */
-const exhibitions = [
-  { year: "2025", title: "전시 제목 (개인전)", venue: "갤러리 이름, 서울" },
-  { year: "2024", title: "그룹전 제목", venue: "미술관 이름, 도시" },
-  { year: "2023", title: "전시 제목", venue: "공간 이름, 도시" },
+/* --- Profile: education (학력) ------------------------------ */
+const education = [
+  { year: "2018", title: "○○대학교 대학원 ○○과 석사(MFA)", venue: "졸업 · 도시" },
+  { year: "2015", title: "○○대학교 ○○과 학사(BFA)", venue: "졸업 · 도시" },
 ];
+
+/* --- Profile: experience (경력) ---------------------------- */
+const experience = [
+  { year: "2025", title: "개인전 《전시 제목》", venue: "갤러리 이름, 서울" },
+  { year: "2024", title: "레지던시 · 수상 · 강의 등", venue: "기관 이름, 도시" },
+  { year: "2023", title: "그룹전 《전시 제목》", venue: "미술관 이름, 도시" },
+];
+
+/* --- Profile: interests (관심사) --------------------------- */
+const interests = ["회화", "설치", "아카이브", "텍스트", "여기에 관심사 추가"];
 
 /* --- Artwork: works ----------------------------------------
    size: "sm" | "md" | "lg" | "wide"  (그리드에서 차지하는 크기)
@@ -50,10 +59,10 @@ function mediaMarkup(item) {
   return `<div class="work__frame"><div class="work__ph"${tone}>no image</div></div>`;
 }
 
-function renderExhibitions() {
-  const el = document.getElementById("exhibitionList");
+function renderCV(id, items) {
+  const el = document.getElementById(id);
   if (!el) return;
-  el.innerHTML = exhibitions
+  el.innerHTML = items
     .map(
       (e) => `
       <li>
@@ -62,6 +71,12 @@ function renderExhibitions() {
       </li>`
     )
     .join("");
+}
+
+function renderInterests() {
+  const el = document.getElementById("interestList");
+  if (!el) return;
+  el.innerHTML = interests.map((t) => `<li>${esc(t)}</li>`).join("");
 }
 
 function renderWorks() {
@@ -169,7 +184,9 @@ function initReveal() {
    Init
    ============================================================ */
 document.addEventListener("DOMContentLoaded", () => {
-  renderExhibitions();
+  renderCV("educationList", education);
+  renderCV("experienceList", experience);
+  renderInterests();
   renderWorks();
   renderPublications();
   initLightbox();

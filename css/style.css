@@ -130,7 +130,82 @@ main {
   color: var(--ink);
 }
 
-/* ===== Editorial blocks (About / Exhibitions / Contact) ===== */
+/* ===== Home: cover ===== */
+.cover {
+  padding: clamp(72px, 15vw, 190px) 0 clamp(48px, 9vw, 110px);
+}
+.cover__role { display: block; margin-bottom: 28px; }
+.cover__name {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(4.2rem, 19vw, 14rem);
+  line-height: 0.84;
+  letter-spacing: -0.025em;
+}
+.cover__name-indent {
+  display: inline-block;
+  margin-left: clamp(50px, 22vw, 320px);
+  font-style: italic;
+  font-weight: 400;
+}
+.cover__lead {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(1.2rem, 2.6vw, 1.75rem);
+  line-height: 1.5;
+  max-width: 32ch;
+  margin: clamp(40px, 7vw, 72px) 0 0 auto;
+}
+
+/* ===== Home: index / contents ===== */
+.index { border-top: 1px solid var(--line); margin-bottom: clamp(64px, 10vw, 120px); }
+.index__item {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr auto;
+  align-items: baseline;
+  gap: 6px 24px;
+  padding: clamp(26px, 4vw, 46px) 0;
+  border-bottom: 1px solid var(--line);
+  transition: padding-left 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.index__item:hover { padding-left: clamp(8px, 2vw, 28px); }
+.index__num {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  color: var(--ink-faint);
+  font-variant-numeric: tabular-nums;
+}
+.index__title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2rem, 6vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+.index__desc { color: var(--ink-soft); font-size: 0.9rem; grid-column: 2; }
+.index__go {
+  font-family: var(--serif);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  color: var(--ink-faint);
+  transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), color 0.3s;
+}
+.index__item:hover .index__go { transform: translateX(10px); color: var(--clay); }
+@media (max-width: 560px) {
+  .index__item { grid-template-columns: 2.5rem 1fr auto; }
+  .index__desc { grid-column: 1 / -1; }
+}
+
+/* ===== Profile: interests ===== */
+.interests { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; }
+.interests li {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+/* ===== Editorial blocks (About / Education / Experience / Contact) ===== */
 .block {
   display: grid;
   grid-template-columns: 1fr;

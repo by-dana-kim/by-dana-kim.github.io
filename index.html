@@ -3,19 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dana Kim — Profile</title>
-  <meta name="description" content="Dana Kim · Artist. Profile and exhibition archive." />
+  <title>Dana Kim</title>
+  <meta name="description" content="Dana Kim · Artist. Archive of works, publications and profile." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
-<body class="page page--profile">
+<body class="page page--home">
   <header class="masthead">
     <div class="masthead__inner">
       <a href="index.html" class="wordmark">Dana&nbsp;Kim</a>
       <nav class="nav" aria-label="주 메뉴">
-        <a href="index.html" aria-current="page">Profile</a>
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="profile.html">Profile</a>
         <a href="artwork.html">Artwork</a>
         <a href="publish.html">Publish</a>
       </nav>
@@ -23,57 +24,37 @@
   </header>
 
   <main>
-    <!-- Hero -->
-    <section class="hero">
-      <p class="hero__role">Artist — Archive</p>
-      <h1 class="hero__name">Dana<br /><span class="hero__name-indent">Kim</span></h1>
-      <p class="hero__lead">
-        여기에 짧은 소개 한두 문장을 적으세요. 어떤 매체로 무엇을 다루는 작가인지,
-        작업을 관통하는 관심사를 담으면 좋습니다.
+    <!-- Cover -->
+    <section class="cover">
+      <p class="cover__role">Artist — Archive</p>
+      <h1 class="cover__name">Dana<br /><span class="cover__name-indent">Kim</span></h1>
+      <p class="cover__lead">
+        여기에 사이트를 여는 한 문장을 적으세요. 작업 전반을 관통하는 태도나
+        이 아카이브가 담고 있는 것을 짧게 소개하면 좋습니다.
       </p>
     </section>
 
-    <!-- About -->
-    <section class="block" id="about">
-      <p class="block__index">01</p>
-      <div class="block__body">
-        <h2 class="block__title">About</h2>
-        <div class="prose prose--wide">
-          <p>
-            작가 노트를 자유롭게 작성하세요. 작업의 출발점, 다루는 주제,
-            재료와 방법에 대한 태도 등을 서술하면 좋습니다.
-          </p>
-          <p>
-            여러 문단으로 나눠 써도 됩니다. 이 텍스트는 <code>index.html</code>의
-            About 섹션을 수정하면 바뀝니다.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Exhibitions -->
-    <section class="block" id="exhibitions">
-      <p class="block__index">02</p>
-      <div class="block__body">
-        <h2 class="block__title">Exhibitions</h2>
-        <ol class="cv" id="exhibitionList">
-          <!-- js/main.js 의 exhibitions 배열에서 생성됩니다 -->
-        </ol>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section class="block" id="contact">
-      <p class="block__index">03</p>
-      <div class="block__body">
-        <h2 class="block__title">Contact</h2>
-        <ul class="contact">
-          <li><span class="contact__key">Email</span><a href="mailto:wandubydoo@gmail.com">wandubydoo@gmail.com</a></li>
-          <li><span class="contact__key">Instagram</span><a href="#" target="_blank" rel="noopener">@your_handle</a></li>
-          <li><span class="contact__key">Github</span><a href="https://github.com/by-dana-kim" target="_blank" rel="noopener">by-dana-kim</a></li>
-        </ul>
-      </div>
-    </section>
+    <!-- Index / Contents -->
+    <nav class="index" aria-label="섹션 바로가기">
+      <a class="index__item" href="profile.html">
+        <span class="index__num">01</span>
+        <span class="index__title">Profile</span>
+        <span class="index__desc">신상 · 학력 · 경력 · 관심사</span>
+        <span class="index__go" aria-hidden="true">→</span>
+      </a>
+      <a class="index__item" href="artwork.html">
+        <span class="index__num">02</span>
+        <span class="index__title">Artwork</span>
+        <span class="index__desc">전시 작품 아카이브</span>
+        <span class="index__go" aria-hidden="true">→</span>
+      </a>
+      <a class="index__item" href="publish.html">
+        <span class="index__num">03</span>
+        <span class="index__title">Publish</span>
+        <span class="index__desc">도록 · 출판물 · 텍스트</span>
+        <span class="index__go" aria-hidden="true">→</span>
+      </a>
+    </nav>
   </main>
 
   <footer class="colophon">

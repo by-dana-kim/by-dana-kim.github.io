@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dana Kim — Profile</title>
+  <meta name="description" content="Dana Kim · Profile — biography, education, experience and interests." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="page page--profile">
+  <header class="masthead">
+    <div class="masthead__inner">
+      <a href="index.html" class="wordmark">Dana&nbsp;Kim</a>
+      <nav class="nav" aria-label="주 메뉴">
+        <a href="index.html">Home</a>
+        <a href="profile.html" aria-current="page">Profile</a>
+        <a href="artwork.html">Artwork</a>
+        <a href="publish.html">Publish</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="pagehead">
+      <p class="pagehead__index">About the artist</p>
+      <h1 class="pagehead__title">Profile</h1>
+      <p class="pagehead__lead">신상 정보와 학력, 경력, 관심사를 정리합니다.</p>
+    </section>
+
+    <!-- About / 신상 -->
+    <section class="block" id="about">
+      <p class="block__index">01</p>
+      <div class="block__body">
+        <h2 class="block__title">About</h2>
+        <div class="prose prose--wide">
+          <p>
+            간단한 자기소개와 신상 정보를 적으세요. 출생 연도·지역, 현재 활동 거점,
+            주로 다루는 매체 등을 담으면 좋습니다.
+          </p>
+          <p>
+            이 텍스트는 <code>profile.html</code>의 About 섹션을 수정하면 바뀝니다.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education / 학력 -->
+    <section class="block" id="education">
+      <p class="block__index">02</p>
+      <div class="block__body">
+        <h2 class="block__title">Education</h2>
+        <ol class="cv" id="educationList">
+          <!-- js/main.js 의 education 배열에서 생성됩니다 -->
+        </ol>
+      </div>
+    </section>
+
+    <!-- Experience / 경력 -->
+    <section class="block" id="experience">
+      <p class="block__index">03</p>
+      <div class="block__body">
+        <h2 class="block__title">Experience</h2>
+        <ol class="cv" id="experienceList">
+          <!-- js/main.js 의 experience 배열에서 생성됩니다 -->
+        </ol>
+      </div>
+    </section>
+
+    <!-- Interests / 관심사 -->
+    <section class="block" id="interests">
+      <p class="block__index">04</p>
+      <div class="block__body">
+        <h2 class="block__title">Interests</h2>
+        <ul class="interests" id="interestList">
+          <!-- js/main.js 의 interests 배열에서 생성됩니다 -->
+        </ul>
+      </div>
+    </section>
+
+    <!-- Contact / 연락처 -->
+    <section class="block" id="contact">
+      <p class="block__index">05</p>
+      <div class="block__body">
+        <h2 class="block__title">Contact</h2>
+        <ul class="contact">
+          <li><span class="contact__key">Email</span><a href="mailto:wandubydoo@gmail.com">wandubydoo@gmail.com</a></li>
+          <li><span class="contact__key">Instagram</span><a href="#" target="_blank" rel="noopener">@your_handle</a></li>
+          <li><span class="contact__key">Github</span><a href="https://github.com/by-dana-kim" target="_blank" rel="noopener">by-dana-kim</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="colophon">
+    <div class="colophon__inner">
+      <span>© <span data-year></span> Dana Kim</span>
+      <a href="mailto:wandubydoo@gmail.com">wandubydoo@gmail.com</a>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
