@@ -5,7 +5,13 @@
 
 /* --- Profile: education (학력) ------------------------------ */
 const education = [
-  { year: "2024–26", title: "MA, Graduate School of Culture Technology", venue: "KAIST · TX Creative AI Lab (Advisor: Prof. Jinjoon Lee)" },
+  {
+    year: "2024–26",
+    title: "MA, Graduate School of Metaverse",
+    // venueHtml: 링크 등 서식이 필요한 경우 사용 (없으면 venue 사용)
+    venueHtml:
+      'KAIST · Minor in Culture Technology<br>Researcher, <a href="https://tx.kaist.ac.kr/" target="_blank" rel="noopener">TX Creative AI Lab</a> · Advisor: Prof. Jinjoon Lee',
+  },
   { year: "2012–17", title: "BA, Communication", venue: "Yonsei University" },
 ];
 
@@ -22,6 +28,9 @@ const researchAreas = ["New Media Art", "Immersive Film", "Visual Anthropology"]
    img : 이미지 경로 (예: "assets/works/work1.jpg"). 없으면 placeholder 표시.
    tone: placeholder 배경색 (이미지 없을 때만 사용, 선택).
 ------------------------------------------------------------- */
+const ARTS_KOREA_LAB =
+  "https://www.artskorealab.kr/bbs/view.do?pstSn=2511180001&key=2303300002&orderBy=ntcPstYn&pageIndex=4";
+
 const works = [
   {
     title: "Quantum Memory Space (VR)",
@@ -30,6 +39,7 @@ const works = [
     size: "lg",
     img: "", // assets/works/ 에 스틸컷을 넣고 경로를 지정하세요 (예: "assets/works/qms-vr.jpg")
     tone: "#d7dae0",
+    link: ARTS_KOREA_LAB,
   },
   {
     title: "Bench Scene",
@@ -38,6 +48,7 @@ const works = [
     size: "md",
     img: "",
     tone: "#ded9cd",
+    link: ARTS_KOREA_LAB,
   },
   {
     title: "Memory Sphere",
@@ -46,6 +57,7 @@ const works = [
     size: "sm",
     img: "",
     tone: "#e3ddd0",
+    link: ARTS_KOREA_LAB,
   },
   {
     title: "숲길을 걷는 시간 — The Time of Walking in the Forest Path",
@@ -108,7 +120,7 @@ function renderCV(id, items) {
       (e) => `
       <li>
         <span class="cv__year">${esc(e.year)}</span>
-        <span class="cv__title">${esc(e.title)}<em>${esc(e.venue)}</em></span>
+        <span class="cv__title">${esc(e.title)}<em>${e.venueHtml || esc(e.venue)}</em></span>
       </li>`
     )
     .join("");

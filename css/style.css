@@ -250,6 +250,8 @@ code {
 .cv__year { font-variant-numeric: tabular-nums; color: var(--ink-soft); font-size: 0.9rem; }
 .cv__title { font-family: var(--serif); font-size: 1.15rem; }
 .cv__title em { color: var(--ink-soft); font-size: 0.92rem; font-family: var(--sans); font-style: normal; display: block; margin-top: 2px; }
+.cv__title em a { color: var(--ink); border-bottom: 1px solid var(--line); transition: border-color 0.2s, color 0.2s; }
+.cv__title em a:hover { border-color: var(--clay); color: var(--clay); }
 
 /* Contact */
 .contact { list-style: none; max-width: 480px; }
