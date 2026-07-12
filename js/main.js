@@ -5,8 +5,8 @@
 
 /* --- Profile: education (학력) ------------------------------ */
 const education = [
-  { year: "2024–26", title: "MS, Graduate School of Metaverse", venue: "KAIST (Minor in Culture Technology)" },
-  { year: "2012–17", title: "BA, Communication", venue: "Yonsei University" },
+  { year: "2024–26", title: "MS, Graduate School of Metaverse", venue: "KAIST (Double Major in Culture Technology)" },
+  { year: "2012–17", title: "BA, Communication", venue: "Yonsei University (Minor in Business Administration)" },
 ];
 
 /* --- Profile: career / experience (경력) ------------------- */
@@ -138,32 +138,30 @@ function renderResearch() {
 }
 
 function renderWorks() {
-  const grid = document.getElementById("workGrid");
-  if (!grid) return;
-  grid.innerHTML = works
+  const list = document.getElementById("workGrid");
+  if (!list) return;
+  list.innerHTML = works
     .map((w, i) => {
-      const cls = `work reveal ${sizeClass[w.size] || "is-md"}`;
+      const go = w.link ? `<span class="worklist__go" aria-hidden="true">→</span>` : "";
       const inner = `
-        ${mediaMarkup(w)}
-        <div class="work__meta">
-          <span class="work__num">${String(i + 1).padStart(2, "0")}</span>
-          <span class="work__info">
-            <span class="work__title">${esc(w.title)}</span>
-            <span class="work__sub">${esc(w.year)} · ${esc(w.medium)}</span>
-          </span>
-        </div>`;
-      // link → 외부 페이지 이동 / 이미지 있음 → 라이트박스 확대 / 그 외 → 정적 카드
+        <span class="worklist__year">${esc(w.year)}</span>
+        <span class="worklist__body">
+          <span class="worklist__title">${esc(w.title)}</span>
+          <span class="worklist__medium">${esc(w.medium)}</span>
+        </span>
+        ${go}`;
+      // link → 외부 페이지 이동 / 이미지 있음 → 라이트박스 확대 / 그 외 → 정적 행
       if (w.link) {
-        return `<a class="${cls}" href="${esc(w.link)}" target="_blank" rel="noopener" aria-label="${esc(w.title)} — 자세히 보기">${inner}</a>`;
+        return `<a class="worklist__item reveal" href="${esc(w.link)}" target="_blank" rel="noopener" aria-label="${esc(w.title)} — 자세히 보기">${inner}</a>`;
       }
       if (w.img) {
-        return `<button class="${cls}" data-index="${i}" aria-label="${esc(w.title)} 크게 보기">${inner}</button>`;
+        return `<button class="worklist__item reveal" data-index="${i}" aria-label="${esc(w.title)} 크게 보기">${inner}</button>`;
       }
-      return `<div class="${cls}">${inner}</div>`;
+      return `<div class="worklist__item reveal">${inner}</div>`;
     })
     .join("");
 
-  grid.querySelectorAll("button.work").forEach((btn) => {
+  list.querySelectorAll("button.worklist__item").forEach((btn) => {
     btn.addEventListener("click", () => openLightbox(works[+btn.dataset.index]));
   });
 }

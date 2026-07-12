@@ -285,48 +285,46 @@ code {
   margin-top: 24px;
 }
 
-/* ===== Artwork: irregular grid ===== */
-.works {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: clamp(28px, 4vw, 56px) clamp(20px, 3vw, 40px);
+/* ===== Artwork: archive list ===== */
+.worklist {
+  border-top: 1px solid var(--line);
   padding-bottom: clamp(64px, 10vw, 128px);
-  align-items: start;
 }
-.work {
-  grid-column: span 6;
-  cursor: pointer;
+.worklist__item {
+  display: grid;
+  grid-template-columns: 4.5rem 1fr auto;
+  gap: 4px 24px;
+  align-items: baseline;
+  padding: clamp(22px, 3vw, 34px) 0;
   border: 0;
+  border-bottom: 1px solid var(--line);
   background: none;
-  text-align: left;
-  font: inherit;
   color: inherit;
-  display: block;
+  font: inherit;
+  text-align: left;
   width: 100%;
+  transition: padding-left 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
-div.work { cursor: default; } /* 이미지·링크 없는 카드는 클릭 대상이 아님 */
-/* size variants → ragged, non-uniform rows */
-.work.is-sm  { grid-column: span 4; }
-.work.is-md  { grid-column: span 5; }
-.work.is-lg  { grid-column: span 7; }
-.work.is-wide{ grid-column: span 8; }
-/* vertical offsets add the "scattered" irregular rhythm */
-.work:nth-child(3n)   { margin-top: clamp(20px, 5vw, 64px); }
-.work:nth-child(4n+2) { margin-top: clamp(12px, 3vw, 36px); }
+a.worklist__item, button.worklist__item { cursor: pointer; }
+div.worklist__item { cursor: default; }
+a.worklist__item:hover,
+button.worklist__item:hover { padding-left: clamp(6px, 1.5vw, 20px); }
 
-.work__frame {
-  position: relative;
-  overflow: hidden;
-  background: var(--paper-2);
+.worklist__year { font-variant-numeric: tabular-nums; color: var(--ink-soft); font-size: 0.9rem; }
+.worklist__title { font-family: var(--serif); font-size: clamp(1.2rem, 2.6vw, 1.7rem); font-weight: 400; line-height: 1.25; }
+.worklist__medium { display: block; color: var(--ink-soft); font-size: 0.85rem; margin-top: 6px; }
+.worklist__go {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  color: var(--ink-faint);
+  transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), color 0.3s;
 }
-.work__media {
-  display: block;
-  width: 100%;
-  height: auto;
-  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1), filter 0.6s;
+a.worklist__item:hover .worklist__go { transform: translateX(8px); color: var(--clay); }
+@media (max-width: 560px) {
+  .worklist__item { grid-template-columns: 3.2rem 1fr auto; }
 }
-.work:hover .work__media { transform: scale(1.03); }
-/* placeholder tile (no image yet) — muted, cohesive tones */
+
+/* placeholder tile — used by the lightbox when a work has no image */
 .work__ph {
   aspect-ratio: var(--ar, 4 / 5);
   display: grid;
@@ -337,20 +335,6 @@ div.work { cursor: default; } /* 이미지·링크 없는 카드는 클릭 대�
   font-size: 0.95rem;
   letter-spacing: 0.02em;
   background: var(--tone, #e4dece);
-}
-.work.is-lg .work__ph, .work.is-wide .work__ph { --ar: 3 / 2; }
-.work.is-sm .work__ph { --ar: 1 / 1; }
-
-.work__meta { padding-top: 14px; display: flex; gap: 14px; align-items: baseline; }
-.work__num { font-variant-numeric: tabular-nums; color: var(--ink-faint); font-size: 0.8rem; padding-top: 2px; }
-.work__info { flex: 1; }
-.work__title { font-family: var(--serif); font-size: 1.1rem; line-height: 1.25; }
-.work__sub { color: var(--ink-soft); font-size: 0.85rem; margin-top: 3px; }
-
-@media (max-width: 640px) {
-  .work,
-  .work.is-sm, .work.is-md, .work.is-lg, .work.is-wide { grid-column: span 12; }
-  .work:nth-child(n) { margin-top: 0; }
 }
 
 /* ===== Lightbox ===== */
