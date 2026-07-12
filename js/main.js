@@ -5,8 +5,13 @@
 
 /* --- Profile: education (학력) ------------------------------ */
 const education = [
-  { year: "Present", title: "MA Candidate", venue: "KAIST" },
-  { year: "2017", title: "BA, Communication", venue: "Yonsei University" },
+  { year: "2024–26", title: "MA, Graduate School of Metaverse", venue: "KAIST" },
+  { year: "2012–17", title: "BA, Communication", venue: "Yonsei University" },
+];
+
+/* --- Profile: career / experience (경력) ------------------- */
+const experience = [
+  { year: "2019–24", title: "Marketing Planning", venue: "KT (Korea Telecom)" },
 ];
 
 /* --- Profile: research area (연구 분야) --------------------- */
@@ -18,12 +23,17 @@ const researchAreas = ["New Media Art", "Immersive Film", "Visual Anthropology"]
    tone: placeholder 배경색 (이미지 없을 때만 사용, 선택).
 ------------------------------------------------------------- */
 const works = [
-  { title: "작품 제목 I",  year: "2025", medium: "Oil on canvas, 116×91cm",     size: "lg",   img: "", tone: "#e6dfce" },
-  { title: "작품 제목 II", year: "2024", medium: "Mixed media, 60×80cm",         size: "sm",   img: "", tone: "#ddd6c6" },
-  { title: "작품 제목 III",year: "2024", medium: "Installation, dimensions var.", size: "md",   img: "", tone: "#e4ddd0" },
-  { title: "작품 제목 IV", year: "2023", medium: "Archival print, 100×70cm",      size: "wide", img: "", tone: "#e9e3d5" },
-  { title: "작품 제목 V",  year: "2023", medium: "Ceramic, 30×22×22cm",           size: "md",   img: "", tone: "#dcd4c3" },
-  { title: "작품 제목 VI", year: "2022", medium: "Watercolour on paper, 42×30cm", size: "sm",   img: "", tone: "#e7e1d2" },
+  {
+    title: "숲길을 걷는 시간 — The Time of Walking in the Forest Path",
+    year: "2023",
+    medium: "Documentary short, 12 min · DMZ Docs 2023",
+    size: "wide",
+    img: "", // assets/works/ 에 스틸컷을 넣고 경로를 지정하세요 (예: "assets/works/forest.jpg")
+    tone: "#dbdccf",
+    link: "https://dmzdocs.com/kor/addon/00000002/history_film_view.asp?m_idx=102855&QueryYear=2023",
+  },
+  // 작품을 추가하려면 위 형식으로 객체를 더 넣으세요.
+  // link 가 있으면 클릭 시 해당 페이지로, 없으면 라이트박스(확대)로 열립니다.
 ];
 
 /* --- Publish: publications ---------------------------------- */
@@ -31,9 +41,9 @@ const publications = [
   {
     year: "2025",
     title: "Mourning Dew: Storytelling of Nectar Ritual Painting through the Digital Moktak",
-    desc: "Dana Kim, Youngjun Choi, Jinjoon Lee. ISEA International 2025.",
+    desc: "Kim, D., Choi, Y., & Lee, J. Proceedings of the International Symposium on Electronic/Emerging Art (ISEA), 554–559.",
     tag: "Conference Paper",
-    link: "",
+    link: "https://doi.org/10.23362/KOEN2025.07.25.1.072",
   },
 ];
 
@@ -80,9 +90,9 @@ function renderWorks() {
   const grid = document.getElementById("workGrid");
   if (!grid) return;
   grid.innerHTML = works
-    .map(
-      (w, i) => `
-      <button class="work reveal ${sizeClass[w.size] || "is-md"}" data-index="${i}" aria-label="${esc(w.title)} 크게 보기">
+    .map((w, i) => {
+      const cls = `work reveal ${sizeClass[w.size] || "is-md"}`;
+      const inner = `
         ${mediaMarkup(w)}
         <div class="work__meta">
           <span class="work__num">${String(i + 1).padStart(2, "0")}</span>
@@ -90,12 +100,15 @@ function renderWorks() {
             <span class="work__title">${esc(w.title)}</span>
             <span class="work__sub">${esc(w.year)} · ${esc(w.medium)}</span>
           </span>
-        </div>
-      </button>`
-    )
+        </div>`;
+      // link 가 있으면 외부 페이지로 이동, 없으면 라이트박스로 확대
+      return w.link
+        ? `<a class="${cls}" href="${esc(w.link)}" target="_blank" rel="noopener" aria-label="${esc(w.title)} — 자세히 보기">${inner}</a>`
+        : `<button class="${cls}" data-index="${i}" aria-label="${esc(w.title)} 크게 보기">${inner}</button>`;
+    })
     .join("");
 
-  grid.querySelectorAll(".work").forEach((btn) => {
+  grid.querySelectorAll("button.work").forEach((btn) => {
     btn.addEventListener("click", () => openLightbox(works[+btn.dataset.index]));
   });
 }
@@ -182,6 +195,7 @@ function initReveal() {
    ============================================================ */
 document.addEventListener("DOMContentLoaded", () => {
   renderCV("educationList", education);
+  renderCV("experienceList", experience);
   renderResearch();
   renderWorks();
   renderPublications();
