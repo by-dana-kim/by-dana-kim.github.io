@@ -5,19 +5,12 @@
 
 /* --- Profile: education (학력) ------------------------------ */
 const education = [
-  { year: "2018", title: "○○대학교 대학원 ○○과 석사(MFA)", venue: "졸업 · 도시" },
-  { year: "2015", title: "○○대학교 ○○과 학사(BFA)", venue: "졸업 · 도시" },
+  { year: "Present", title: "MA Candidate", venue: "KAIST" },
+  { year: "2017", title: "BA, Communication", venue: "Yonsei University" },
 ];
 
-/* --- Profile: experience (경력) ---------------------------- */
-const experience = [
-  { year: "2025", title: "개인전 《전시 제목》", venue: "갤러리 이름, 서울" },
-  { year: "2024", title: "레지던시 · 수상 · 강의 등", venue: "기관 이름, 도시" },
-  { year: "2023", title: "그룹전 《전시 제목》", venue: "미술관 이름, 도시" },
-];
-
-/* --- Profile: interests (관심사) --------------------------- */
-const interests = ["회화", "설치", "아카이브", "텍스트", "여기에 관심사 추가"];
+/* --- Profile: research area (연구 분야) --------------------- */
+const researchAreas = ["New Media Art", "Immersive Film", "Visual Anthropology"];
 
 /* --- Artwork: works ----------------------------------------
    size: "sm" | "md" | "lg" | "wide"  (그리드에서 차지하는 크기)
@@ -35,9 +28,13 @@ const works = [
 
 /* --- Publish: publications ---------------------------------- */
 const publications = [
-  { year: "2025", title: "출판물 / 도록 제목", desc: "출판사 · 편집 · 텍스트 기고 등 정보를 적으세요.", tag: "Catalogue", link: "#" },
-  { year: "2024", title: "비평 텍스트 제목",   desc: "게재 매체, 필자 등을 적으세요.",                  tag: "Text",      link: "#" },
-  { year: "2023", title: "아티스트 북 제목",   desc: "판형, 페이지, 발행처 등을 적으세요.",             tag: "Artist Book", link: "" },
+  {
+    year: "2025",
+    title: "Mourning Dew: Storytelling of Nectar Ritual Painting through the Digital Moktak",
+    desc: "Dana Kim, Youngjun Choi, Jinjoon Lee. ISEA International 2025.",
+    tag: "Conference Paper",
+    link: "",
+  },
 ];
 
 /* ============================================================
@@ -73,10 +70,10 @@ function renderCV(id, items) {
     .join("");
 }
 
-function renderInterests() {
-  const el = document.getElementById("interestList");
+function renderResearch() {
+  const el = document.getElementById("researchList");
   if (!el) return;
-  el.innerHTML = interests.map((t) => `<li>${esc(t)}</li>`).join("");
+  el.innerHTML = researchAreas.map((t) => `<li>${esc(t)}</li>`).join("");
 }
 
 function renderWorks() {
@@ -185,8 +182,7 @@ function initReveal() {
    ============================================================ */
 document.addEventListener("DOMContentLoaded", () => {
   renderCV("educationList", education);
-  renderCV("experienceList", experience);
-  renderInterests();
+  renderResearch();
   renderWorks();
   renderPublications();
   initLightbox();
