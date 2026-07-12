@@ -80,6 +80,15 @@ const publications = [
   },
   {
     year: "2025",
+    title: "AI Voice and the Performativity of Absence in Documentary Theatre",
+    desc: "The 20th TaPRA (Theatre and Performance Research Association), University of Warwick, 27–29 Aug 2025. Session: Telling Times — Multiform Disruption and Documentary Practices.",
+    tag: "Conference Presentation",
+    link: "",
+    abstract:
+      "본 작업은 실존 인물의 일기를 기반으로 한 AI 합성 음성과 공간 음향 설치를 통해, 부재한 존재가 머물렀던 공간을 다층적 음성으로 재구성하며 기억의 매개와 거리두기 효과를 탐구하는 다중 스피커 퍼포먼스이다.",
+  },
+  {
+    year: "2025",
     title: "Mourning Dew: Storytelling of Nectar Ritual Painting through the Digital Moktak",
     desc: "Kim, D., Choi, Y., & Lee, J. Proceedings of the International Symposium on Electronic/Emerging Art (ISEA), 554–559.",
     tag: "Conference Paper",
