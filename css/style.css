@@ -217,21 +217,29 @@ main {
   transition: padding-left 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 .index__item:hover { padding-left: clamp(8px, 2vw, 28px); }
+/* explicit placement keeps the arrow in the right column at any width */
 .index__num {
+  grid-column: 1;
+  grid-row: 1;
   font-size: 0.72rem;
   letter-spacing: 0.2em;
   color: var(--ink-faint);
   font-variant-numeric: tabular-nums;
 }
 .index__title {
+  grid-column: 2;
+  grid-row: 1;
   font-family: var(--serif);
   font-weight: 400;
   font-size: clamp(2rem, 6vw, 4rem);
   line-height: 1;
   letter-spacing: -0.01em;
 }
-.index__desc { color: var(--ink-soft); font-size: 0.9rem; grid-column: 2; }
+.index__desc { grid-column: 2; grid-row: 2; color: var(--ink-soft); font-size: 0.9rem; }
 .index__go {
+  grid-column: 3;
+  grid-row: 1 / 3;
+  align-self: center;
   font-family: var(--serif);
   font-size: clamp(1.4rem, 3vw, 2rem);
   color: var(--ink-faint);
@@ -239,8 +247,7 @@ main {
 }
 .index__item:hover .index__go { transform: translateX(10px); color: var(--clay); }
 @media (max-width: 560px) {
-  .index__item { grid-template-columns: 2.5rem 1fr auto; }
-  .index__desc { grid-column: 1 / -1; }
+  .index__item { grid-template-columns: 2rem 1fr auto; column-gap: 16px; }
 }
 
 /* ===== Profile: interests ===== */
