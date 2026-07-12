@@ -6,6 +6,9 @@ Thumbs.db
 .vscode/
 .idea/
 
+# Claude Code local settings (machine-specific)
+.claude/settings.local.json
+
 # Node (나중에 도구를 추가할 경우)
 node_modules/
 dist/
