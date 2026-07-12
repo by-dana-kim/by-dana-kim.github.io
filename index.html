@@ -3,81 +3,84 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dana Kim · Portfolio</title>
-  <meta name="description" content="Dana Kim의 포트폴리오 — 소개, 프로젝트, 기술 스택" />
+  <title>Dana Kim — Profile</title>
+  <meta name="description" content="Dana Kim · Artist. Profile and exhibition archive." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
-<body>
-  <!-- Header / Nav -->
-  <header class="site-header">
-    <nav class="nav container">
-      <a href="#top" class="nav__logo">DK<span>.</span></a>
-      <ul class="nav__links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <button id="themeToggle" class="theme-toggle" aria-label="테마 전환">🌙</button>
-    </nav>
+<body class="page page--profile">
+  <header class="masthead">
+    <div class="masthead__inner">
+      <a href="index.html" class="wordmark">Dana&nbsp;Kim</a>
+      <nav class="nav" aria-label="주 메뉴">
+        <a href="index.html" aria-current="page">Profile</a>
+        <a href="artwork.html">Artwork</a>
+        <a href="publish.html">Publish</a>
+      </nav>
+    </div>
   </header>
 
-  <main id="top">
+  <main>
     <!-- Hero -->
-    <section class="hero container">
-      <p class="hero__eyebrow">안녕하세요 👋</p>
-      <h1 class="hero__title">저는 <span class="accent">Dana Kim</span>입니다.</h1>
-      <p class="hero__subtitle">여기에 나를 한 문장으로 소개하는 문구를 적으세요. (예: 사용자 경험을 고민하는 프론트엔드 개발자)</p>
-      <div class="hero__actions">
-        <a href="#projects" class="btn btn--primary">프로젝트 보기</a>
-        <a href="#contact" class="btn btn--ghost">연락하기</a>
-      </div>
+    <section class="hero">
+      <p class="hero__role">Artist — Archive</p>
+      <h1 class="hero__name">Dana<br /><span class="hero__name-indent">Kim</span></h1>
+      <p class="hero__lead">
+        여기에 짧은 소개 한두 문장을 적으세요. 어떤 매체로 무엇을 다루는 작가인지,
+        작업을 관통하는 관심사를 담으면 좋습니다.
+      </p>
     </section>
 
     <!-- About -->
-    <section id="about" class="section container">
-      <h2 class="section__title">About</h2>
-      <div class="about">
-        <p>
-          이곳에 자기소개를 자유롭게 작성하세요. 어떤 일을 하는지, 무엇에 관심이 있는지,
-          어떤 가치를 중요하게 생각하는지 등을 담으면 좋습니다.
-        </p>
-        <p>
-          여러 문단으로 나눠 써도 됩니다. 경력, 학력, 취미 등 원하는 내용을 추가하세요.
-        </p>
+    <section class="block" id="about">
+      <p class="block__index">01</p>
+      <div class="block__body">
+        <h2 class="block__title">About</h2>
+        <div class="prose prose--wide">
+          <p>
+            작가 노트를 자유롭게 작성하세요. 작업의 출발점, 다루는 주제,
+            재료와 방법에 대한 태도 등을 서술하면 좋습니다.
+          </p>
+          <p>
+            여러 문단으로 나눠 써도 됩니다. 이 텍스트는 <code>index.html</code>의
+            About 섹션을 수정하면 바뀝니다.
+          </p>
+        </div>
       </div>
     </section>
 
-    <!-- Projects -->
-    <section id="projects" class="section container">
-      <h2 class="section__title">Projects</h2>
-      <div class="projects" id="projectGrid">
-        <!-- 카드는 js/main.js 의 projects 배열에서 생성됩니다 -->
+    <!-- Exhibitions -->
+    <section class="block" id="exhibitions">
+      <p class="block__index">02</p>
+      <div class="block__body">
+        <h2 class="block__title">Exhibitions</h2>
+        <ol class="cv" id="exhibitionList">
+          <!-- js/main.js 의 exhibitions 배열에서 생성됩니다 -->
+        </ol>
       </div>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills" class="section container">
-      <h2 class="section__title">Skills</h2>
-      <ul class="skills" id="skillList">
-        <!-- 항목은 js/main.js 의 skills 배열에서 생성됩니다 -->
-      </ul>
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="section container">
-      <h2 class="section__title">Contact</h2>
-      <p class="contact__lead">함께 일하고 싶거나 궁금한 점이 있다면 편하게 연락 주세요.</p>
-      <div class="contact__links">
-        <a href="mailto:wandubydoo@gmail.com" class="btn btn--primary">✉️ Email</a>
-        <a href="https://github.com/by-dana-kim" target="_blank" rel="noopener" class="btn btn--ghost">GitHub</a>
+    <section class="block" id="contact">
+      <p class="block__index">03</p>
+      <div class="block__body">
+        <h2 class="block__title">Contact</h2>
+        <ul class="contact">
+          <li><span class="contact__key">Email</span><a href="mailto:wandubydoo@gmail.com">wandubydoo@gmail.com</a></li>
+          <li><span class="contact__key">Instagram</span><a href="#" target="_blank" rel="noopener">@your_handle</a></li>
+          <li><span class="contact__key">Github</span><a href="https://github.com/by-dana-kim" target="_blank" rel="noopener">by-dana-kim</a></li>
+        </ul>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <p class="container">© <span id="year"></span> Dana Kim. Built with plain HTML, CSS & JS.</p>
+  <footer class="colophon">
+    <div class="colophon__inner">
+      <span>© <span data-year></span> Dana Kim</span>
+      <a href="mailto:wandubydoo@gmail.com">wandubydoo@gmail.com</a>
+    </div>
   </footer>
 
   <script src="js/main.js"></script>

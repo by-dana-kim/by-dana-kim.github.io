@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dana Kim — Artwork</title>
+  <meta name="description" content="Dana Kim · Artwork archive of exhibited works." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="page page--artwork">
+  <header class="masthead">
+    <div class="masthead__inner">
+      <a href="index.html" class="wordmark">Dana&nbsp;Kim</a>
+      <nav class="nav" aria-label="주 메뉴">
+        <a href="index.html">Profile</a>
+        <a href="artwork.html" aria-current="page">Artwork</a>
+        <a href="publish.html">Publish</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="pagehead">
+      <p class="pagehead__index">Works</p>
+      <h1 class="pagehead__title">Artwork</h1>
+      <p class="pagehead__lead">전시 작품 아카이브. 작품을 클릭하면 크게 볼 수 있습니다.</p>
+    </section>
+
+    <section class="works" id="workGrid" aria-label="작품 목록">
+      <!-- js/main.js 의 works 배열에서 생성됩니다 -->
+    </section>
+  </main>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lightbox__close" id="lightboxClose" aria-label="닫기">✕</button>
+    <figure class="lightbox__fig">
+      <div class="lightbox__media" id="lightboxMedia"></div>
+      <figcaption class="lightbox__cap" id="lightboxCap"></figcaption>
+    </figure>
+  </div>
+
+  <footer class="colophon">
+    <div class="colophon__inner">
+      <span>© <span data-year></span> Dana Kim</span>
+      <a href="mailto:wandubydoo@gmail.com">wandubydoo@gmail.com</a>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

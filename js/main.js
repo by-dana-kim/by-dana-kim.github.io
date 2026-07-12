@@ -1,77 +1,180 @@
-// ===== 데이터: 이 배열만 수정하면 화면이 바뀝니다 =====
-const projects = [
-  {
-    title: "프로젝트 제목",
-    desc: "프로젝트에 대한 짧은 설명을 적으세요. 무엇을 만들었고 어떤 문제를 해결했는지.",
-    tags: ["HTML", "CSS", "JavaScript"],
-    link: "#",
-  },
-  {
-    title: "두 번째 프로젝트",
-    desc: "이 카드를 복사하거나 삭제해서 프로젝트 개수를 조절할 수 있어요.",
-    tags: ["React", "API"],
-    link: "#",
-  },
-  {
-    title: "세 번째 프로젝트",
-    desc: "link 값에 실제 URL(GitHub 저장소, 배포 사이트 등)을 넣으세요.",
-    tags: ["Design"],
-    link: "#",
-  },
+/* ============================================================
+   Dana Kim — Artist Archive
+   Edit the data arrays below to update the site.
+   ============================================================ */
+
+/* --- Profile: exhibitions ---------------------------------- */
+const exhibitions = [
+  { year: "2025", title: "전시 제목 (개인전)", venue: "갤러리 이름, 서울" },
+  { year: "2024", title: "그룹전 제목", venue: "미술관 이름, 도시" },
+  { year: "2023", title: "전시 제목", venue: "공간 이름, 도시" },
 ];
 
-const skills = ["HTML", "CSS", "JavaScript", "Git", "여기에", "기술을", "추가하세요"];
+/* --- Artwork: works ----------------------------------------
+   size: "sm" | "md" | "lg" | "wide"  (그리드에서 차지하는 크기)
+   img : 이미지 경로 (예: "assets/works/work1.jpg"). 없으면 placeholder 표시.
+   tone: placeholder 배경색 (이미지 없을 때만 사용, 선택).
+------------------------------------------------------------- */
+const works = [
+  { title: "작품 제목 I",  year: "2025", medium: "Oil on canvas, 116×91cm",     size: "lg",   img: "", tone: "#e6dfce" },
+  { title: "작품 제목 II", year: "2024", medium: "Mixed media, 60×80cm",         size: "sm",   img: "", tone: "#ddd6c6" },
+  { title: "작품 제목 III",year: "2024", medium: "Installation, dimensions var.", size: "md",   img: "", tone: "#e4ddd0" },
+  { title: "작품 제목 IV", year: "2023", medium: "Archival print, 100×70cm",      size: "wide", img: "", tone: "#e9e3d5" },
+  { title: "작품 제목 V",  year: "2023", medium: "Ceramic, 30×22×22cm",           size: "md",   img: "", tone: "#dcd4c3" },
+  { title: "작품 제목 VI", year: "2022", medium: "Watercolour on paper, 42×30cm", size: "sm",   img: "", tone: "#e7e1d2" },
+];
 
-// ===== 렌더링 =====
-function renderProjects() {
-  const grid = document.getElementById("projectGrid");
-  if (!grid) return;
-  grid.innerHTML = projects
+/* --- Publish: publications ---------------------------------- */
+const publications = [
+  { year: "2025", title: "출판물 / 도록 제목", desc: "출판사 · 편집 · 텍스트 기고 등 정보를 적으세요.", tag: "Catalogue", link: "#" },
+  { year: "2024", title: "비평 텍스트 제목",   desc: "게재 매체, 필자 등을 적으세요.",                  tag: "Text",      link: "#" },
+  { year: "2023", title: "아티스트 북 제목",   desc: "판형, 페이지, 발행처 등을 적으세요.",             tag: "Artist Book", link: "" },
+];
+
+/* ============================================================
+   Rendering
+   ============================================================ */
+const sizeClass = { sm: "is-sm", md: "is-md", lg: "is-lg", wide: "is-wide" };
+
+function esc(s) {
+  return String(s).replace(/[&<>"]/g, (c) =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])
+  );
+}
+
+function mediaMarkup(item) {
+  if (item.img) {
+    return `<div class="work__frame"><img class="work__media" src="${esc(item.img)}" alt="${esc(item.title)}" loading="lazy" /></div>`;
+  }
+  const tone = item.tone ? ` style="--tone:${esc(item.tone)}"` : "";
+  return `<div class="work__frame"><div class="work__ph"${tone}>no image</div></div>`;
+}
+
+function renderExhibitions() {
+  const el = document.getElementById("exhibitionList");
+  if (!el) return;
+  el.innerHTML = exhibitions
     .map(
-      (p) => `
-      <article class="card">
-        <h3 class="card__title">${p.title}</h3>
-        <p class="card__desc">${p.desc}</p>
-        <div class="card__tags">${p.tags.map((t) => `<span class="tag">${t}</span>`).join("")}</div>
-        <a class="card__link" href="${p.link}" target="_blank" rel="noopener">자세히 보기 →</a>
-      </article>`
+      (e) => `
+      <li>
+        <span class="cv__year">${esc(e.year)}</span>
+        <span class="cv__title">${esc(e.title)}<em>${esc(e.venue)}</em></span>
+      </li>`
     )
     .join("");
 }
 
-function renderSkills() {
-  const list = document.getElementById("skillList");
-  if (!list) return;
-  list.innerHTML = skills.map((s) => `<li>${s}</li>`).join("");
-}
+function renderWorks() {
+  const grid = document.getElementById("workGrid");
+  if (!grid) return;
+  grid.innerHTML = works
+    .map(
+      (w, i) => `
+      <button class="work reveal ${sizeClass[w.size] || "is-md"}" data-index="${i}" aria-label="${esc(w.title)} 크게 보기">
+        ${mediaMarkup(w)}
+        <div class="work__meta">
+          <span class="work__num">${String(i + 1).padStart(2, "0")}</span>
+          <span class="work__info">
+            <span class="work__title">${esc(w.title)}</span>
+            <span class="work__sub">${esc(w.year)} · ${esc(w.medium)}</span>
+          </span>
+        </div>
+      </button>`
+    )
+    .join("");
 
-// ===== 테마 토글 (다크/라이트) =====
-function initTheme() {
-  const toggle = document.getElementById("themeToggle");
-  const saved = localStorage.getItem("theme");
-  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const theme = saved || (prefersDark ? "dark" : "light");
-  applyTheme(theme);
-
-  toggle?.addEventListener("click", () => {
-    const current = document.documentElement.getAttribute("data-theme");
-    const next = current === "dark" ? "light" : "dark";
-    applyTheme(next);
-    localStorage.setItem("theme", next);
+  grid.querySelectorAll(".work").forEach((btn) => {
+    btn.addEventListener("click", () => openLightbox(works[+btn.dataset.index]));
   });
 }
 
-function applyTheme(theme) {
-  document.documentElement.setAttribute("data-theme", theme);
-  const toggle = document.getElementById("themeToggle");
-  if (toggle) toggle.textContent = theme === "dark" ? "☀️" : "🌙";
+function renderPublications() {
+  const el = document.getElementById("pubList");
+  if (!el) return;
+  el.innerHTML = publications
+    .map((p) => {
+      const title = p.link
+        ? `<a class="pub__link" href="${esc(p.link)}" target="_blank" rel="noopener">${esc(p.title)}</a>`
+        : esc(p.title);
+      const tag = p.tag ? `<span class="pub__tag">${esc(p.tag)}</span>` : "";
+      return `
+      <article class="pub reveal">
+        <span class="pub__year">${esc(p.year)}</span>
+        <h2 class="pub__title">${title}</h2>
+        <p class="pub__desc">${esc(p.desc)}${tag}</p>
+      </article>`;
+    })
+    .join("");
 }
 
-// ===== 초기화 =====
+/* ============================================================
+   Lightbox (artwork page)
+   ============================================================ */
+let lastFocused = null;
+
+function openLightbox(work) {
+  const box = document.getElementById("lightbox");
+  const media = document.getElementById("lightboxMedia");
+  const cap = document.getElementById("lightboxCap");
+  if (!box || !media || !cap) return;
+
+  lastFocused = document.activeElement;
+  media.innerHTML = work.img
+    ? `<img src="${esc(work.img)}" alt="${esc(work.title)}" />`
+    : `<div class="work__ph" style="--tone:${esc(work.tone || "#e4dece")}">no image</div>`;
+  cap.innerHTML = `<strong>${esc(work.title)}</strong><span>${esc(work.year)} · ${esc(work.medium)}</span>`;
+  box.hidden = false;
+  document.body.style.overflow = "hidden";
+  document.getElementById("lightboxClose")?.focus();
+}
+
+function closeLightbox() {
+  const box = document.getElementById("lightbox");
+  if (!box || box.hidden) return;
+  box.hidden = true;
+  document.body.style.overflow = "";
+  lastFocused?.focus();
+}
+
+function initLightbox() {
+  const box = document.getElementById("lightbox");
+  if (!box) return;
+  document.getElementById("lightboxClose")?.addEventListener("click", closeLightbox);
+  box.addEventListener("click", (e) => { if (e.target === box) closeLightbox(); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeLightbox(); });
+}
+
+/* ============================================================
+   Reveal on scroll
+   ============================================================ */
+function initReveal() {
+  const items = document.querySelectorAll(".reveal");
+  if (!items.length) return;
+  if (!("IntersectionObserver" in window)) {
+    items.forEach((el) => el.classList.add("is-in"));
+    return;
+  }
+  const io = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((en) => {
+        if (en.isIntersecting) { en.target.classList.add("is-in"); obs.unobserve(en.target); }
+      });
+    },
+    { rootMargin: "0px 0px -8% 0px" }
+  );
+  items.forEach((el) => io.observe(el));
+}
+
+/* ============================================================
+   Init
+   ============================================================ */
 document.addEventListener("DOMContentLoaded", () => {
-  renderProjects();
-  renderSkills();
-  initTheme();
-  const yearEl = document.getElementById("year");
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
+  renderExhibitions();
+  renderWorks();
+  renderPublications();
+  initLightbox();
+  initReveal();
+  document.querySelectorAll("[data-year]").forEach((el) => {
+    el.textContent = new Date().getFullYear();
+  });
 });
