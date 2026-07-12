@@ -89,7 +89,9 @@ const publications = [
     title: "Mourning Dew: Storytelling of Nectar Ritual Painting through the Digital Moktak",
     desc: "Kim, D., Choi, Y., & Lee, J. Proceedings of the International Symposium on Electronic/Emerging Art (ISEA), 554–559.",
     tag: "Conference Paper",
-    link: "https://doi.org/10.23362/KOEN2025.07.25.1.072",
+    link: "https://www.isea-symposium-archives.org/wp-content/uploads/2025/09/2025_Kim_Mourning-Dew-Storytelling-of-Nectar-Ritual-Painting-through-the-Digital-Moktak.pdf",
+    abstract:
+      "This paper examines Nectar Ritual Painting, also known as Gamnodo, a genre of Korean Buddhist painting originally intended to guide the liberation of wandering spirits through ceremonial practices. Over time, Gamnodo expanded to reflect secular and societal dimensions, offering a rich narrative of the daily realities and cultural transformations of its era. Building on this tradition, the paper focuses on Mourning Dew (2024, Single Channel Video, 1'39\"), a video piece that collages imagery from two Gamnodo paintings and maps it onto the surface of a digitally rendered moktak, a wooden percussion instrument in Buddhism. This project creates a ceremonial digital experience, bridging spiritual heritage with contemporary media. The reimagination of Gamnodo in this project demonstrates how traditional art forms can be transformed into modern storytelling while preserving and revitalizing their original cultural context and purpose in the digital age.",
   },
 ];
 
@@ -171,16 +173,19 @@ function renderPublications() {
       const title = p.link
         ? `<a class="pub__link" href="${esc(p.link)}" target="_blank" rel="noopener">${esc(p.title)}</a>`
         : esc(p.title);
-      const tag = p.tag ? `<span class="pub__tag">${esc(p.tag)}</span>` : "";
+      const kind = p.tag ? `<span class="pub__kind">[${esc(p.tag)}]</span>` : "";
       const abstract = p.abstract
         ? `<details class="pub__abstract"><summary>Abstract</summary><p>${esc(p.abstract)}</p></details>`
         : "";
       return `
       <article class="pub reveal">
         <span class="pub__year">${esc(p.year)}</span>
-        <h2 class="pub__title">${title}</h2>
-        <p class="pub__desc">${esc(p.desc)}${tag}</p>
-        ${abstract}
+        <div class="pub__body">
+          ${kind}
+          <h2 class="pub__title">${title}</h2>
+          <p class="pub__desc">${esc(p.desc)}</p>
+          ${abstract}
+        </div>
       </article>`;
     })
     .join("");

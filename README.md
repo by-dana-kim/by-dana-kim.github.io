@@ -10,7 +10,7 @@ Dana Kim의 개인 포트폴리오 · 전시 작품 아카이브. 순수 HTML / 
 ├── index.html      # Home 탭 (메인/커버 · 섹션 바로가기)
 ├── profile.html    # Profile 탭 (소개 · 학력 · 경력 · 관심사 · 연락처)
 ├── artwork.html    # Artwork 탭 (작품 아카이브, 클릭 시 확대)
-├── publish.html    # Publish 탭 (도록 · 출판물 · 텍스트)
+├── academic.html   # Academic 탭 (논문 · 학위논문 · 학회 발표)
 ├── css/style.css   # 디자인 (색상 토큰 · 타이포 · 비정형 그리드)
 └── js/main.js      # 데이터 배열 + 렌더링 + 라이트박스
 ```
