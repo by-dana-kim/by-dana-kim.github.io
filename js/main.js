@@ -100,6 +100,15 @@ function esc(s) {
   );
 }
 
+// 저자 표기에서 김단아 본인 이름만 굵게 (이미 esc 처리된 문자열에 적용)
+const AUTHOR_NAMES = ["Kim, D.", "Dana Kim", "김단아"];
+function boldAuthor(html) {
+  return AUTHOR_NAMES.reduce(
+    (out, name) => out.split(name).join(`<strong>${name}</strong>`),
+    html
+  );
+}
+
 function mediaMarkup(item) {
   if (item.img) {
     return `<div class="work__frame"><img class="work__media" src="${esc(item.img)}" alt="${esc(item.title)}" loading="lazy" /></div>`;
@@ -177,7 +186,7 @@ function renderPublications() {
         <div class="pub__body">
           ${kind}
           <h2 class="pub__title">${title}</h2>
-          <p class="pub__desc">${esc(p.desc)}</p>
+          <p class="pub__desc">${boldAuthor(esc(p.desc))}</p>
           ${abstract}
         </div>
       </article>`;
