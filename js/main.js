@@ -18,50 +18,50 @@ const experience = [
 const researchAreas = ["New Media Art", "Immersive Film", "Visual Anthropology"];
 
 /* --- Artwork: works ----------------------------------------
-   image   : still / thumbnail (URL or assets/works/xxx.jpg)
+   embed   : YouTube video id (embedded when the row is expanded)
    desc    : short text shown when the item is expanded
    details : bullet list (screenings, awards, exhibition notes)
    links   : [{ label, url }] shown when expanded
-   Clicking a row expands it; clicking again collapses it.
+   Clicking a row expands it (hover lifts it); clicking again collapses.
 ------------------------------------------------------------- */
 const works = [
   {
     title: "Quantum Memory Space (VR)",
     year: "2025",
     medium: "VR / interactive media · Arts Korea Lab, Seoul",
-    image: "https://img.youtube.com/vi/oKY3vPOFfLc/hqdefault.jpg",
+    embed: "oKY3vPOFfLc",
     desc: "A VR environment that combines viewpoint-conditioned observation with emotion-based visual modulation, built on the Quantum Memory Space (QMS) model.",
-    links: [{ label: "Watch", url: "https://youtu.be/oKY3vPOFfLc" }],
+    links: [{ label: "Watch on YouTube", url: "https://youtu.be/oKY3vPOFfLc" }],
   },
   {
     title: "Bench Scene",
     year: "2025",
     medium: "Single-channel video projection, 4 min · Arts Korea Lab, Seoul",
-    image: "https://img.youtube.com/vi/oKY3vPOFfLc/hqdefault.jpg",
+    embed: "oKY3vPOFfLc",
     desc: "A single-channel realization of viewpoint-conditioned observation within the QMS model.",
-    links: [{ label: "Watch", url: "https://youtu.be/oKY3vPOFfLc" }],
+    links: [{ label: "Watch on YouTube", url: "https://youtu.be/oKY3vPOFfLc" }],
   },
   {
     title: "Memory Sphere",
     year: "2025",
     medium: "Single-channel video, projection on canvas, 35 sec · Arts Korea Lab, Seoul",
-    image: "https://img.youtube.com/vi/oKY3vPOFfLc/hqdefault.jpg",
+    embed: "oKY3vPOFfLc",
     desc: "A short piece presenting the latent structure of memory through the principles of Gaussians and spherical harmonics (SH).",
-    links: [{ label: "Watch", url: "https://youtu.be/oKY3vPOFfLc" }],
+    links: [{ label: "Watch on YouTube", url: "https://youtu.be/oKY3vPOFfLc" }],
   },
   {
     title: "Face to Face",
     year: "2024",
     medium: "Projection mapping · KAIST Dept. of Industrial Design",
-    image: "https://img.youtube.com/vi/ziaP3HuxB0M/hqdefault.jpg",
+    embed: "ziaP3HuxB0M",
     desc: "A projection-mapping project illuminating Daeseong-dong — the northernmost village in Korea — from far and near.",
-    links: [{ label: "Watch", url: "https://www.youtube.com/watch?v=ziaP3HuxB0M" }],
+    links: [{ label: "Watch on YouTube", url: "https://www.youtube.com/watch?v=ziaP3HuxB0M" }],
   },
   {
     title: "숲길을 걷는 시간 (The Time of Walking in the Forest Path)",
     year: "2023",
     medium: "Documentary short, 12 min",
-    image: "https://img.youtube.com/vi/2NYD9IhMjkU/hqdefault.jpg",
+    embed: "2NYD9IhMjkU",
     desc: "A documentary short reflecting on what we discover or lose while walking a forest path.",
     details: [
       "Selected, Korean Competition — 15th DMZ International Documentary Film Festival (2023)",
@@ -69,7 +69,7 @@ const works = [
       "Screened, 4th Seongbuk Cheongchun Bulpae Film Festival (2024)",
     ],
     links: [
-      { label: "Watch", url: "https://youtu.be/2NYD9IhMjkU" },
+      { label: "Watch on YouTube", url: "https://youtu.be/2NYD9IhMjkU" },
       { label: "DMZ Docs", url: "https://dmzdocs.com/kor/addon/00000002/history_film_view.asp?m_idx=102855&QueryYear=2023" },
     ],
   },
@@ -184,51 +184,65 @@ function renderResearch() {
 }
 
 /* ============================================================
-   Artwork rendering (expandable list — hover lifts, click opens)
+   Artwork rendering (mosspark-style table: hover lifts a row,
+   click expands its panel with an embedded video; click collapses)
    ============================================================ */
 function renderWorks() {
   const list = document.getElementById("workGrid");
   if (!list) return;
-  list.innerHTML = works
-    .map((w, i) => {
-      const img = w.image
-        ? `<img class="wl__img" src="${esc(w.image)}" alt="${esc(w.title)}" loading="lazy" />`
-        : "";
-      const desc = w.desc ? `<p class="wl__desc">${esc(w.desc)}</p>` : "";
-      const details =
-        w.details && w.details.length
-          ? `<ul class="wl__details">${w.details.map((d) => `<li>${esc(d)}</li>`).join("")}</ul>`
+  const labels = `
+    <div class="mplist__labels" aria-hidden="true">
+      <span>Work</span><span>Medium</span><span>Year</span>
+    </div>`;
+  list.innerHTML =
+    labels +
+    works
+      .map((w, i) => {
+        const embed = w.embed
+          ? `<div class="mp__embed"><iframe
+                data-src="https://www.youtube.com/embed/${esc(w.embed)}?rel=0"
+                title="${esc(w.title)} — video"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe></div>`
           : "";
-      const links =
-        w.links && w.links.length
-          ? `<div class="wl__links">${w.links
-              .map((l) => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`)
-              .join("")}</div>`
-          : "";
-      return `
-      <article class="wl reveal">
-        <button class="wl__head" aria-expanded="false" aria-controls="wl-panel-${i}">
-          <span class="wl__year">${esc(w.year)}</span>
-          <span class="wl__meta">
-            <span class="wl__title">${esc(w.title)}</span>
-            <span class="wl__medium">${esc(w.medium)}</span>
-          </span>
-          <span class="wl__toggle" aria-hidden="true"></span>
+        const desc = w.desc ? `<p class="mp__desc">${esc(w.desc)}</p>` : "";
+        const details =
+          w.details && w.details.length
+            ? `<ul class="mp__details">${w.details.map((d) => `<li>${esc(d)}</li>`).join("")}</ul>`
+            : "";
+        const links =
+          w.links && w.links.length
+            ? `<div class="mp__links">${w.links
+                .map((l) => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`)
+                .join("")}</div>`
+            : "";
+        return `
+      <article class="mp reveal">
+        <button class="mp__head" aria-expanded="false" aria-controls="mp-panel-${i}">
+          <span class="mp__title">${esc(w.title)}</span>
+          <span class="mp__medium">${esc(w.medium)}</span>
+          <span class="mp__year">${esc(w.year)}</span>
         </button>
-        <div class="wl__panel" id="wl-panel-${i}">
-          <div class="wl__panel-inner">
-            ${img}${desc}${details}${links}
+        <div class="mp__panel" id="mp-panel-${i}">
+          <div class="mp__inner">
+            ${embed}${desc}${details}${links}
           </div>
         </div>
       </article>`;
-    })
-    .join("");
+      })
+      .join("");
 
-  list.querySelectorAll(".wl__head").forEach((head) => {
+  list.querySelectorAll(".mp__head").forEach((head) => {
     head.addEventListener("click", () => {
-      const item = head.closest(".wl");
+      const item = head.closest(".mp");
       const open = item.classList.toggle("is-open");
       head.setAttribute("aria-expanded", open ? "true" : "false");
+      if (open) {
+        // load the embed only on first expansion
+        const frame = item.querySelector("iframe[data-src]");
+        if (frame && !frame.src) frame.src = frame.dataset.src;
+      }
     });
   });
 }
