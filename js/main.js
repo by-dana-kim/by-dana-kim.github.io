@@ -467,7 +467,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderEntries("grantList", grants);
   renderEntries("activityList", activities);
   renderProjects();
-  initDeco();
+  // initDeco();  // decorative shapes temporarily disabled
   initNav();
   initReveal();
   document.querySelectorAll("[data-year]").forEach((el) => {

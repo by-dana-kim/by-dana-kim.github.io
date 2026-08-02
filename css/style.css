@@ -14,12 +14,12 @@
   --line: #ececea;
   --clay: #7c3aed;          /* main key color — purple */
 
-  /* point colors — vivid, cool; purple-led */
-  --c-blue: #4f46e5;
-  --c-cyan: #06b6d4;
-  --c-violet: #7c3aed;
-  --c-teal: #10bfa0;
-  --hero-ink: #a78bfa;      /* highlighted name text on black blocks */
+  /* purple-family point colors (light → deep) */
+  --c-blue: #6d28d9;
+  --c-cyan: #9333ea;
+  --c-violet: #a855f7;
+  --c-teal: #c026d3;
+  --grad-purple: linear-gradient(120deg, #7c3aed 0%, #a855f7 45%, #c026d3 100%);
 
   /* type — one grotesque, hierarchy by weight/size (not by big display) */
   --serif: "Space Grotesk", system-ui, sans-serif;
@@ -226,13 +226,14 @@ main {
   line-height: 1.16;
   letter-spacing: -0.02em;
 }
-/* highlighted marker blocks behind each word (black block, colored text) */
+/* highlighted marker blocks behind each word */
 .cover__name .hl {
   display: inline-block;
   background: var(--ink);
-  color: var(--hero-ink);
+  color: #fff;
   padding: 0.04em 0.22em 0.1em;
 }
+.cover__name .hl--grad { background: var(--grad-purple); }
 .cover__name-indent {
   margin-left: clamp(28px, 12vw, 150px);
   margin-top: -0.08em;
