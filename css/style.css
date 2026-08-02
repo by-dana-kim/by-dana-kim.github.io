@@ -242,12 +242,21 @@ main {
   margin-left: clamp(28px, 12vw, 150px);
   margin-top: -0.08em;
 }
+/* name (left) + lead (upper-right) fill the width */
+.cover__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: clamp(28px, 6vw, 80px);
+  flex-wrap: wrap;
+}
 .cover__lead {
+  flex: 0 1 30ch;
   font-weight: 400;
-  font-size: clamp(0.98rem, 1.8vw, 1.2rem);
+  font-size: clamp(0.98rem, 1.4vw, 1.12rem);
   line-height: 1.55;
-  max-width: 34ch;
-  margin: clamp(32px, 6vw, 56px) 0 0 auto;
+  margin: 0;
+  padding-top: 0.5em;
   color: var(--ink-soft);
 }
 
@@ -279,11 +288,16 @@ main {
   grid-template-columns: 3.5rem 1fr auto;
   align-items: baseline;
   gap: 6px 24px;
-  padding: clamp(26px, 4vw, 46px) 0;
+  padding: clamp(22px, 3.4vw, 40px) clamp(14px, 2vw, 26px);
   border-bottom: 1px solid var(--line);
-  transition: padding-left 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+  border-radius: 14px;
+  transition: background 0.4s ease, color 0.3s ease;
 }
-.index__item:hover { padding-left: clamp(8px, 2vw, 28px); }
+.index__item:hover { background: var(--grad-purple); border-bottom-color: transparent; }
+.index__item:hover .index__title,
+.index__item:hover .index__desc,
+.index__item:hover .index__num { color: #fff; }
+.index__item:hover .index__num::before { background: #fff; }
 /* explicit placement keeps the arrow in the right column at any width */
 .index__num {
   grid-column: 1;
@@ -325,7 +339,7 @@ main {
   color: var(--ink-faint);
   transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), color 0.3s;
 }
-.index__item:hover .index__go { transform: translateX(10px); color: var(--clay); }
+.index__item:hover .index__go { transform: translateX(10px); color: #fff; }
 @media (max-width: 560px) {
   .index__item { grid-template-columns: 2rem 1fr auto; column-gap: 16px; }
 }
@@ -335,11 +349,15 @@ main {
 .interests li {
   display: inline-flex;
   align-items: center;
-  border: 1px solid var(--line);
   border-radius: 999px;
-  padding: 8px 18px;
+  padding: 9px 18px;
   font-size: 0.9rem;
   color: var(--ink);
+  background: linear-gradient(120deg, rgba(124, 58, 237, 0.12), rgba(192, 38, 211, 0.1));
+  backdrop-filter: blur(8px) saturate(1.2);
+  -webkit-backdrop-filter: blur(8px) saturate(1.2);
+  border: 1px solid rgba(124, 58, 237, 0.18);
+  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 .interests li::before {
   content: "";
