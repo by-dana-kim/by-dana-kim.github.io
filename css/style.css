@@ -1,27 +1,27 @@
 /* ============================================================
    Dana Kim — Artist Archive
-   Design: warm paper + ink, restrained clay accent,
-   editorial / irregular layout, refined serif display.
+   Design: light / near-white, charcoal text, one quiet muted accent,
+   small grotesque type (Space Grotesk), asymmetric editorial layout.
    ============================================================ */
 
 :root {
-  /* palette — muted, warm, low-chroma */
-  --paper: #f4f1ea;
-  --paper-2: #ece7dc;
-  --ink: #1a1712;
-  --ink-soft: #6a6459;
-  --ink-faint: #a49d8f;
-  --line: #d8d1c2;
-  --clay: #8a5c46;          /* the single, sparing accent */
+  /* palette — light, near-neutral, low-chroma */
+  --paper: #fbfbf9;
+  --paper-2: #f0f0ec;
+  --ink: #18181b;
+  --ink-soft: #8a8a84;
+  --ink-faint: #b8b8b2;
+  --line: #e6e6e0;
+  --clay: #71796b;          /* quiet, muted accent — used very sparingly */
 
-  /* type */
-  --serif: "Fraunces", Georgia, "Times New Roman", serif;
-  --sans: system-ui, -apple-system, "Segoe UI", "Apple SD Gothic Neo",
-    "Malgun Gothic", "Noto Sans KR", sans-serif;
+  /* type — one grotesque, hierarchy by weight/size (not by big display) */
+  --serif: "Space Grotesk", system-ui, sans-serif;
+  --sans: "Space Grotesk", system-ui, -apple-system, "Segoe UI",
+    "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif;
 
   /* metrics */
   --gutter: clamp(20px, 5vw, 72px);
-  --maxw: 1180px;
+  --maxw: 1120px;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -32,16 +32,16 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--sans);
-  font-size: 17px;
-  line-height: 1.7;
-  letter-spacing: 0.005em;
+  font-size: 15px;
+  line-height: 1.6;
+  letter-spacing: 0;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
 a { color: inherit; text-decoration: none; }
 
-::selection { background: var(--clay); color: var(--paper); }
+::selection { background: var(--ink); color: var(--paper); }
 
 /* label / eyebrow style used throughout */
 .label,
@@ -79,8 +79,8 @@ a { color: inherit; text-decoration: none; }
 .wordmark {
   font-family: var(--serif);
   font-weight: 500;
-  font-size: 1.15rem;
-  letter-spacing: 0.01em;
+  font-size: 1rem;
+  letter-spacing: 0;
 }
 .nav { display: flex; gap: clamp(16px, 3vw, 40px); }
 .nav a {
@@ -154,55 +154,54 @@ main {
 
 /* ===== Profile: hero ===== */
 .hero {
-  padding: clamp(64px, 12vw, 150px) 0 clamp(48px, 8vw, 96px);
+  padding: clamp(56px, 10vw, 110px) 0 clamp(40px, 7vw, 72px);
   border-bottom: 1px solid var(--line);
 }
-.hero__role { display: block; margin-bottom: 28px; }
+.hero__role { display: block; margin-bottom: 22px; }
 .hero__name {
   font-family: var(--serif);
-  font-weight: 300;
-  font-size: clamp(4rem, 17vw, 12rem);
-  line-height: 0.86;
-  letter-spacing: -0.02em;
+  font-weight: 500;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
 }
 /* irregular indent — the second line is pushed in */
-.hero__name-indent { display: inline-block; margin-left: clamp(40px, 18vw, 260px); font-style: italic; font-weight: 400; }
+.hero__name-indent { display: inline-block; margin-left: clamp(24px, 8vw, 90px); font-weight: 400; color: var(--ink-soft); }
 .hero__lead {
-  font-family: var(--serif);
-  font-weight: 300;
-  font-size: clamp(1.15rem, 2.4vw, 1.6rem);
-  line-height: 1.5;
-  max-width: 30ch;
-  margin-top: clamp(36px, 6vw, 64px);
+  font-weight: 400;
+  font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+  line-height: 1.55;
+  max-width: 34ch;
+  margin-top: clamp(28px, 5vw, 48px);
   margin-left: auto;      /* pushed to the right — asymmetry */
-  color: var(--ink);
+  color: var(--ink-soft);
 }
 
 /* ===== Home: cover ===== */
 .cover {
-  padding: clamp(72px, 15vw, 190px) 0 clamp(48px, 9vw, 110px);
+  padding: clamp(64px, 12vw, 150px) 0 clamp(44px, 8vw, 90px);
 }
-.cover__role { display: block; margin-bottom: 28px; }
+.cover__role { display: block; margin-bottom: 24px; }
 .cover__name {
   font-family: var(--serif);
-  font-weight: 300;
-  font-size: clamp(4.2rem, 19vw, 14rem);
-  line-height: 0.84;
-  letter-spacing: -0.025em;
+  font-weight: 500;
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
 }
 .cover__name-indent {
   display: inline-block;
-  margin-left: clamp(50px, 22vw, 320px);
-  font-style: italic;
+  margin-left: clamp(28px, 10vw, 120px);
   font-weight: 400;
+  color: var(--ink-soft);
 }
 .cover__lead {
-  font-family: var(--serif);
-  font-weight: 300;
-  font-size: clamp(1.2rem, 2.6vw, 1.75rem);
-  line-height: 1.5;
-  max-width: 32ch;
-  margin: clamp(40px, 7vw, 72px) 0 0 auto;
+  font-weight: 400;
+  font-size: clamp(0.98rem, 1.8vw, 1.2rem);
+  line-height: 1.55;
+  max-width: 34ch;
+  margin: clamp(32px, 6vw, 56px) 0 0 auto;
+  color: var(--ink-soft);
 }
 
 /* ===== Home: index / contents ===== */
@@ -230,18 +229,18 @@ main {
   grid-column: 2;
   grid-row: 1;
   font-family: var(--serif);
-  font-weight: 400;
-  font-size: clamp(2rem, 6vw, 4rem);
-  line-height: 1;
+  font-weight: 500;
+  font-size: clamp(1.25rem, 2.4vw, 1.7rem);
+  line-height: 1.1;
   letter-spacing: -0.01em;
 }
-.index__desc { grid-column: 2; grid-row: 2; color: var(--ink-soft); font-size: 0.9rem; }
+.index__desc { grid-column: 2; grid-row: 2; color: var(--ink-soft); font-size: 0.85rem; margin-top: 4px; }
 .index__go {
   grid-column: 3;
   grid-row: 1 / 3;
   align-self: center;
   font-family: var(--serif);
-  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-size: 1.1rem;
   color: var(--ink-faint);
   transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), color 0.3s;
 }
@@ -274,10 +273,10 @@ main {
 .block__index { padding-top: 10px; }
 .block__title {
   font-family: var(--serif);
-  font-weight: 400;
-  font-size: clamp(2rem, 5vw, 3.2rem);
-  letter-spacing: -0.01em;
-  margin-bottom: 28px;
+  font-weight: 500;
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
+  letter-spacing: -0.005em;
+  margin-bottom: 22px;
 }
 .prose { max-width: 62ch; }
 .prose--wide { max-width: 66ch; }
@@ -322,22 +321,22 @@ code {
 .contact a { border-bottom: 1px solid transparent; transition: border-color 0.25s; }
 .contact a:hover { border-color: var(--clay); }
 
-/* ===== Page head (Artwork / Publish) ===== */
+/* ===== Page head (Artwork / Academic / Project) ===== */
 .pagehead {
-  padding: clamp(56px, 10vw, 130px) 0 clamp(40px, 6vw, 72px);
+  padding: clamp(52px, 9vw, 104px) 0 clamp(36px, 6vw, 64px);
 }
-.pagehead__index { display: block; margin-bottom: 22px; }
+.pagehead__index { display: block; margin-bottom: 18px; }
 .pagehead__title {
   font-family: var(--serif);
-  font-weight: 300;
-  font-size: clamp(3rem, 12vw, 8rem);
-  line-height: 0.9;
-  letter-spacing: -0.02em;
+  font-weight: 500;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
 }
 .pagehead__lead {
   color: var(--ink-soft);
-  max-width: 42ch;
-  margin-top: 24px;
+  max-width: 46ch;
+  margin-top: 18px;
 }
 
 /* ===== Artwork: expandable list ===== */
@@ -500,7 +499,7 @@ code {
   margin-bottom: 8px;
 }
 .pub__title { font-family: var(--serif); font-size: clamp(1.15rem, 2.2vw, 1.55rem); font-weight: 400; line-height: 1.3; }
-.pub__title em { font-style: italic; }
+.pub__title em { font-style: normal; }
 .pub__desc { color: var(--ink-soft); font-size: 0.95rem; margin-top: 10px; }
 .pub__desc strong { color: var(--ink); font-weight: 600; }
 .pub__link { border-bottom: 1px solid var(--line); transition: border-color 0.2s, color 0.2s; }
@@ -554,11 +553,11 @@ code {
 .project__kind { font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--clay); margin-bottom: 14px; }
 .project__title {
   font-family: var(--serif);
-  font-weight: 400;
-  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 500;
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
   line-height: 1.15;
   letter-spacing: -0.01em;
-  max-width: 22ch;
+  max-width: 24ch;
 }
 .project__meta { color: var(--ink-soft); font-size: 0.9rem; margin: 18px 0 24px; }
 
