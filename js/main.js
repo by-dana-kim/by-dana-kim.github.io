@@ -226,7 +226,9 @@ function renderWorks() {
         </button>
         <div class="mp__panel" id="mp-panel-${i}">
           <div class="mp__inner">
-            ${embed}${desc}${details}${links}
+            <div class="mp__box">
+              ${embed}${desc}${details}${links}
+            </div>
           </div>
         </div>
       </article>`;
