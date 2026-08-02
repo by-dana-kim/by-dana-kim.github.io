@@ -333,6 +333,52 @@ function renderEntries(id, items) {
 }
 
 /* ============================================================
+   Interactive decorative shapes (parallax to the cursor)
+   ============================================================ */
+const DECO_SHAPES = [
+  { cls: "shape--disc", color: "var(--c-blue)",   size: "clamp(70px, 9vw, 130px)", top: "8%",  right: "7%",  depth: 16, rot: 0 },
+  { cls: "shape--ring", color: "var(--c-cyan)",   size: "clamp(48px, 7vw, 96px)",  top: "44%", right: "20%", depth: -26, rot: 0 },
+  { cls: "shape--sq",   color: "var(--c-violet)", size: "clamp(34px, 5vw, 62px)",  top: "18%", right: "2%",  depth: 32, rot: 15 },
+];
+
+function initDeco() {
+  const host = document.querySelector(".cover") || document.querySelector(".pagehead");
+  if (!host) return;
+  host.classList.add("has-deco");
+  const deco = document.createElement("div");
+  deco.className = "deco";
+  deco.setAttribute("aria-hidden", "true");
+  deco.innerHTML = DECO_SHAPES.map(
+    (s) =>
+      `<span class="shape ${s.cls}" style="--c:${s.color};width:${s.size};top:${s.top};right:${s.right}" data-depth="${s.depth}" data-rot="${s.rot}"></span>`
+  ).join("");
+  host.prepend(deco);
+
+  const shapes = [...deco.querySelectorAll(".shape")];
+  const base = (s) => `rotate(${s.dataset.rot || 0}deg)`;
+  shapes.forEach((s) => (s.style.transform = base(s)));
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  let raf = null, tx = 0, ty = 0;
+  function apply() {
+    raf = null;
+    shapes.forEach((s) => {
+      const d = parseFloat(s.dataset.depth) || 0;
+      s.style.transform = `translate(${(tx * d).toFixed(1)}px, ${(ty * d).toFixed(1)}px) ${base(s)}`;
+    });
+  }
+  window.addEventListener(
+    "mousemove",
+    (e) => {
+      tx = (e.clientX / window.innerWidth - 0.5) * 2;
+      ty = (e.clientY / window.innerHeight - 0.5) * 2;
+      if (!raf) raf = requestAnimationFrame(apply);
+    },
+    { passive: true }
+  );
+}
+
+/* ============================================================
    Mobile navigation (hamburger)
    ============================================================ */
 function initNav() {
@@ -382,6 +428,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderEntries("grantList", grants);
   renderEntries("activityList", activities);
   renderProjects();
+  initDeco();
   initNav();
   initReveal();
   document.querySelectorAll("[data-year]").forEach((el) => {
