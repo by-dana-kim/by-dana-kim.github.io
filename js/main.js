@@ -335,24 +335,27 @@ function renderEntries(id, items) {
 /* ============================================================
    Interactive decorative shapes (parallax to the cursor)
    ============================================================ */
+// scattered around the whole viewport (corners + edges), small and subtle
 const DECO_SHAPES = [
-  { cls: "shape--disc", color: "var(--c-blue)",   size: "clamp(70px, 9vw, 130px)", top: "8%",  right: "7%",  depth: 16, rot: 0 },
-  { cls: "shape--ring", color: "var(--c-cyan)",   size: "clamp(48px, 7vw, 96px)",  top: "44%", right: "20%", depth: -26, rot: 0 },
-  { cls: "shape--sq",   color: "var(--c-violet)", size: "clamp(34px, 5vw, 62px)",  top: "18%", right: "2%",  depth: 32, rot: 15 },
+  { cls: "shape--disc", color: "var(--c-violet)", size: "44px", pos: "top:15%;left:5%",     depth: 14, rot: 0 },
+  { cls: "shape--sq",   color: "var(--c-blue)",   size: "26px", pos: "top:40%;left:3%",      depth: 22, rot: 14 },
+  { cls: "shape--ring", color: "var(--c-cyan)",   size: "30px", pos: "bottom:16%;left:9%",   depth: -18, rot: 0 },
+  { cls: "shape--disc", color: "var(--c-blue)",   size: "20px", pos: "bottom:10%;left:20%",  depth: 16, rot: 0 },
+  { cls: "shape--disc", color: "var(--c-cyan)",   size: "34px", pos: "top:12%;right:8%",     depth: -16, rot: 0 },
+  { cls: "shape--ring", color: "var(--c-violet)", size: "50px", pos: "top:56%;right:5%",     depth: 20, rot: 0 },
+  { cls: "shape--sq",   color: "var(--c-teal)",   size: "24px", pos: "bottom:14%;right:12%", depth: -24, rot: 20 },
 ];
 
 function initDeco() {
-  const host = document.querySelector(".cover") || document.querySelector(".pagehead");
-  if (!host) return;
-  host.classList.add("has-deco");
+  if (document.querySelector(".deco")) return;
   const deco = document.createElement("div");
   deco.className = "deco";
   deco.setAttribute("aria-hidden", "true");
   deco.innerHTML = DECO_SHAPES.map(
     (s) =>
-      `<span class="shape ${s.cls}" style="--c:${s.color};width:${s.size};top:${s.top};right:${s.right}" data-depth="${s.depth}" data-rot="${s.rot}"></span>`
+      `<span class="shape ${s.cls}" style="--c:${s.color};width:${s.size};${s.pos}" data-depth="${s.depth}" data-rot="${s.rot}"></span>`
   ).join("");
-  host.prepend(deco);
+  document.body.appendChild(deco);
 
   const shapes = [...deco.querySelectorAll(".shape")];
   const base = (s) => `rotate(${s.dataset.rot || 0}deg)`;
@@ -379,17 +382,53 @@ function initDeco() {
 }
 
 /* ============================================================
-   Mobile navigation (hamburger)
+   Navigation — hamburger, liquid pill, shrink on scroll
    ============================================================ */
 function initNav() {
+  const masthead = document.querySelector(".masthead");
   const toggle = document.querySelector(".nav-toggle");
   const nav = document.getElementById("primary-nav");
-  if (!toggle || !nav) return;
-  toggle.addEventListener("click", () => {
-    const open = nav.classList.toggle("is-open");
-    toggle.classList.toggle("is-open", open);
-    toggle.setAttribute("aria-expanded", open ? "true" : "false");
-  });
+
+  // hamburger (mobile)
+  if (toggle && nav) {
+    toggle.addEventListener("click", () => {
+      const open = nav.classList.toggle("is-open");
+      toggle.classList.toggle("is-open", open);
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+  }
+
+  // liquid pill that follows the hovered / active nav item (desktop)
+  if (nav) {
+    const pill = document.createElement("span");
+    pill.className = "nav__pill";
+    pill.setAttribute("aria-hidden", "true");
+    nav.prepend(pill);
+    const links = [...nav.querySelectorAll("a")];
+    const moveTo = (el) => {
+      pill.style.left = el.offsetLeft + "px";
+      pill.style.top = el.offsetTop + "px";
+      pill.style.width = el.offsetWidth + "px";
+      pill.style.height = el.offsetHeight + "px";
+      pill.style.opacity = "1";
+    };
+    const settle = () => {
+      const active = nav.querySelector('a[aria-current="page"]');
+      if (active) moveTo(active);
+      else pill.style.opacity = "0";
+    };
+    links.forEach((a) => a.addEventListener("mouseenter", () => moveTo(a)));
+    nav.addEventListener("mouseleave", settle);
+    settle();
+    window.addEventListener("resize", settle, { passive: true });
+  }
+
+  // shrink the masthead once the page is scrolled
+  if (masthead) {
+    const onScroll = () => masthead.classList.toggle("is-scrolled", window.scrollY > 24);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  }
 }
 
 /* ============================================================
