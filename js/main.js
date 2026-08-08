@@ -133,32 +133,27 @@ const activities = [
 const projects = [
   {
     year: "2026",
-    title: "Art×Technology Convergence Project — Follow-up Support",
+    title:
+      "Art×Technology Convergence Project — Follow-up Support (예술기술 융합 프로젝트 후속지원)",
     tag: "Funded Project",
-    meta: "Ministry of Culture, Sports and Tourism · Korea Arts Management Service · Arts Korea Lab · 2026",
-    desc: "Selected for Arts Korea Lab's Art-Technology Convergence Project follow-up support (예술기술 융합 프로젝트 후속지원), funding the production and exhibition of a sequel to the 2025 work.",
-    links: [
-      { label: "Arts Korea Lab", url: "https://www.artskorealab.kr/bbs/view.do?pstSn=2602040001&key=2303300002&orderBy=ntcPstYn&pageIndex=4" },
-    ],
+    meta: "문화체육관광부(Ministry of Culture, Sports and Tourism) · 예술경영지원센터(Korea Arts Management Service) · 아트코리아랩(Arts Korea Lab) · 2026",
+    desc: "Selected for Arts Korea Lab's Art×Technology Convergence Project follow-up support, funding the production and exhibition of a sequel to the 2025 work. 아트코리아랩 예술기술 융합 프로젝트 후속지원 사업에 선정되어 2025년 작품의 후속 작품 제작 및 전시를 지원받고 있다.",
   },
   {
     year: "2025",
-    title: "Art×Technology Super Testbed",
+    title: "Art×Technology Super Testbed (예술기술 융합 수퍼 테스트베드)",
     tag: "Funded Project",
-    meta: "Ministry of Culture, Sports and Tourism · Korea Arts Management Service · Arts Korea Lab (Dynamic XR Lab) · 2025",
-    desc: "Selected for Arts Korea Lab's Art-Technology Super Testbed program (예술기술 융합 수퍼 테스트베드); received training at the Dynamic XR Lab and produced and exhibited an art×technology convergence prototype.",
-    links: [
-      { label: "Arts Korea Lab", url: "https://www.artskorealab.kr/bbs/view.do?pstSn=2504240002&key=2303300002&orderBy=ntcPstYn&pageIndex=9" },
-    ],
+    meta: "문화체육관광부(Ministry of Culture, Sports and Tourism) · 예술경영지원센터(Korea Arts Management Service) · 아트코리아랩(Arts Korea Lab) · Dynamic XR Lab · 2025",
+    desc: "Selected for Arts Korea Lab's Art×Technology Super Testbed program; received training at the Dynamic XR Lab and produced and exhibited an art×technology convergence prototype. 아트코리아랩 예술기술 융합 수퍼 테스트베드 사업에 선정되어, 다이내믹 XR 랩에서 관련 교육을 받고 예술×기술 융합 기반의 작품 프로토타입을 제작·전시하였다.",
   },
   {
     year: "2025",
-    title: "Metaverse Implementation of Digital Memory Using Moiré Patterns of 2D Materials",
+    title:
+      "Metaverse Implementation of Digital Memory Using Moiré Patterns of 2D Materials (2D 물질의 모아레 패턴을 활용한 디지털 기억의 메타버스 구현)",
     tag: "Funded Research",
-    meta: "KAIST Office of Research · Master's & Ph.D. Adventurous Research Program · Apr–Nov 2025",
-    desc: "This research develops a system to visualize and interact with collective memory in virtual reality by drawing on the moiré patterns and superposition principles of graphene, a 2D material, together with its quantum-physical properties.",
+    meta: "한국과학기술원(KAIST) 연구처 · 석박사 모험연구사업(Master's & Ph.D. Adventurous Research) · Apr–Nov 2025",
+    desc: "This research develops a system to visualize and interact with collective memory in virtual reality by drawing on the moiré patterns and superposition principles of graphene, a 2D material, together with its quantum-physical properties. 2D 물질인 그래핀의 모아레 패턴과 중첩 원리, 양자물리학적 특성을 활용하여 집단 기억을 가상현실에서 시각화하고 상호작용할 수 있는 시스템을 개발하는 것을 목표로 한다.",
     demo: "https://quantum-memory-interference.ai.studio",
-    links: [],
   },
 ];
 
