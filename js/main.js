@@ -135,7 +135,7 @@ const projects = [
     year: "2026",
     title: "Art×Technology Convergence Project — Follow-up Support",
     tag: "Funded Project",
-    meta: "Arts Korea Lab (Arts Management Support Center) · 2026",
+    meta: "Ministry of Culture, Sports and Tourism · Korea Arts Management Service · Arts Korea Lab · 2026",
     desc: "Selected for Arts Korea Lab's Art-Technology Convergence Project follow-up support (예술기술 융합 프로젝트 후속지원), funding the production and exhibition of a sequel to the 2025 work.",
     links: [
       { label: "Arts Korea Lab", url: "https://www.artskorealab.kr/bbs/view.do?pstSn=2602040001&key=2303300002&orderBy=ntcPstYn&pageIndex=4" },
@@ -145,7 +145,7 @@ const projects = [
     year: "2025",
     title: "Art×Technology Super Testbed",
     tag: "Funded Project",
-    meta: "Arts Korea Lab (Arts Management Support Center) · Dynamic XR Lab · 2025",
+    meta: "Ministry of Culture, Sports and Tourism · Korea Arts Management Service · Arts Korea Lab (Dynamic XR Lab) · 2025",
     desc: "Selected for Arts Korea Lab's Art-Technology Super Testbed program (예술기술 융합 수퍼 테스트베드); received training at the Dynamic XR Lab and produced and exhibited an art×technology convergence prototype.",
     links: [
       { label: "Arts Korea Lab", url: "https://www.artskorealab.kr/bbs/view.do?pstSn=2504240002&key=2303300002&orderBy=ntcPstYn&pageIndex=9" },
