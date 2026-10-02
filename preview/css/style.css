@@ -931,3 +931,44 @@ code {
 .card.is-open .card__title { font-size: clamp(1.15rem, 1.8vw, 1.4rem); color: var(--ink); }
 .card .mp__embed { max-width: 100%; }
 @media (prefers-reduced-motion: reduce) { .card__panel, .card__thumb { transition: none; } }
+
+/* ===== Home: three-area map ===== */
+.map { padding: clamp(10px, 2vh, 24px) var(--gutter) clamp(24px, 4vh, 48px); }
+.map__inner { max-width: 760px; margin: 0 auto; }
+.venn { position: relative; width: 100%; }
+.venn svg { display: block; width: 100%; height: auto; overflow: visible; font-family: var(--serif); }
+.venn__circles circle { fill: var(--clay); fill-opacity: 0.045; stroke: var(--clay); stroke-opacity: 0.45; stroke-width: 1; vector-effect: non-scaling-stroke; transition: fill-opacity 0.4s; }
+.venn__eyebrow { font-size: 15px; letter-spacing: 0.22em; text-transform: uppercase; fill: var(--ink-faint); font-weight: 400; }
+.venn__name { font-size: 30px; fill: var(--ink); font-weight: 500; letter-spacing: -0.01em; }
+.venn__hit { fill: var(--clay); fill-opacity: 0; cursor: pointer; transition: fill-opacity 0.35s ease; outline: none; }
+.venn__hit:hover, .venn__hit:focus-visible { fill-opacity: 0.16; }
+.venn__peek { position: absolute; left: 50%; top: 50%; width: clamp(160px, 24vw, 240px); aspect-ratio: 16 / 9; border-radius: 8px; overflow: hidden; background: #101311; box-shadow: 0 14px 34px rgba(14, 90, 58, 0.18); pointer-events: none; z-index: 3; opacity: 0; clip-path: circle(0% at 50% 50%); transition: opacity 0.25s ease, clip-path 0.55s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.venn__peek.is-on { opacity: 1; clip-path: circle(75% at 50% 50%); }
+.venn__peek img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.venn__peek--fixed { left: auto; right: 0; top: 0; }
+.map__caption { margin-top: clamp(14px, 2.5vh, 26px); padding-top: 14px; border-top: 1px dashed var(--ink-faint); display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+.map__name { font-family: var(--serif); font-weight: 500; font-size: clamp(1rem, 1.5vw, 1.15rem); letter-spacing: -0.005em; }
+.map__hint { font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); }
+@media (max-width: 640px) {
+  .venn__eyebrow { font-size: 24px; }
+  .venn__name { font-size: 36px; }
+  /* push the side labels outward so they clear each other on narrow screens (SVG user units) */
+  .venn__labels text:nth-child(1), .venn__labels text:nth-child(2) { transform: translate(-90px, -30px); }
+  .venn__labels text:nth-child(3), .venn__labels text:nth-child(4) { transform: translate(90px, -30px); }
+  .venn__labels text:nth-child(5), .venn__labels text:nth-child(6) { transform: translate(0, 24px); }
+  .map__hint { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .venn__peek, .venn__hit, .venn__circles circle { transition: none; } }
+
+/* ===== Masthead: one centred group (Dana Kim · Projects · About) ===== */
+.masthead__inner { justify-content: center; }
+.nav--center { gap: clamp(4px, 1.6vw, 16px); }
+.nav--center a { font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; padding: 7px 14px; }
+.nav--center .nav__home { color: var(--ink); font-weight: 500; }
+.nav--center a:hover, .nav--center a[aria-current="page"] { color: var(--clay); }
+.masthead.is-scrolled .masthead__inner { max-width: min(520px, calc(100% - 32px)); padding: 6px 10px; }
+@media (max-width: 640px) {
+  .nav--center { position: static; display: flex; flex-direction: row; justify-content: center; gap: 2px; padding: 0; background: none; border: 0; backdrop-filter: none; }
+  .nav--center a { width: auto; padding: 7px 9px; font-size: 0.7rem; letter-spacing: 0.14em; border-top: 0; }
+  .masthead.is-scrolled .masthead__inner { max-width: calc(100% - 24px); }
+}

@@ -15,11 +15,8 @@
 <body class="page page--home">
   <header class="masthead">
     <div class="masthead__inner">
-      <a href="index.html" class="wordmark">Dana&nbsp;Kim</a>
-      <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav">
-        <span></span><span></span><span></span>
-      </button>
-      <nav class="nav" id="primary-nav" aria-label="Primary">
+      <nav class="nav nav--center" id="primary-nav" aria-label="Primary">
+        <a href="index.html" class="nav__home" aria-current="page">Dana Kim</a>
         <a href="projects.html">Projects</a>
         <a href="about.html">About</a>
       </nav>
@@ -27,6 +24,42 @@
   </header>
 
   <main>
+    <section class="map" id="map" aria-label="Areas of work">
+      <div class="map__inner">
+        <div class="venn" id="venn">
+          <svg viewBox="0 0 1000 760" role="img" aria-label="Three overlapping areas: New Media Art, Immersive Film, Visual Anthropology">
+            <defs>
+              <clipPath id="cA"><circle cx="380" cy="330" r="250"/></clipPath>
+              <clipPath id="cB"><circle cx="620" cy="330" r="250"/></clipPath>
+              <clipPath id="cAB" clip-path="url(#cA)"><circle cx="620" cy="330" r="250"/></clipPath>
+            </defs>
+            <g class="venn__circles">
+              <circle cx="380" cy="330" r="250"/>
+              <circle cx="620" cy="330" r="250"/>
+              <circle cx="500" cy="540" r="250"/>
+            </g>
+            <g class="venn__labels">
+              <text x="250" y="230" class="venn__eyebrow">Medium</text>
+              <text x="250" y="268" class="venn__name">New Media Art</text>
+              <text x="750" y="230" class="venn__eyebrow" text-anchor="end">Form</text>
+              <text x="750" y="268" class="venn__name" text-anchor="end">Immersive Film</text>
+              <text x="500" y="690" class="venn__eyebrow" text-anchor="middle">Lens</text>
+              <text x="500" y="728" class="venn__name" text-anchor="middle">Visual Anthropology</text>
+            </g>
+            <!-- hit regions: pairwise lenses, then the centre on top -->
+            <g class="venn__hits">
+              <circle class="venn__hit" data-k="ab" cx="620" cy="330" r="250" clip-path="url(#cA)"/>
+              <circle class="venn__hit" data-k="ac" cx="500" cy="540" r="250" clip-path="url(#cA)"/>
+              <circle class="venn__hit" data-k="bc" cx="500" cy="540" r="250" clip-path="url(#cB)"/>
+              <circle class="venn__hit" data-k="abc" cx="500" cy="540" r="250" clip-path="url(#cAB)"/>
+            </g>
+          </svg>
+          <span class="venn__peek" id="vennPeek" aria-hidden="true"><img alt=""></span>
+        </div>
+        <p class="map__caption" id="mapCaption"><span class="map__name">Dana Kim</span><span class="map__hint">Hover an overlap</span></p>
+      </div>
+    </section>
+
     <section class="track" id="track" aria-label="Selected works">
       <div class="stage">
         <div class="stage__inner">

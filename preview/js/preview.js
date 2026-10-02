@@ -329,7 +329,78 @@ function renderProjectGrid() {
   }
 }
 
+/* ---------- Home: three-area map (hover an overlap to see a project) ---------- */
+// Which project each overlap points to. Edit the title fragments to re-map.
+const MAP_LINKS = {
+  ab: "Quantum Memory Space (VR)",                   // New Media Art ∩ Immersive Film
+  ac: "Face to Face",                                // New Media Art ∩ Visual Anthropology
+  bc: "숲길을 걷는 시간",                             // Immersive Film ∩ Visual Anthropology
+  abc: "Quantum Memory Space: A Model",              // all three (thesis)
+};
+function initMap() {
+  const venn = document.getElementById("venn");
+  if (!venn) return;
+  const list = allProjects();
+  const peek = document.getElementById("vennPeek");
+  const img = peek.querySelector("img");
+  const caption = document.getElementById("mapCaption");
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  const thumbSrc = (id, q) => `https://img.youtube.com/vi/${id}/${q}.jpg`;
+
+  const targets = {};
+  Object.entries(MAP_LINKS).forEach(([k, frag]) => {
+    const idx = list.findIndex((it) => it.title.includes(frag));
+    if (idx >= 0) targets[k] = { idx, item: list[idx] };
+  });
+  // a thumbnail for a paper: borrow the still of a work with the same title stem
+  const stillFor = (item) => {
+    if (item.embed) return item.embed;
+    const stem = item.title.split(/[:(]/)[0].trim().toLowerCase();
+    const w = list.find((o) => o.embed && o.title.toLowerCase().startsWith(stem));
+    return w ? w.embed : null;
+  };
+
+  const defaultCaption = caption.innerHTML;
+  const show = (k) => {
+    const t = targets[k];
+    if (!t) return;
+    const id = stillFor(t.item);
+    if (id) { img.src = thumbSrc(id, "hqdefault"); peek.classList.add("is-on"); } else peek.classList.remove("is-on");
+    caption.innerHTML = `<span class="map__name">${esc(shortTitle(t.item.title))}</span><span class="map__hint">${esc(t.item.year)} · ${esc(t.item.type)}</span>`;
+    venn.dataset.hover = k;
+  };
+  const hide = () => { peek.classList.remove("is-on"); caption.innerHTML = defaultCaption; delete venn.dataset.hover; };
+
+  venn.querySelectorAll(".venn__hit").forEach((hit) => {
+    const k = hit.dataset.k;
+    if (!targets[k]) { hit.remove(); return; }
+    hit.setAttribute("tabindex", "0");
+    hit.setAttribute("role", "link");
+    hit.setAttribute("aria-label", targets[k].item.title);
+    hit.addEventListener("mouseenter", () => show(k));
+    hit.addEventListener("mouseleave", hide);
+    hit.addEventListener("focus", () => show(k));
+    hit.addEventListener("blur", hide);
+    const go = () => (location.href = `projects.html#p${targets[k].idx}`);
+    hit.addEventListener("click", go);
+    hit.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } });
+  });
+
+  // the peek follows the pointer on fine-pointer devices
+  if (fine && !reduce) {
+    venn.addEventListener("mousemove", (e) => {
+      const r = venn.getBoundingClientRect();
+      peek.style.left = e.clientX - r.left + 18 + "px";
+      peek.style.top = e.clientY - r.top + 18 + "px";
+    });
+  } else {
+    peek.classList.add("venn__peek--fixed");
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+  initMap();
   initDrum();
   renderProjectGrid();
 });
