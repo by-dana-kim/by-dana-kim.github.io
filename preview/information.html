@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Information — Dana Kim</title>
+  <meta name="description" content="Dana Kim · Biography, education, experience, research areas and contact." />
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="page page--information">
+  <header class="masthead">
+    <div class="masthead__inner">
+      <a href="index.html" class="wordmark">Dana&nbsp;Kim</a>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav" id="primary-nav" aria-label="Primary">
+        <a href="work.html">Work</a>
+        <a href="research.html">Research</a>
+        <a href="projects.html">Projects</a>
+        <a href="information.html" aria-current="page">Information</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="pagehead">
+      <p class="pagehead__index">About the artist</p>
+      <h1 class="pagehead__title">Information</h1>
+    </section>
+
+    <!-- About -->
+    <section class="block" id="about">
+      <p class="block__index">About</p>
+      <div class="block__body">
+        <div class="prose prose--wide">
+          <p>
+            Dana Kim (김단아, b. 1993) is a new media artist and researcher, currently a
+            master's student at the Graduate School of Metaverse, KAIST. She holds a BA in
+            Communication from Yonsei University and previously worked in marketing planning
+            at KT (Korea Telecom).
+          </p>
+          <p>
+            Since her undergraduate studies, her interests have centered on cultural phenomena
+            and methods of communication, which she has explored through a series of short
+            films and documentaries — including <em>The Time of Walking in the Forest Path</em>
+            (2023). Her recent work overlays her own experiences of the city's public spaces.
+          </p>
+          <p>
+            She seeks ways to communicate effectively with audiences and to create
+            audience-driven experiences, and plans to expand her methods by focusing on
+            cultural-anthropological phenomena.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education / Experience side by side -->
+    <div class="two-col">
+      <section class="block" id="education">
+        <p class="block__index">Education</p>
+        <div class="block__body">
+          <ol class="cv" id="educationList"></ol>
+        </div>
+      </section>
+      <section class="block" id="experience">
+        <p class="block__index">Experience</p>
+        <div class="block__body">
+          <ol class="cv" id="experienceList"></ol>
+        </div>
+      </section>
+    </div>
+
+    <!-- Research Area -->
+    <section class="block" id="research">
+      <p class="block__index">Research Area</p>
+      <div class="block__body">
+        <ul class="interests" id="researchList"></ul>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="block" id="contact">
+      <p class="block__index">Contact</p>
+      <div class="block__body">
+        <ul class="contact">
+          <li><span class="contact__key">Email</span><a href="mailto:concom1416@gmail.com">concom1416@gmail.com</a></li>
+          <li><span class="contact__key">LinkedIn</span><a href="https://www.linkedin.com/in/dana-kim-0b0270181" target="_blank" rel="noopener">dana-kim-0b0270181</a></li>
+          <li><span class="contact__key">GitHub</span><a href="https://github.com/by-dana-kim" target="_blank" rel="noopener">by-dana-kim</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="colophon">
+    <div class="colophon__inner">
+      <span>© <span data-year></span> Dana Kim</span>
+      <span class="colophon__links">
+        <a href="mailto:concom1416@gmail.com">concom1416@gmail.com</a>
+        <a class="icon" href="https://www.linkedin.com/in/dana-kim-0b0270181" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+      </span>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="js/preview.js"></script>
+</body>
+</html>

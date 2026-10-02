@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dana Kim</title>
+  <meta name="description" content="Dana Kim · New media artist and researcher. Selected works, research and projects." />
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="page page--home">
+  <header class="masthead">
+    <div class="masthead__inner">
+      <a href="index.html" class="wordmark">Dana&nbsp;Kim</a>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav" id="primary-nav" aria-label="Primary">
+        <a href="work.html">Work</a>
+        <a href="research.html">Research</a>
+        <a href="projects.html">Projects</a>
+        <a href="information.html">Information</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="home-intro">
+      <p>New media artist and researcher exploring place memory, communication, and audience-driven experience.</p>
+    </section>
+
+    <section class="track" id="track" aria-label="Selected works">
+      <div class="stage">
+        <div class="stage__inner">
+          <div class="col col--left"><div class="col__inner" id="colLeft"></div></div>
+          <div class="col col--right"><div class="col__inner" id="colRight"></div></div>
+        </div>
+        <div class="stage__bar">
+          <div class="counter"><b id="cur">01</b> / <span id="total">05</span></div>
+          <div class="progress" aria-hidden="true"><i id="prog"></i></div>
+          <div class="steps">
+            <button class="step" id="prev" type="button" aria-label="Previous work">↑</button>
+            <button class="step" id="next" type="button" aria-label="Next work">↓</button>
+          </div>
+          <div class="progress" aria-hidden="true"></div>
+          <a class="open" id="openWork" href="work.html#w0">Open work <span>→</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="colophon">
+    <div class="colophon__inner">
+      <span>© <span data-year></span> Dana Kim</span>
+      <span class="colophon__links">
+        <a href="mailto:concom1416@gmail.com">concom1416@gmail.com</a>
+        <a class="icon" href="https://www.linkedin.com/in/dana-kim-0b0270181" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+      </span>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="js/preview.js"></script>
+</body>
+</html>
