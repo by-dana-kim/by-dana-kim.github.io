@@ -156,7 +156,7 @@ function initDrum() {
   function settle() {
     if (programmatic) return;
     const raw = (window.scrollY - trackTop() - hold0()) / seg();
-    if (raw <= 0 || raw >= N - 1 + 0.5) return;
+    if (raw <= 0 || raw >= N - 1) return;            // before the first transition, or past the last work
     const k = Math.round(raw);
     if (Math.abs(raw - k) > 0.02) goTo(k);
   }
@@ -173,8 +173,8 @@ function initDrum() {
     if (e.target.closest("input, textarea, select")) return;
     const r = track.getBoundingClientRect();
     if (r.top > window.innerHeight * 0.6 || r.bottom < window.innerHeight * 0.4) return;
-    if (e.key === "ArrowDown" || e.key === "j" || e.key === "PageDown") { e.preventDefault(); goTo(active + 1); }
-    if (e.key === "ArrowUp" || e.key === "k" || e.key === "PageUp") { e.preventDefault(); goTo(active - 1); }
+    if ((e.key === "ArrowDown" || e.key === "j" || e.key === "PageDown") && active < N - 1) { e.preventDefault(); goTo(active + 1); }
+    if ((e.key === "ArrowUp" || e.key === "k" || e.key === "PageUp") && active > 0) { e.preventDefault(); goTo(active - 1); }
   });
 
   let ticking = false;
