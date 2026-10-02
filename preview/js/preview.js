@@ -207,6 +207,23 @@ function openHashedWork() {
   setTimeout(() => item.scrollIntoView({ behavior: "smooth", block: "start" }), 50);
 }
 
+/* ---------- Research: projects rendered as entries ---------- */
+function renderProjectEntries() {
+  if (!document.getElementById("projectEntries") || typeof projects === "undefined") return;
+  const entries = projects.map((p) => ({
+    year: p.year,
+    tag: p.tag,
+    title: p.title,
+    desc: p.meta,
+    abstract: p.desc,
+    abstractLabel: "Details",
+    link: p.demo || "",
+  }));
+  renderEntries("projectEntries", entries);
+  // rendered after main.js set up its reveal observer, so show these right away
+  document.querySelectorAll("#projectEntries .reveal").forEach((el) => el.classList.add("is-in"));
+}
+
 /* ---------- Research: scroll spy for the mini index ---------- */
 function initAcadNav() {
   const nav = document.querySelector(".acad-nav");
@@ -225,5 +242,6 @@ function initAcadNav() {
 document.addEventListener("DOMContentLoaded", () => {
   initDrum();
   openHashedWork();
+  renderProjectEntries();
   initAcadNav();
 });
