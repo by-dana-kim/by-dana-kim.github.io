@@ -882,3 +882,14 @@ code {
 @media (min-width: 760px) { .two-col { grid-template-columns: 1fr 1fr; } }
 .two-col .block { border-bottom: 0; }
 .cv__title { font-size: 1.02rem; }
+
+/* ===== About: compact publication entries ===== */
+.pubs--compact .pub { padding: 18px 0; grid-template-columns: 4.5rem 1fr; }
+.pubs--compact .pub:first-child { border-top: 0; padding-top: 0; }
+.pubs--compact .pub:last-child { border-bottom: 0; }
+.pubs--compact .pub__title { font-size: 0.98rem; }
+.pubs--compact .pub__desc { font-size: 0.9rem; margin-top: 6px; }
+
+/* ===== Projects: unified list (works + funded projects) ===== */
+.mp__type { display: block; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--clay); margin-bottom: 4px; }
+.mp__demo { margin: 8px 0 18px; }
