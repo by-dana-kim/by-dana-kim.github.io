@@ -7,45 +7,55 @@
    ============================================================ */
 
 /* ---------- unified list ---------- */
+function tagsForWork(w) {
+  const m = (w.medium || "").toLowerCase();
+  const t = ["Work"];
+  if (m.includes("vr")) t.push("VR");
+  if (m.includes("single-channel")) t.push("Video");
+  if (m.includes("documentary")) t.push("Film");
+  if (m.includes("projection mapping")) t.push("Projection");
+  return t;
+}
 function allProjects() {
   const items = [];
   if (typeof works !== "undefined") {
     works.forEach((w, i) => {
       const parts = (w.medium || "").split(" · ");
       items.push({
-        kind: "work",
-        src: i,
-        year: w.year,
-        title: w.title,
-        type: parts[0] || "",
-        venue: parts.slice(1).join(" · "),
-        embed: w.embed,
-        desc: w.desc,
-        details: w.details,
-        links: w.links,
+        kind: "work", src: i, year: w.year, title: w.title,
+        type: parts[0] || "", venue: parts.slice(1).join(" · "),
+        tags: tagsForWork(w),
+        embed: w.embed, desc: w.desc, details: w.details, links: w.links,
       });
     });
   }
   if (typeof projects !== "undefined") {
     projects.forEach((p, i) => {
+      const tags = ["Funded"];
+      if (/research/i.test(p.tag || "")) tags.push("Research");
       items.push({
-        kind: "project",
-        src: i,
-        year: p.year,
-        title: p.title,
-        type: p.tag || "Project",
-        venue: p.meta || "",
-        desc: p.desc,
-        demo: p.demo,
-        links: p.links,
+        kind: "project", src: i, year: p.year, title: p.title,
+        type: p.tag || "Project", venue: p.meta || "", tags,
+        desc: p.desc, demo: p.demo, links: p.links,
       });
     });
   }
-  // newest first; within a year keep works before funded projects (source order)
+  if (typeof publications !== "undefined") {
+    publications.forEach((q, i) => {
+      items.push({
+        kind: "paper", src: i, year: q.year, title: q.title,
+        type: q.tag || "Publication", venue: q.desc || "", tags: ["Research"],
+        abstract: q.abstract, link: q.link,
+        links: q.link ? [{ label: /^https?:/i.test(q.link) ? "Read" : "Open", url: q.link }] : [],
+      });
+    });
+  }
+  // newest first; within a year keep source order (works, funded projects, papers)
   return items
     .map((it, order) => ({ ...it, order }))
     .sort((a, b) => (parseInt(b.year, 10) || 0) - (parseInt(a.year, 10) || 0) || a.order - b.order);
 }
+const TAG_ORDER = ["Work", "VR", "Video", "Film", "Projection", "Funded", "Research"];
 
 const pad2 = (n) => String(n).padStart(2, "0");
 const shortTitle = (t) => t.replace(/\s*\(.*\)\s*$/, "");
@@ -229,86 +239,97 @@ function initDrum() {
   update();
 }
 
-/* ---------- Projects: unified expandable list ---------- */
-function renderProjectList() {
-  const list = document.getElementById("projectIndex");
-  if (!list) return;
+/* ---------- Projects: tag filters + thumbnail grid ---------- */
+function renderProjectGrid() {
+  const root = document.getElementById("projectIndex");
+  if (!root) return;
   const items = allProjects();
-  const labels = `
-    <div class="mplist__labels" aria-hidden="true">
-      <span>Project</span><span>Type · Venue</span><span>Year</span>
-    </div>`;
-  list.innerHTML =
-    labels +
-    items
-      .map((it, i) => {
-        const embed = it.embed
-          ? `<div class="mp__embed"><iframe
-                data-src="https://www.youtube.com/embed/${esc(it.embed)}?rel=0"
-                title="${esc(it.title)} — video"
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe></div>`
-          : "";
-        const desc = it.desc ? `<p class="mp__desc">${esc(it.desc)}</p>` : "";
-        const details =
-          it.details && it.details.length
-            ? `<ul class="mp__details">${it.details.map((d) => `<li>${esc(d)}</li>`).join("")}</ul>`
-            : "";
-        const demo = it.demo
-          ? `<div class="mp__demo"><div class="demo__frame"><iframe data-src="${esc(it.demo)}" title="${esc(it.title)} — interactive demo" loading="lazy" allowfullscreen></iframe></div></div>`
-          : "";
-        const linkList = [...(it.links || [])];
-        if (it.demo) linkList.unshift({ label: "Open demo in new tab", url: it.demo });
-        const links = linkList.length
-          ? `<div class="mp__links">${linkList
-              .map((l) => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`)
-              .join("")}</div>`
-          : "";
-        return `
-      <article class="mp reveal" id="p${i}">
-        <button class="mp__head" aria-expanded="false" aria-controls="p-panel-${i}">
-          <span class="mp__title">${esc(it.title)}</span>
-          <span class="mp__medium"><span class="mp__type">${esc(it.type)}</span>${esc(it.venue)}</span>
-          <span class="mp__year">${esc(it.year)}</span>
+  const thumbSrc = (id, q) => `https://img.youtube.com/vi/${id}/${q}.jpg`;
+  const counts = {};
+  items.forEach((it) => it.tags.forEach((t) => (counts[t] = (counts[t] || 0) + 1)));
+  const tags = TAG_ORDER.filter((t) => counts[t]);
+
+  const chips =
+    `<button class="chip is-on" data-tag="ALL">All<sup>${items.length}</sup></button>` +
+    tags.map((t) => `<button class="chip" data-tag="${esc(t)}">${esc(t)}<sup>${counts[t]}</sup></button>`).join("");
+
+  const cards = items
+    .map((it, i) => {
+      const tile = it.embed
+        ? `<img src="${thumbSrc(it.embed, "maxresdefault")}" alt="" loading="lazy" decoding="async"
+             onerror="this.onerror=function(){this.remove()};this.src='${thumbSrc(it.embed, "hqdefault")}'">`
+        : `<span class="card__ph card__ph--${it.kind}"><span>${esc(it.type)}</span></span>`;
+      const embed = it.embed
+        ? `<div class="mp__embed"><iframe data-src="https://www.youtube.com/embed/${esc(it.embed)}?rel=0" title="${esc(it.title)} — video" loading="lazy"
+             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>`
+        : "";
+      const demo = it.demo
+        ? `<div class="mp__demo"><div class="demo__frame"><iframe data-src="${esc(it.demo)}" title="${esc(it.title)} — interactive demo" loading="lazy" allowfullscreen></iframe></div></div>`
+        : "";
+      const desc = it.desc ? `<p class="mp__desc">${esc(it.desc)}</p>` : "";
+      const abstract = it.abstract ? `<details class="pub__abstract"><summary>Abstract</summary><p>${esc(it.abstract)}</p></details>` : "";
+      const details = it.details && it.details.length
+        ? `<ul class="mp__details">${it.details.map((d) => `<li>${esc(d)}</li>`).join("")}</ul>` : "";
+      const linkList = [...(it.links || [])];
+      if (it.demo) linkList.unshift({ label: "Open demo in new tab", url: it.demo });
+      const links = linkList.length
+        ? `<div class="mp__links">${linkList.map((l) => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join("")}</div>` : "";
+      return `
+      <article class="card" id="p${i}" data-tags="${esc(it.tags.join(" "))}">
+        <button class="card__hit" aria-expanded="false" aria-controls="p-panel-${i}">
+          <span class="card__thumb">${tile}</span>
+          <span class="card__head">
+            <span class="card__title">${esc(it.title)}</span>
+            <span class="card__year">${esc(it.year)}</span>
+          </span>
+          <span class="card__sub">${it.kind === "paper" ? esc(it.venue) : esc(it.type) + (it.venue ? " · " + esc(it.venue) : "")}</span>
         </button>
-        <div class="mp__panel" id="p-panel-${i}">
-          <div class="mp__inner">
-            <div class="mp__box">
-              ${embed}${demo}${desc}${details}${links}
-            </div>
+        <div class="card__panel" id="p-panel-${i}">
+          <div class="card__panel-inner">
+            ${embed}${demo}${desc}${abstract}${details}${links}
           </div>
         </div>
       </article>`;
-      })
-      .join("");
+    })
+    .join("");
 
-  list.querySelectorAll(".mp__head").forEach((head) => {
-    head.addEventListener("click", () => {
-      const item = head.closest(".mp");
-      const open = item.classList.toggle("is-open");
-      head.setAttribute("aria-expanded", open ? "true" : "false");
-      if (open) {
-        item.querySelectorAll("iframe[data-src]").forEach((f) => { if (!f.src) f.src = f.dataset.src; });
-      }
+  root.innerHTML = `<div class="filters" role="group" aria-label="Filter projects">${chips}</div><div class="pgrid">${cards}</div>`;
+
+  // filter
+  const cardEls = [...root.querySelectorAll(".card")];
+  root.querySelectorAll(".chip").forEach((chip) => {
+    chip.addEventListener("click", () => {
+      root.querySelectorAll(".chip").forEach((c) => c.classList.toggle("is-on", c === chip));
+      const t = chip.dataset.tag;
+      cardEls.forEach((c) => (c.hidden = t !== "ALL" && !c.dataset.tags.split(" ").includes(t)));
     });
   });
 
-  // rendered after main.js set up its reveal observer, so show these right away
-  list.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-in"));
+  // expand one card at a time, in place
+  const setOpen = (card, open) => {
+    card.classList.toggle("is-open", open);
+    card.querySelector(".card__hit").setAttribute("aria-expanded", open ? "true" : "false");
+    if (open) card.querySelectorAll("iframe[data-src]").forEach((f) => { if (!f.src) f.src = f.dataset.src; });
+  };
+  root.querySelectorAll(".card__hit").forEach((hit) => {
+    hit.addEventListener("click", () => {
+      const card = hit.closest(".card");
+      const willOpen = !card.classList.contains("is-open");
+      cardEls.forEach((c) => c !== card && c.classList.contains("is-open") && setOpen(c, false));
+      setOpen(card, willOpen);
+      if (willOpen) setTimeout(() => card.scrollIntoView({ behavior: "smooth", block: "start" }), 60);
+    });
+  });
 
-  // open the row named in the hash (projects.html#p3)
+  // open the card named in the hash (projects.html#p3)
   const m = location.hash.match(/^#p(\d+)$/);
   if (m) {
-    const head = list.querySelector(`#p${m[1]} .mp__head`);
-    if (head) {
-      head.click();
-      setTimeout(() => head.closest(".mp").scrollIntoView({ behavior: "smooth", block: "start" }), 50);
-    }
+    const card = root.querySelector(`#p${m[1]}`);
+    if (card) { setOpen(card, true); setTimeout(() => card.scrollIntoView({ behavior: "smooth", block: "start" }), 50); }
   }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   initDrum();
-  renderProjectList();
+  renderProjectGrid();
 });
