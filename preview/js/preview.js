@@ -106,18 +106,6 @@ function initDrum() {
   const items = [...left.querySelectorAll(".ditem")];
   const thumbs = [...right.querySelectorAll(".dthumb")];
 
-  // a blurred wash of the locked still behind the stage, crossfaded between two layers
-  const amb = [document.getElementById("ambA"), document.getElementById("ambB")];
-  let ambOn = 0;
-  function setAmbient(src) {
-    if (!amb[0]) return;
-    const nextLayer = amb[1 - ambOn];
-    nextLayer.src = src;
-    nextLayer.classList.add("is-on");
-    amb[ambOn].classList.remove("is-on");
-    ambOn = 1 - ambOn;
-  }
-
   const SUB = 4;
   const ticks = [];
   for (let q = 0; q <= (N - 1) * SUB; q++) {
@@ -173,7 +161,6 @@ function initDrum() {
       prev.disabled = i === 0;
       next.disabled = i === N - 1;
       open.href = `projects.html#p${shown[i].idx}`;
-      setAmbient(thumbSrc(shown[i].embed, "hqdefault"));
     }
     items.forEach((el, k) => {
       const d = k - s;
