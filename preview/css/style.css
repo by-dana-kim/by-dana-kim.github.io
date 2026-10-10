@@ -974,9 +974,6 @@ code {
   .masthead.is-scrolled .masthead__inner { max-width: calc(100% - 24px); }
 }
 
-/* ===== Ink blots under a resting pointer (js/ink.js) ===== */
-.trace { position: fixed; inset: 0; z-index: 15; pointer-events: none; }
-
 /* ===== Home: description on lock ===== */
 .stage::before, .stage::after { z-index: 1; }
 .stage__inner, .stage__bar { z-index: 2; }
