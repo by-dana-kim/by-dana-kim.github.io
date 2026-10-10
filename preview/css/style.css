@@ -972,3 +972,6 @@ code {
   .nav--center a { width: auto; padding: 7px 9px; font-size: 0.7rem; letter-spacing: 0.14em; border-top: 0; }
   .masthead.is-scrolled .masthead__inner { max-width: calc(100% - 24px); }
 }
+
+/* ===== Cursor trace (js/trail.js) ===== */
+.trace { position: fixed; inset: 0; z-index: 15; pointer-events: none; }
