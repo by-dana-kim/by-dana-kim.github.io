@@ -973,5 +973,5 @@ code {
   .masthead.is-scrolled .masthead__inner { max-width: calc(100% - 24px); }
 }
 
-/* ===== Cursor trace (js/trail.js) ===== */
+/* ===== Ink blots under a resting pointer (js/ink.js) ===== */
 .trace { position: fixed; inset: 0; z-index: 15; pointer-events: none; }
