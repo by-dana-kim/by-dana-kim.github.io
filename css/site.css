@@ -28,6 +28,8 @@ img { max-width: 100%; }
 .side__contact { position: absolute; left: var(--pad); bottom: var(--pad); font-size: 12.5px; color: var(--dim); }
 .side__contact a { display: block; line-height: 1.9; }
 .side__contact a:hover { color: var(--green); }
+.side__contact .icon { display: inline-flex; margin-top: 6px; color: var(--ink-2); }
+.side__contact .icon svg { display: block; }
 
 /* ---- content ---- */
 .main { margin-left: var(--side); padding: calc(var(--pad) + 4px) var(--pad) 90px calc(var(--pad) * 1.2); min-height: 100vh; }
@@ -94,7 +96,10 @@ img { max-width: 100%; }
 .bio h2 { font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--dim); font-weight: 500; margin: 36px 0 8px; }
 .bio p a { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: #c9cdcb; }
 .bio p a:hover { color: var(--green); text-decoration-color: var(--green); }
+.bio .contact { display: flex; align-items: center; gap: 14px; }
 .bio .contact a { line-height: 1.9; }
+.bio .contact .icon { display: inline-flex; text-decoration: none; color: var(--ink-2); }
+.bio .contact .icon:hover { color: var(--green); }
 
 /* cv */
 .cv { max-width: 1400px; }
@@ -115,7 +120,8 @@ img { max-width: 100%; }
   .side__nav a { padding-left: 0; line-height: 1.8; }
   .side__nav a::before { top: auto; bottom: 0; width: 100%; height: 1.5px; transform: scaleX(0); }
   .side__nav a[aria-current]::before, .side__nav a:hover::before { transform: scaleX(1); }
-  .side__contact { position: static; display: flex; flex-wrap: wrap; gap: 4px 14px; margin-top: 10px; }
+  .side__contact { position: static; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 14px; margin-top: 10px; }
+  .side__contact .icon { margin-top: 0; }
   .main { margin-left: 0; padding: 26px 20px 60px; min-height: 0; }
   .grid { grid-template-columns: repeat(2, 1fr); gap: 22px 14px; }
   .proj__body, .about, .cvrow { grid-template-columns: 1fr; }
