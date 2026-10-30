@@ -62,7 +62,7 @@
   const GROUPS = { artwork: "Artwork", research: "Research", projects: "Funded projects" };
 
   /* home: slideshow. Slide 0 is assets/main.jpg (skipped if the file is missing), then one still per work.
-     Auto-advances every 5 s; arrows, swipe and ←/→ keys step through and pause the timer for a while. */
+     Auto-advances every 4.2 s; arrows, swipe and ←/→ keys step through and pause the timer for a while. */
   const HOME_IMAGE = { src: "assets/main.jpg", title: "Dana Kim", href: "work.html" };
   function initShow() {
     const root = document.getElementById("show");
@@ -90,7 +90,7 @@
     };
     const drop = (sl) => { const n = live.indexOf(sl); if (n < 0) return; live.splice(n, 1); if (n < k) k--; render(); };
     const step = (d) => { k += d; render(); pause(); };
-    const start = () => { stop(); if (!matchMedia("(prefers-reduced-motion: reduce)").matches) timer = setInterval(() => { k++; render(); }, 5000); };
+    const start = () => { stop(); if (!matchMedia("(prefers-reduced-motion: reduce)").matches) timer = setInterval(() => { k++; render(); }, 4200); };
     const stop = () => { if (timer) clearInterval(timer); timer = 0; };
     let resume = 0;
     const pause = () => { stop(); clearTimeout(resume); resume = setTimeout(start, 12000); };
