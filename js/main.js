@@ -63,8 +63,8 @@ const exhibitions = [
   },
   {
     year: "2025",
-    title: "Peer to Peer Labday",
-    venue: "Arts Korea Lab, Seoul",
+    title: "Arts Korea Lab, Peer to Peer Labday",
+    venue: "Seoul",
     meta: "Super Testbed showcase · Quantum Memory Space · MCST · KAMS · Arts Korea Lab · 4–6 Dec 2025",
   },
 ];
