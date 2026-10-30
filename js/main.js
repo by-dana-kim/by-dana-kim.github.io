@@ -99,6 +99,7 @@ const works = [
     year: "2026",
     upcoming: "2026-11-08",
     medium: "Interactive media · Arts Korea Lab AI-Convergence Festival 2026, Space S-50, Seoul",
+    image: "assets/main.jpg",
     desc: "Each time we encounter a place where many memories are superposed, a different scene comes to mind. The work begins with the artist's remembering, carried on by walking a forest path again and again. The next scene shifts with how visitors move around the sphere at the center of the space. The visitors' steps follow the path the artist has walked for years. The work does not restore or fix what has disappeared. Walking that path and sensing what is absent becomes a way of living in the present.",
     details: ["Arts Korea Lab AI-Convergence Festival 2026, Space S-50, Seongsu, Seoul, 4–8 Nov 2026"],
   },
