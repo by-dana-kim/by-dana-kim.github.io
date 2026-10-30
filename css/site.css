@@ -81,7 +81,10 @@ img { max-width: 100%; }
 .entry__year { display: block; font-size: 13px; color: var(--dim); margin-bottom: 4px; }
 .entry__title { display: block; font-size: 17px; font-weight: 500; line-height: 1.4; }
 .entry__title:hover { color: var(--green); }
+.entry__authors { display: block; font-size: 14.5px; color: var(--ink); margin-top: 5px; }
+.entry__authors strong, .cvitem__authors strong, .proj__authors strong, .meta strong { font-weight: 600; }
 .entry__line { display: block; font-size: 14px; color: var(--ink-2); margin-top: 4px; }
+.entry__line em { font-style: italic; }
 
 /* project page */
 .proj { max-width: 1400px; }
@@ -101,8 +104,10 @@ img { max-width: 100%; }
 .meta dd { margin: 2px 0 0; }
 .meta a { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line); }
 .meta a:hover { color: var(--green); text-decoration-color: var(--green); }
+.proj__authors { max-width: 820px; margin: -6px 0 4px; font-size: 15px; }
 .proj__line { max-width: 820px; margin: -8px 0 0; font-size: 14.5px; line-height: 1.6; color: var(--ink-2); }
 .proj__line + .proj__desc { margin-top: 26px; }
+.proj__authors + .proj__line { margin-top: 0; }
 .proj__desc { max-width: 820px; font-size: 17px; line-height: 1.65; margin: 34px 0 0; }
 .proj__details { max-width: 820px; margin: 18px 0 0; padding-left: 18px; font-size: 14.5px; color: var(--ink-2); }
 .proj__details li { margin: 4px 0; }
@@ -167,6 +172,7 @@ img { max-width: 100%; }
 .cvitem__text a { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line); }
 .cvitem__text a:hover { color: var(--green); text-decoration-color: var(--green); }
 .cvitem__sub { display: block; font-size: 13.5px; color: var(--ink-2); margin-top: 2px; }
+.cvitem__authors { display: block; color: var(--ink); margin-bottom: 1px; }
 
 /* copy-to-clipboard mail link */
 .copy-mail { position: relative; cursor: copy; }

@@ -32,6 +32,8 @@
   const pills = (links) => links && links.length
     ? `<span class="pills">${links.map((l) => `<a class="pill" href="${E(l.url)}" target="_blank" rel="noopener">${E(linkLabel(l))}</a>`).join("")}</span>` : "";
   const authors = (html) => (typeof boldAuthor === "function" ? boldAuthor(html) : html);
+  // venue line for a publication: italic venue, year, and the type unless the venue already names it
+  const pubLine = (venue, year, type) => `<em>${E(venue)}</em>, ${E(year)}${type && !String(venue).toLowerCase().includes(String(type).toLowerCase()) ? " · " + E(type) : ""}`;
 
   // upcoming: true, or "YYYY-MM-DD" (counts as upcoming through that day)
   const isUpcoming = (u) => u === true || (typeof u === "string" && new Date(u + "T23:59:59") >= new Date());
@@ -47,7 +49,7 @@
     (typeof publications !== "undefined" ? publications : []).forEach((q, i) => {
       const tag = q.tag || "Publication";
       const venue = (q.desc || "").replace(new RegExp("^" + tag.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\s*[,·:-]?\\s*"), "");
-      items.push({ id: "paper-" + slug(q.title), group: "research", year: q.year, title: q.title, line: tag, venue,
+      items.push({ id: "paper-" + slug(q.title), group: "research", year: q.year, title: q.title, line: tag, venue: q.venue || venue, authors: q.authors || "",
         image: q.image, desc: q.abstract, links: q.link ? [{ label: "Paper", url: q.link }] : [] });
     });
     (typeof projects !== "undefined" ? projects : []).forEach((p, i) => {
@@ -139,7 +141,9 @@
           <div class="entry">
             <span class="entry__year">${E(it.year)}</span>
             <a class="entry__title" href="project.html?id=${it.id}">${E(it.title)}</a>
-            <span class="entry__line">${E(it.line)}${it.venue ? " · " + authors(E(it.venue)) : ""}</span>
+            ${it.authors ? `<span class="entry__authors">${authors(E(it.authors))}</span>
+            <span class="entry__line">${pubLine(it.venue, it.year, it.line)}</span>`
+                         : `<span class="entry__line">${E(it.line)}${it.venue ? " · " + authors(E(it.venue)) : ""}</span>`}
             ${pills(it.links)}
           </div>`).join("");
       }
@@ -186,6 +190,7 @@
     }
     const meta = `<dl class="meta">
         <dt>${it.group === "artwork" ? "Medium" : "Type"}</dt><dd>${E(it.line)}</dd>
+        ${it.authors ? `<dt>Authors</dt><dd>${authors(E(it.authors))}</dd>` : ""}
         ${it.venue ? `<dt>${it.group === "research" ? "Venue" : it.group === "projects" ? "Supported by" : "Shown at"}</dt><dd>${authors(E(it.credit || it.venue))}</dd>` : ""}
         ${it.links.length ? `<dt>Links</dt><dd>${pills(it.links)}</dd>` : ""}
       </dl>`;
@@ -195,7 +200,7 @@
     root.innerHTML = `
       <header class="proj__head"><h1 class="proj__title">${E(it.title)}</h1><span class="proj__year">${E(it.year)}</span>${it.upcoming ? '<span class="tag">Upcoming</span>' : ""}</header>
       ${media ? `<div class="proj__body">${media}${meta}</div>`
-              : `<p class="proj__line">${E(it.line)}${it.venue ? " · " + authors(E(it.credit || it.venue)) : ""}</p>${it.links.length ? `<p class="proj__links proj__links--top">${pills(it.links)}</p>` : ""}`}
+              : `${it.authors ? `<p class="proj__authors">${authors(E(it.authors))}</p>` : ""}<p class="proj__line">${it.authors && it.venue ? pubLine(it.venue, it.year, it.line) : `${E(it.line)}${it.venue ? " · " + authors(E(it.credit || it.venue)) : ""}`}</p>${it.links.length ? `<p class="proj__links proj__links--top">${pills(it.links)}</p>` : ""}`}
       ${it.desc ? `<p class="proj__desc">${E(it.desc)}</p>` : ""}
       ${it.details && it.details.length ? `<ul class="proj__details">${it.details.map((d) => typeof d === "string" ? `<li>${E(d)}</li>`
           : `<li>${E(d.text)} <a href="project.html?id=paper-${slug(d.paper)}">${E(d.paper)}</a>${d.after ? " " + E(d.after) : ""}</li>`).join("")}</ul>` : ""}
@@ -253,7 +258,9 @@
     const edu = (typeof education !== "undefined" ? education : []).map((e) => item(e.year, E(e.title), E(e.venue)));
     const exp = (typeof experience !== "undefined" ? experience : []).map((e) => item(e.year, E(e.title), E(e.venue)));
     const pubs = (typeof publications !== "undefined" ? publications : []).map((q, i) => item(q.year, `<a href="project.html?id=paper-${slug(q.title)}">${E(q.title)}</a>`,
-      authors(E(q.desc && q.desc.startsWith(q.tag || "\u0000") ? q.desc : `${q.tag || ""}${q.desc ? " · " + q.desc : ""}`)) + pills(q.link ? [{ label: "Paper", url: q.link }] : [])));
+      (q.authors ? `<span class="cvitem__authors">${authors(E(q.authors))}</span>${pubLine(q.venue || "", q.year, q.tag || "")}`
+                 : authors(E(q.desc && q.desc.startsWith(q.tag || "\u0000") ? q.desc : `${q.tag || ""}${q.desc ? " · " + q.desc : ""}`)))
+      + pills(q.link ? [{ label: "Paper", url: q.link }] : [])));
     const funded = (typeof projects !== "undefined" ? projects : []).map((p, i) => item(p.year, `<a href="project.html?id=project-${slug(p.title)}">${E(p.title)}</a>`,
       E(p.meta || "") + pills(p.demo ? [{ label: "Demo", url: p.demo }] : [])));
     const acts = (typeof activities !== "undefined" ? activities : []).map((a) => item(a.year, a.link ? `<a href="${E(a.link)}" target="_blank" rel="noopener">${E(a.title)}</a>` : E(a.title), E(a.desc || "")));

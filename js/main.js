@@ -181,6 +181,8 @@ const publications = [
     year: "2026",
     title:
       "Quantum Memory Space: A Model of Superposition and Observation in Place Memory and Its Visual Implementation",
+    authors: "Dana Kim",
+    venue: "Master's thesis, Graduate School of Metaverse, KAIST",
     desc: "Master's Thesis, Graduate School of Metaverse, KAIST.",
     tag: "Master's Thesis",
     link: "https://library.kaist.ac.kr/search/ctlgSearch/posesn/view.do?bibctrlno=1178931&se=t0&ty=B",
@@ -190,14 +192,18 @@ const publications = [
   {
     year: "2025",
     title: "Voice of NObody: AI Voice and the Performativity of Absence in Documentary Theatre",
+    authors: "Dana Kim, J. Her",
+    venue: "TaPRA 2025 Annual Conference (Theatre and Performance Research Association), University of Warwick, 27–29 Aug 2025",
     desc: "TaPRA 2025 (Theatre and Performance Research Association), University of Warwick, 27–29 Aug 2025",
     tag: "Conference Presentation",
     link: "",
-    abstract: "The talk asks how documentary theatre can stage records whose subjects are absent, and proposes AI voice as a proxy without a body. Voices that sound human yet keep a trace of otherness create a familiar-strange distance, close to Brecht's alienation effect, that invites audiences to engage critically with documentary fact. The experimental piece Voice of NObody (2025) lets AI voices, rendered through a multi-speaker system, lead a performance built from the personal records of three real people, extending the proxy logic of Rimini Protokoll's Conference of the Absent (2021) into technological mediation. Presented in Open Panels 2, Telling Times: Multiform Disruption and Documentary Practices.",
+    abstract: "The talk asks how documentary theatre can stage records whose subjects are absent, and proposes AI voice as a proxy without a body. Voices that sound human yet keep a trace of otherness create a familiar-strange distance, close to Brecht's alienation effect, that invites audiences to engage critically with documentary fact. The experimental piece Voice of NObody (2025) lets AI voices, rendered through a multi-speaker system, lead a performance built from the personal records of three real people, extending the proxy logic of Rimini Protokoll's Conference of the Absent (2021) into technological mediation. Presented by Dana Kim in Open Panels 2, Telling Times: Multiform Disruption and Documentary Practices.",
   },
   {
     year: "2025",
     title: "Mourning Dew: Storytelling of Nectar Ritual Painting through the Digital Moktak",
+    authors: "Dana Kim, Y. Choi, J. Lee",
+    venue: "Proceedings of ISEA 2025, the 30th International Symposium on Electronic Art, Seoul, pp. 554–559",
     desc: "Kim, D., Choi, Y., & Lee, J. · Proceedings of ISEA 2025 (International Symposium on Electronic Art), 554–559",
     tag: "Conference Paper",
     link: "https://www.isea-symposium-archives.org/wp-content/uploads/2025/09/2025_Kim_Mourning-Dew-Storytelling-of-Nectar-Ritual-Painting-through-the-Digital-Moktak.pdf",
