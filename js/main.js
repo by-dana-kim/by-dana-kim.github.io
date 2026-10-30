@@ -170,11 +170,12 @@ const publications = [
   },
   {
     year: "2025",
-    title: "AI Voice and the Performativity of Absence in Documentary Theatre",
+    title: "Voice of NObody: AI Voice and the Performativity of Absence in Documentary Theatre",
     desc: "TaPRA 2025 (Theatre and Performance Research Association), University of Warwick, 27–29 Aug 2025",
     tag: "Conference Presentation",
     link: "",
-    abstract: "Presented in the session Telling Times: Multiform Disruption and Documentary Practices at the 20th annual conference of the Theatre and Performance Research Association (TaPRA), University of Warwick.",
+    image: "assets/works/voice-of-nobody-tapra.jpg",
+    abstract: "Presented in Open Panels 2, Telling Times: Multiform Disruption and Documentary Practices, at the 20th annual conference of the Theatre and Performance Research Association (TaPRA), University of Warwick. Presenter: Dana Kim, Graduate School of Metaverse, KAIST.",
   },
   {
     year: "2025",

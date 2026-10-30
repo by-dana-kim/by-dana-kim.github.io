@@ -46,7 +46,7 @@
       const tag = q.tag || "Publication";
       const venue = (q.desc || "").replace(new RegExp("^" + tag.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\s*[,·:-]?\\s*"), "");
       items.push({ id: "paper-" + slug(q.title), group: "research", year: q.year, title: q.title, line: tag, venue,
-        desc: q.abstract, links: q.link ? [{ label: "Paper", url: q.link }] : [] });
+        image: q.image, desc: q.abstract, links: q.link ? [{ label: "Paper", url: q.link }] : [] });
     });
     (typeof projects !== "undefined" ? projects : []).forEach((p, i) => {
       items.push({ id: "project-" + slug(p.title), group: "projects", year: p.year, title: p.title, line: p.tag || "Project", venue: p.meta || "",
