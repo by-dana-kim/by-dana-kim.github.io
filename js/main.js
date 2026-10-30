@@ -193,7 +193,6 @@ const publications = [
     desc: "TaPRA 2025 (Theatre and Performance Research Association), University of Warwick, 27–29 Aug 2025",
     tag: "Conference Presentation",
     link: "",
-    image: "assets/works/voice-of-nobody-tapra.jpg",
     abstract: "The talk asks how documentary theatre can stage records whose subjects are absent, and proposes AI voice as a proxy without a body. Voices that sound human yet keep a trace of otherness create a familiar-strange distance, close to Brecht's alienation effect, that invites audiences to engage critically with documentary fact. The experimental piece Voice of NObody (2025) lets AI voices, rendered through a multi-speaker system, lead a performance built from the personal records of three real people, extending the proxy logic of Rimini Protokoll's Conference of the Absent (2021) into technological mediation. Presented in Open Panels 2, Telling Times: Multiform Disruption and Documentary Practices.",
   },
   {
