@@ -256,7 +256,9 @@
     const row = (label, items) => items.length ? `<section class="cvrow"><h2 class="cvrow__label">${label}</h2><div>${items.join("")}</div></section>` : "";
     // top-level consts in ../js/main.js are not window properties, so name them directly
     const edu = (typeof education !== "undefined" ? education : []).map((e) => item(e.year, E(e.title), E(e.venue)));
-    const exp = (typeof experience !== "undefined" ? experience : []).map((e) => item(e.year, E(e.title), E(e.venue)));
+    const exp = (typeof experience !== "undefined" ? experience : []).map((e) => e.company
+      ? item(e.year, E(e.company), [e.role, e.meta].filter(Boolean).map(E).join(" · "))
+      : item(e.year, E(e.title), E(e.venue)));
     const pubs = (typeof publications !== "undefined" ? publications : []).map((q, i) => item(q.year, `<a href="project.html?id=paper-${slug(q.title)}">${E(q.title)}</a>`,
       (q.authors ? `<span class="cvitem__authors">${authors(E(q.authors))}</span>${pubLine(q.venue || "", q.year, q.tag || "")}`
                  : authors(E(q.desc && q.desc.startsWith(q.tag || "\u0000") ? q.desc : `${q.tag || ""}${q.desc ? " · " + q.desc : ""}`)))

@@ -11,9 +11,9 @@ const education = [
 
 /* --- Profile: career / experience --------------------------- */
 const experience = [
-  { year: "2026", title: "Research Intern", venue: "Rebel9 · Sep – Nov 2026" },
-  { year: "2019–24", title: "Media Marketing Executive", venue: "KT (Korea Telecom), Seoul · Jul 2019 – Feb 2024" },
-  { year: "2016–17", title: "Digital Contents Creator (Intern)", venue: "KBS (Korean Broadcasting System), Seoul · Dec 2016 – Feb 2017" },
+  { year: "2026", company: "Rebel9", role: "Research Intern", meta: "Sep – Nov 2026" },
+  { year: "2019–24", company: "KT (Korea Telecom)", role: "Media Marketing Executive", meta: "Seoul · Jul 2019 – Feb 2024" },
+  { year: "2016–17", company: "KBS (Korean Broadcasting System)", role: "Digital Contents Creator, Intern", meta: "Seoul · Dec 2016 – Feb 2017" },
 ];
 
 /* --- Profile: research area --------------------------------- */
