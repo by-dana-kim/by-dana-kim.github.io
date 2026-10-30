@@ -51,6 +51,8 @@ img { max-width: 100%; }
 /* work: sub-tabs at the left, then grid or text list */
 .subnav { display: flex; gap: 26px; font-size: 14px; color: var(--dim); margin: 2px 0 clamp(28px, 5vh, 56px); }
 .subnav a { padding-bottom: 4px; border-bottom: 1.5px solid transparent; transition: color 0.2s, border-color 0.2s; }
+.subnav sup { font-size: 10.5px; margin-left: 1px; color: var(--dim); vertical-align: top; position: relative; top: -1px; }
+.subnav a.is-current sup { color: var(--green); }
 .subnav a:hover { color: var(--ink); }
 .subnav a.is-current { color: var(--green); border-color: var(--green); }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 34px 28px; max-width: 1500px; }

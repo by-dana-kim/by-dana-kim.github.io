@@ -111,6 +111,7 @@
     if (!root) return;
     const tabs = [...document.querySelectorAll(".subnav a")];
     const all = catalog();
+    tabs.forEach((a) => { const n = all.filter((i) => i.group === a.dataset.group).length; a.innerHTML = `${E(a.textContent.trim())} <sup>${n}</sup>`; });
     const render = (group) => {
       tabs.forEach((a) => a.classList.toggle("is-current", a.dataset.group === group));
       const items = all.filter((i) => i.group === group);
