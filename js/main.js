@@ -20,8 +20,24 @@ const researchThemes = ["Place Memory", "Mourning", "Community"];
 const researchMedia = ["Immersive Storytelling", "3D Visualization", "Documentary Film", "Human-Computer Interaction"];
 const researchAreas = [...researchThemes, ...researchMedia];
 
+/* --- Awards & selections ------------------------------------ */
+const awards = [
+  {
+    year: "2026",
+    title: "Finalist, 4th Coherence Art Competition",
+    venue: "IBS Center for Quantum Nanoscience (QNS), Ewha Womans University · Memories in the Forest Path (photography)",
+  },
+];
+
 /* --- Exhibitions (newest first; upcoming: true marks a planned show) --- */
 const exhibitions = [
+  {
+    year: "2027",
+    title: "Finalists' Exhibition, 4th Coherence Art Competition",
+    venue: "IBS Science Culture Center, Daejeon",
+    meta: "IBS Center for Quantum Nanoscience (QNS) · Memories in the Forest Path · 2027, expected around April",
+    upcoming: true,
+  },
   {
     year: "2026",
     title: "VISAP 2026: Amplification",
@@ -34,14 +50,14 @@ const exhibitions = [
     year: "2026",
     title: "Walking Through Superposed Memories",
     venue: "Onsu Gong-gan, Seoul",
-    meta: "Arts Korea Lab Art×Technology Convergence Project, follow-up exhibition · 25–29 Nov 2026",
+    meta: "Solo exhibition · Arts Korea Lab Art×Technology Convergence Project, follow-up exhibition · 25–29 Nov 2026",
     upcoming: true,
   },
   {
     year: "2026",
-    title: "Spheres of Memory",
-    venue: "",
-    meta: "Details to be announced",
+    title: "Arts Korea Lab AI-Convergence Festival 2026",
+    venue: "Space S-50, Seongsu, Seoul",
+    meta: "Spheres of Memory · 4–8 Nov 2026",
     upcoming: true,
   },
 ];
@@ -62,6 +78,12 @@ const works = [
     desc: "The Superposed Memory grew from photographs accumulated over years of walking Gyeongui Line Forest Park in Seoul. Scenes from different periods bound to the same place are trained into a single 3D Gaussian Splatting space, against the technique's assumption that all its input photographs show one moment. Instead of converging into a single image, different times of one place remain latent together and surface by turns as the viewpoint moves. In the installation the superposed scene is projected in a loop of about 10 minutes, and visitors sit on a park bench in front of it, as they would on the path itself.",
     details: ["Selected for VISAP 2026: Amplification, the IEEE VIS Arts Program exhibition (MIT Met Warehouse, Cambridge, MA, 9–13 Nov 2026)"],
     links: [{ label: "VISAP 2026 artwork page", url: "https://visap.net/2026/artwork-8.html" }],
+  },
+  {
+    title: "Memories in the Forest Path",
+    year: "2026",
+    medium: "Photography · Finalist, 4th Coherence Art Competition, IBS Center for Quantum Nanoscience (QNS)",
+    desc: "A photographic work selected as a finalist in the 4th Coherence Art Competition of the IBS Center for Quantum Nanoscience. To be shown at the IBS Science Culture Center in Daejeon in 2027.",
   },
   {
     title: "Quantum Memory Space (VR)",

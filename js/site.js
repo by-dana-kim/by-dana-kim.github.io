@@ -172,10 +172,11 @@
     const shows = (typeof exhibitions !== "undefined" ? exhibitions : []).map((x) => item(x.year,
       `${x.link ? `<a href="${E(x.link)}" target="_blank" rel="noopener">${E(x.title)}</a>` : E(x.title)}${x.upcoming ? ' <span class="tag">Upcoming</span>' : ""}`,
       [x.venue, x.meta].filter(Boolean).map(E).join(" · ")));
+    const prizes = (typeof awards !== "undefined" ? awards : []).map((a) => item(a.year, E(a.title), E(a.venue || "")));
     const areas = [];
     if (typeof researchThemes !== "undefined") areas.push(item("Themes", E(researchThemes.join(" · "))));
     if (typeof researchMedia !== "undefined") areas.push(item("Media", E(researchMedia.join(" · "))));
-    root.innerHTML = row("Education", edu) + row("Exhibitions", shows) + row("Publications &amp; talks", pubs) + row("Funded projects", funded) + row("Experience", exp) + row("Activities", acts) + row("Research", areas);
+    root.innerHTML = row("Education", edu) + row("Exhibitions", shows) + row("Awards &amp; selections", prizes) + row("Publications &amp; talks", pubs) + row("Funded projects", funded) + row("Experience", exp) + row("Activities", acts) + row("Research", areas);
   }
 
   document.addEventListener("DOMContentLoaded", () => { initShow(); initWork(); initProject(); initAbout(); initCV(); });
