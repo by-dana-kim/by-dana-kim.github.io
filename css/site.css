@@ -168,6 +168,12 @@ img { max-width: 100%; }
 .cvitem__text a:hover { color: var(--green); text-decoration-color: var(--green); }
 .cvitem__sub { display: block; font-size: 13.5px; color: var(--ink-2); margin-top: 2px; }
 
+/* copy-to-clipboard mail link */
+.copy-mail { position: relative; cursor: copy; }
+.copy-mail::after { content: "Copied"; position: absolute; left: 0; top: calc(100% + 4px); padding: 2px 8px; border-radius: 999px; background: var(--green); color: #fff; font-size: 11px; letter-spacing: 0.03em; line-height: 1.6; opacity: 0; transform: translateY(-3px); transition: opacity 0.2s, transform 0.2s; pointer-events: none; white-space: nowrap; }
+.copy-mail.is-copied::after { opacity: 1; transform: none; }
+.side__contact .copy-mail::after { top: auto; bottom: calc(100% + 2px); }
+
 /* ---- small screens: sidebar becomes a header ---- */
 @media (max-width: 760px) {
   .side { position: static; width: auto; padding: 22px 20px 0; }

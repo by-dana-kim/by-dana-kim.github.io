@@ -267,5 +267,20 @@
     root.innerHTML = row("Education", edu) + row("Exhibitions", shows) + row("Awards &amp; selections", prizes) + row("Publications &amp; talks", pubs) + row("Funded projects", funded) + row("Experience", exp) + row("Activities", acts) + row("Research", areas);
   }
 
-  document.addEventListener("DOMContentLoaded", () => { initShow(); initWork(); initProject(); initAbout(); initCV(); });
+  /* contact: clicking the address copies it and says so; falls back to mailto if the clipboard is unavailable */
+  function initCopyMail() {
+    document.querySelectorAll(".copy-mail").forEach((a) => {
+      const mail = a.getAttribute("href").replace(/^mailto:/, "");
+      a.addEventListener("click", (e) => {
+        if (!navigator.clipboard) return;
+        e.preventDefault();
+        navigator.clipboard.writeText(mail).then(() => {
+          a.classList.add("is-copied");
+          clearTimeout(a._t); a._t = setTimeout(() => a.classList.remove("is-copied"), 1600);
+        }).catch(() => { location.href = a.getAttribute("href"); });
+      });
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", () => { initShow(); initWork(); initProject(); initAbout(); initCV(); initCopyMail(); });
 })();
