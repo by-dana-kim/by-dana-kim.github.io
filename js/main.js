@@ -42,7 +42,7 @@ const exhibitions = [
     year: "2026",
     title: "Walking Through Superposed Memories",
     venue: "Onsu Gong-gan, Seoul",
-    meta: "Solo exhibition · Arts Korea Lab follow-up support · 25–29 Nov 2026",
+    meta: "Solo exhibition · 25–29 Nov 2026 · Hosted by the Ministry of Culture, Sports and Tourism · Organized by Korea Arts Management Service and Arts Korea Lab",
     upcoming: true,
   },
   {
@@ -57,14 +57,14 @@ const exhibitions = [
     year: "2026",
     title: "Arts Korea Lab AI-Convergence Festival 2026",
     venue: "Space S-50, Seongsu, Seoul",
-    meta: "Spheres of Memory · 4–8 Nov 2026",
+    meta: "Spheres of Memory · 4–8 Nov 2026 · Hosted by the Ministry of Culture, Sports and Tourism · Organized by Korea Arts Management Service and Arts Korea Lab",
     upcoming: true,
   },
   {
     year: "2025",
     title: "Peer to Peer Labday",
     venue: "Arts Korea Lab, Seoul",
-    meta: "Super Testbed showcase · Quantum Memory Space · 4–6 Dec 2025",
+    meta: "Super Testbed showcase · Quantum Memory Space · 4–6 Dec 2025 · Hosted by the Ministry of Culture, Sports and Tourism · Organized by Korea Arts Management Service and Arts Korea Lab",
   },
 ];
 
@@ -221,14 +221,14 @@ const projects = [
     title:
       "Art×Technology Convergence Project - Follow-up Support",
     tag: "Funded Project",
-    meta: "Arts Korea Lab (Korea Arts Management Service, Ministry of Culture, Sports and Tourism) · 2026",
+    meta: "Hosted by the Ministry of Culture, Sports and Tourism · Organized by Korea Arts Management Service and Arts Korea Lab · 2026",
     desc: "Selected for Arts Korea Lab's Art×Technology Convergence Project follow-up support, funding the production and exhibition of a sequel to the 2025 work.",
   },
   {
     year: "2025",
     title: "Art×Technology Super Testbed",
     tag: "Funded Project",
-    meta: "Arts Korea Lab, Dynamic XR Lab (Korea Arts Management Service, Ministry of Culture, Sports and Tourism) · 2025",
+    meta: "Hosted by the Ministry of Culture, Sports and Tourism · Organized by Korea Arts Management Service and Arts Korea Lab · Dynamic XR Lab · 2025",
     desc: "Selected for Arts Korea Lab's Art×Technology Super Testbed program; received training at the Dynamic XR Lab and produced and exhibited an art×technology convergence prototype.",
   },
   {
