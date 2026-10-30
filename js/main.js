@@ -30,7 +30,7 @@ const awards = [
   },
   {
     year: "2024",
-    title: "Official Selection, 4th Seongbuk Cheongchun Bulpae Film Festival",
+    title: "Official Selection, Short Film Competition, 4th Seongbuk Cheongchun Bulpae Film Festival",
     venue: "The Time of Walking in the Forest Path · Arirang Cine Center, Seoul",
   },
   {
@@ -164,9 +164,9 @@ const works = [
     embed: "2NYD9IhMjkU",
     desc: "A documentary short reflecting on what we discover or lose while walking a forest path.",
     details: [
-      "Selected, Korean Competition - 15th DMZ International Documentary Film Festival (2023)",
+      "Official Selection, Korean Competition (Shorts), 15th DMZ International Documentary Film Festival (2023)",
       "Screened, 2nd Banjjak Documentary Festival (2024)",
-      "Screened, 4th Seongbuk Cheongchun Bulpae Film Festival (2024)",
+      "Official Selection, Short Film Competition, 4th Seongbuk Cheongchun Bulpae Film Festival (2024)",
     ],
     links: [
       { label: "Watch on YouTube", url: "https://youtu.be/2NYD9IhMjkU" },
