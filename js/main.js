@@ -134,6 +134,8 @@ const works = [
     title: "Mourning Dew",
     year: "2024",
     medium: "Single-channel video, 1 min 39 sec",
+    image: "assets/works/mourning-dew-1.jpg",
+    images: ["assets/works/mourning-dew-2.jpg", "assets/works/mourning-dew-3.jpg", "assets/works/mourning-dew-4.jpg"],
     desc: "Mourning Dew collages imagery from two Nectar Ritual Paintings (Gamnodo), a genre of Korean Buddhist painting made to guide wandering spirits through ceremony, and maps it onto the surface of a digitally rendered moktak, the wooden percussion instrument used in Buddhist ritual. The work carries the painting's ceremonial purpose into a digital experience, bridging spiritual heritage and contemporary media.",
     details: ["Discussed in the ISEA 2025 paper Mourning Dew: Storytelling of Nectar Ritual Painting through the Digital Moktak"],
     links: [{ label: "Paper", url: "https://www.isea-symposium-archives.org/wp-content/uploads/2025/09/2025_Kim_Mourning-Dew-Storytelling-of-Nectar-Ritual-Painting-through-the-Digital-Moktak.pdf" }],
