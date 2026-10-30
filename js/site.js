@@ -63,13 +63,15 @@
 
   /* home: slideshow. Slide 0 is assets/main.jpg (skipped if the file is missing), then one still per work.
      Auto-advances every 4.2 s; arrows, swipe and ←/→ keys step through and pause the timer for a while. */
-  const HOME_IMAGE = { src: "assets/main.jpg", title: "Dana Kim", href: "work.html" };
+  // The home image is a still of The Superposed Memory, so it carries that caption and link,
+  // and the work's own slide is skipped to avoid showing it twice.
+  const HOME_IMAGE = { src: "assets/main.jpg", title: "The Superposed Memory", year: "2026", work: "the-superposed-memory", href: "project.html?id=the-superposed-memory" };
   function initShow() {
     const root = document.getElementById("show");
     if (!root) return;
     const frame = document.getElementById("showFrame"), cap = document.getElementById("showCap"), count = document.getElementById("showCount");
-    const slides = [{ ...HOME_IMAGE, year: "" }];
-    catalog().filter((i) => i.embed || i.image).forEach((i) => slides.push({ it: i, title: i.title, year: i.year, href: `project.html?id=${i.id}` }));
+    const slides = [{ ...HOME_IMAGE }];
+    catalog().filter((i) => (i.embed || i.image) && i.id !== HOME_IMAGE.work).forEach((i) => slides.push({ it: i, title: i.title, year: i.year, href: `project.html?id=${i.id}` }));
     const imgs = slides.map((sl) => {
       const img = document.createElement("img");
       img.alt = sl.title; img.decoding = "async";
