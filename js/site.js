@@ -33,6 +33,8 @@
     ? `<span class="pills">${links.map((l) => `<a class="pill" href="${E(l.url)}" target="_blank" rel="noopener">${E(linkLabel(l))}</a>`).join("")}</span>` : "";
   const authors = (html) => (typeof boldAuthor === "function" ? boldAuthor(html) : html);
 
+  // upcoming: true, or "YYYY-MM-DD" (counts as upcoming through that day)
+  const isUpcoming = (u) => u === true || (typeof u === "string" && new Date(u + "T23:59:59") >= new Date());
   const slug = (t) => String(t).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
 
   function catalog() {
@@ -40,7 +42,7 @@
     (typeof works !== "undefined" ? works : []).forEach((w, i) => {
       const parts = (w.medium || "").split(" · ");
       items.push({ id: slug(w.title), group: "artwork", year: w.year, title: w.title, line: parts[0] || "", venue: parts.slice(1).join(" · "),
-        embed: w.embed, image: w.image, images: w.images || [], desc: w.desc, details: w.details, keywords: w.keywords, links: w.links || [] });
+        embed: w.embed, image: w.image, images: w.images || [], desc: w.desc, details: w.details, keywords: w.keywords, links: w.links || [], upcoming: isUpcoming(w.upcoming) });
     });
     (typeof publications !== "undefined" ? publications : []).forEach((q, i) => {
       const tag = q.tag || "Publication";
@@ -112,13 +114,14 @@
       const items = all.filter((i) => i.group === group);
       if (group === "artwork") {
         root.className = "grid";
+        const up = (it) => it.upcoming ? '<span class="tag">Upcoming</span>' : "";
         root.innerHTML = items.map((it) => (it.image || it.embed) ? `
-          <a class="tile" href="project.html?id=${it.id}">
-            <img alt="" loading="lazy" data-id="${it.id}" />
+          <a class="tile${it.upcoming ? " tile--upcoming" : ""}" href="project.html?id=${it.id}">
+            <span class="tile__pic"><img alt="" loading="lazy" data-id="${it.id}" />${up(it)}</span>
             <span class="tile__cap">${E(it.title)}<span>${E(it.year)}</span></span>
           </a>` : `
           <a class="tile tile--text" href="project.html?id=${it.id}">
-            <span class="tile__cap">${E(it.title)}<span>${E(it.year)}</span></span>
+            <span class="tile__cap">${E(it.title)}<span>${E(it.year)}</span>${up(it)}</span>
             <span class="tile__line">${E(it.line)}${it.venue ? " · " + E(it.venue) : ""}</span>
             <span class="tile__note">Images coming soon</span>
           </a>`).join("");
@@ -160,7 +163,7 @@
     const k = siblings.indexOf(it);
     const prev = siblings[k - 1], next = siblings[k + 1];
     root.innerHTML = `
-      <header class="proj__head"><h1 class="proj__title">${E(it.title)}</h1><span class="proj__year">${E(it.year)}</span></header>
+      <header class="proj__head"><h1 class="proj__title">${E(it.title)}</h1><span class="proj__year">${E(it.year)}</span>${it.upcoming ? '<span class="tag">Upcoming</span>' : ""}</header>
       ${media ? `<div class="proj__body">${media}${meta}</div>`
               : `<p class="proj__line">${E(it.line)}${it.venue ? " · " + authors(E(it.credit || it.venue)) : ""}</p>`}
       ${it.desc ? `<p class="proj__desc">${E(it.desc)}</p>` : ""}
@@ -197,7 +200,7 @@
       E(p.meta || "") + pills(p.demo ? [{ label: "Demo", url: p.demo }] : [])));
     const acts = (typeof activities !== "undefined" ? activities : []).map((a) => item(a.year, a.link ? `<a href="${E(a.link)}" target="_blank" rel="noopener">${E(a.title)}</a>` : E(a.title), E(a.desc || "")));
     const shows = (typeof exhibitions !== "undefined" ? exhibitions : []).map((x) => item(x.year,
-      `${x.link ? `<a href="${E(x.link)}" target="_blank" rel="noopener">${E(x.title)}</a>` : E(x.title)}${x.upcoming ? ' <span class="tag">Upcoming</span>' : ""}`,
+      `${x.link ? `<a href="${E(x.link)}" target="_blank" rel="noopener">${E(x.title)}</a>` : E(x.title)}${isUpcoming(x.upcoming) ? ' <span class="tag">Upcoming</span>' : ""}`,
       [x.venue, x.meta].filter(Boolean).map(E).join(" · ")));
     const prizes = (typeof awards !== "undefined" ? awards : []).map((a) => item(a.year, E(a.title), E(a.venue || "")));
     const areas = [];
