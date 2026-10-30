@@ -64,7 +64,7 @@ const exhibitions = [
     year: "2025",
     title: "Peer to Peer Labday",
     venue: "Arts Korea Lab 6F Showroom, Seoul",
-    meta: "2025 Arts Korea Lab Super Testbed showcase · Dynamic XR Lab · Quantum Memory Space (VR), Bench Scene, Memory Sphere · 4–6 Dec 2025",
+    meta: "2025 Arts Korea Lab Super Testbed showcase · Dynamic XR Lab · Quantum Memory Space (VR), Bench Scene · 4–6 Dec 2025",
   },
 ];
 
@@ -115,20 +115,26 @@ const works = [
     links: [{ label: "Watch on YouTube", url: "https://youtu.be/oKY3vPOFfLc" }],
   },
   {
-    title: "Memory Sphere",
-    year: "2025",
-    medium: "Single-channel video, projection on canvas, 35 sec · Arts Korea Lab, Seoul",
-    embed: "oKY3vPOFfLc",
-    desc: "A short piece presenting the latent structure of memory through the principles of Gaussians and spherical harmonics (SH).",
-    links: [{ label: "Watch on YouTube", url: "https://youtu.be/oKY3vPOFfLc" }],
-  },
-  {
     title: "Face to Face",
     year: "2024",
-    medium: "Projection mapping · KAIST Dept. of Industrial Design",
+    medium: "Projection mapping on a laser-cut architectural model · KAIST Dept. of Industrial Design (Immersive Space, ID430)",
     embed: "ziaP3HuxB0M",
-    desc: "A projection-mapping project illuminating Daeseong-dong - the northernmost village in Korea - from far and near.",
+    image: "assets/works/face-to-face-1.jpg",
+    images: ["assets/works/face-to-face-1.jpg", "assets/works/face-to-face-2.jpg"],
+    desc: "Face to Face looks at Daeseong-dong, the South Korean village inside the DMZ that faces Kijong-dong across the border, as a place where binary ideas meet: individual and society, citizen and nation, peace and war, private and public, South and North. The projection unfolds in two halves. From a distance, the outline of the village becomes the pupil of an eye; the lines that divide the region extend from it, political and military facilities sit at the segment points, and news footage surrounding the village plays on either side. Up close, the eye opens onto daily life inside the village: a laser-cut architectural model of its buildings, roads and waterways receives projection-mapped video, photographs and sound.",
+    details: [
+      "With Yerim Han · Immersive Space (ID430), KAIST Dept. of Industrial Design, June 2024",
+      "Architectural model: 3D modeling, rendering, laser cutting · Projection mapping: video, photo, sound",
+    ],
     links: [{ label: "Watch on YouTube", url: "https://www.youtube.com/watch?v=ziaP3HuxB0M" }],
+  },
+  {
+    title: "Mourning Dew",
+    year: "2024",
+    medium: "Single-channel video, 1 min 39 sec",
+    desc: "Mourning Dew collages imagery from two Nectar Ritual Paintings (Gamnodo), a genre of Korean Buddhist painting made to guide wandering spirits through ceremony, and maps it onto the surface of a digitally rendered moktak, the wooden percussion instrument used in Buddhist ritual. The work carries the painting's ceremonial purpose into a digital experience, bridging spiritual heritage and contemporary media.",
+    details: ["Discussed in the ISEA 2025 paper Mourning Dew: Storytelling of Nectar Ritual Painting through the Digital Moktak"],
+    links: [{ label: "Paper", url: "https://www.isea-symposium-archives.org/wp-content/uploads/2025/09/2025_Kim_Mourning-Dew-Storytelling-of-Nectar-Ritual-Painting-through-the-Digital-Moktak.pdf" }],
   },
   {
     title: "The Time of Walking in the Forest Path",
