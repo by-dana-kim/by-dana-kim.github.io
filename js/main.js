@@ -128,7 +128,6 @@ const works = [
     year: "2024",
     medium: "Projection mapping on a laser-cut architectural model · KAIST Dept. of Industrial Design (Immersive Space, ID430)",
     embed: "ziaP3HuxB0M",
-    image: "assets/works/face-to-face-1.jpg",
     images: ["assets/works/face-to-face-1.jpg", "assets/works/face-to-face-2.jpg"],
     desc: "Face to Face looks at Daeseong-dong, the South Korean village inside the DMZ that faces Kijong-dong across the border, as a place where binary ideas meet: individual and society, citizen and nation, peace and war, private and public, South and North. The projection approaches the village in stages. From afar, the outline of the village reads as the pupil of an eye; the lines that divide the region radiate from it, military and political facilities sit along those lines, and news footage about the village plays on either side. Each time the viewer steps over another fence, the view moves one step closer, and what was an outline on a map becomes a place with people in it. At the end the eye opens onto everyday life inside the village: a laser-cut architectural model of its buildings, roads and waterways, animated with projection-mapped video, photographs and sound.",
     details: [

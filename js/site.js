@@ -115,13 +115,20 @@
       if (group === "artwork") {
         root.className = "grid";
         const up = (it) => it.upcoming ? '<span class="tag">Upcoming</span>' : "";
+        // a soft, blurred field for upcoming works that have no image yet; hue varies per title
+        const hue = (t) => [...t].reduce((h, ch) => (h * 31 + ch.charCodeAt(0)) % 360, 7);
         root.innerHTML = items.map((it) => (it.image || it.embed) ? `
-          <a class="tile${it.upcoming ? " tile--upcoming" : ""}" href="project.html?id=${it.id}">
+          <a class="tile" href="project.html?id=${it.id}">
             <span class="tile__pic"><img alt="" loading="lazy" data-id="${it.id}" />${up(it)}</span>
             <span class="tile__cap">${E(it.title)}<span>${E(it.year)}</span></span>
+          </a>` : it.upcoming ? `
+          <a class="tile tile--soon" href="project.html?id=${it.id}">
+            <span class="tile__pic tile__pic--soft" style="--h:${hue(it.title)}"><i></i><span class="tile__soon">Upcoming</span></span>
+            <span class="tile__cap">${E(it.title)}<span>${E(it.year)}</span></span>
+            <span class="tile__line">${E(it.line)}${it.venue ? " · " + E(it.venue) : ""}</span>
           </a>` : `
           <a class="tile tile--text" href="project.html?id=${it.id}">
-            <span class="tile__cap">${E(it.title)}<span>${E(it.year)}</span>${up(it)}</span>
+            <span class="tile__cap">${E(it.title)}<span>${E(it.year)}</span></span>
             <span class="tile__line">${E(it.line)}${it.venue ? " · " + E(it.venue) : ""}</span>
             <span class="tile__note">Images coming soon</span>
           </a>`).join("");
