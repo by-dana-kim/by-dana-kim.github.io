@@ -44,7 +44,7 @@
     (typeof works !== "undefined" ? works : []).forEach((w, i) => {
       const parts = (w.medium || "").split(" · ");
       items.push({ id: slug(w.title), group: "artwork", year: w.year, title: w.title, line: parts[0] || "", venue: parts.slice(1).join(" · "),
-        embed: w.embed, image: w.image, images: w.images || [], desc: w.desc, details: w.details, keywords: w.keywords, links: w.links || [], upcoming: isUpcoming(w.upcoming), gridBlur: !!w.gridBlur && isUpcoming(w.upcoming) });
+        embed: w.embed, image: w.image, homeImage: w.homeImage, images: w.images || [], desc: w.desc, details: w.details, keywords: w.keywords, links: w.links || [], upcoming: isUpcoming(w.upcoming), gridBlur: !!w.gridBlur && isUpcoming(w.upcoming) });
     });
     (typeof publications !== "undefined" ? publications : []).forEach((q, i) => {
       const tag = q.tag || "Publication";
@@ -69,7 +69,7 @@
     if (!root) return;
     const frame = document.getElementById("showFrame"), cap = document.getElementById("showCap"), count = document.getElementById("showCount");
     const slides = [];
-    catalog().filter((i) => i.embed || i.image).forEach((i) => slides.push({ it: i, title: i.title, year: i.year, href: `project.html?id=${i.id}` }));
+    catalog().filter((i) => i.embed || i.image || i.homeImage).forEach((i) => slides.push({ it: { ...i, image: i.homeImage || i.image }, title: i.title, year: i.year, href: `project.html?id=${i.id}` }));
     if (!slides.length) return;
     const imgs = slides.map((sl) => {
       const img = document.createElement("img");
