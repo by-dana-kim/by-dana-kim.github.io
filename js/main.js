@@ -60,6 +60,12 @@ const exhibitions = [
     meta: "Spheres of Memory · 4–8 Nov 2026",
     upcoming: true,
   },
+  {
+    year: "2025",
+    title: "Peer to Peer: 2025 Arts Korea Lab Super Testbed Showcase",
+    venue: "Arts Korea Lab 6F Showroom, Seoul",
+    meta: "Dynamic XR Lab · Quantum Memory Space (VR), Bench Scene, Memory Sphere · 4–6 Dec 2025",
+  },
 ];
 
 /* --- Artwork: works ----------------------------------------
