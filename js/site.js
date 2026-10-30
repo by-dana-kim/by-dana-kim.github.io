@@ -1,4 +1,4 @@
-/* preview2 — sidebar layout. Data comes from ../js/main.js (works, publications, projects, ...). */
+/* Site script — sidebar layout. Data comes from js/main.js (works, publications, projects, ...). */
 (function () {
   const E = typeof esc === "function" ? esc : (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const YT = (id, q) => `https://img.youtube.com/vi/${id}/${q}.jpg`;
@@ -33,18 +33,48 @@
   }
   const GROUPS = { artwork: "Artwork", research: "Research", projects: "Funded projects" };
 
-  /* home: one still from the works, a different one on each visit */
-  function initFront() {
-    const el = document.getElementById("front");
-    if (!el) return;
-    const pool = catalog().filter((i) => i.embed);
-    if (!pool.length) return;
-    const pick = pool[Math.floor(Math.random() * pool.length)];
-    el.href = `project.html?id=${pick.id}`;
-    const img = el.querySelector("img");
-    img.alt = pick.title;
-    document.getElementById("frontCap").innerHTML = `<b>${E(pick.title)}</b> · ${E(pick.year)}`;
-    ytImage(img, pick.embed, () => el.classList.add("is-empty"));
+  /* home: slideshow. Slide 0 is assets/main.jpg (skipped if the file is missing), then one still per work.
+     Auto-advances every 5 s; arrows, swipe and ←/→ keys step through and pause the timer for a while. */
+  const HOME_IMAGE = { src: "assets/main.jpg", title: "Dana Kim", href: "work.html" };
+  function initShow() {
+    const root = document.getElementById("show");
+    if (!root) return;
+    const frame = document.getElementById("showFrame"), cap = document.getElementById("showCap"), count = document.getElementById("showCount");
+    const slides = [{ ...HOME_IMAGE, year: "" }];
+    catalog().filter((i) => i.embed).forEach((i) => slides.push({ yt: i.embed, title: i.title, year: i.year, href: `project.html?id=${i.id}` }));
+    const imgs = slides.map((sl) => {
+      const img = document.createElement("img");
+      img.alt = sl.title; img.decoding = "async";
+      frame.appendChild(img);
+      if (sl.yt) ytImage(img, sl.yt, () => drop(sl));
+      else { img.src = sl.src; img.onerror = () => drop(sl); }
+      return img;
+    });
+    let k = 0, timer = 0, live = slides.slice();
+    const render = () => {
+      if (!live.length) return;
+      k = (k + live.length) % live.length;
+      const sl = live[k];
+      imgs.forEach((im, n) => im.classList.toggle("is-on", slides[n] === sl));
+      cap.href = sl.href;
+      cap.innerHTML = `<b>${E(sl.title)}</b>${sl.year ? " · " + E(sl.year) : ""}`;
+      count.textContent = live.length > 1 ? `${k + 1} / ${live.length}` : "";
+    };
+    const drop = (sl) => { const n = live.indexOf(sl); if (n < 0) return; live.splice(n, 1); if (n < k) k--; render(); };
+    const step = (d) => { k += d; render(); pause(); };
+    const start = () => { stop(); if (!matchMedia("(prefers-reduced-motion: reduce)").matches) timer = setInterval(() => { k++; render(); }, 5000); };
+    const stop = () => { if (timer) clearInterval(timer); timer = 0; };
+    let resume = 0;
+    const pause = () => { stop(); clearTimeout(resume); resume = setTimeout(start, 12000); };
+    document.getElementById("showPrev").addEventListener("click", () => step(-1));
+    document.getElementById("showNext").addEventListener("click", () => step(1));
+    window.addEventListener("keydown", (e) => { if (e.key === "ArrowLeft") step(-1); else if (e.key === "ArrowRight") step(1); });
+    frame.addEventListener("mouseenter", stop); frame.addEventListener("mouseleave", start);
+    let x0 = null;
+    frame.addEventListener("touchstart", (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+    frame.addEventListener("touchend", (e) => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; x0 = null; if (Math.abs(dx) > 40) step(dx < 0 ? 1 : -1); });
+    document.addEventListener("visibilitychange", () => (document.hidden ? stop() : start()));
+    render(); start();
   }
 
   /* work: artwork grid / research list / funded list */
@@ -134,5 +164,5 @@
     root.innerHTML = row("Education", edu) + row("Experience", exp) + row("Publications &amp; talks", pubs) + row("Funded projects", funded) + row("Activities", acts) + row("Research area", areas);
   }
 
-  document.addEventListener("DOMContentLoaded", () => { initFront(); initWork(); initProject(); initAbout(); initCV(); });
+  document.addEventListener("DOMContentLoaded", () => { initShow(); initWork(); initProject(); initAbout(); initCV(); });
 })();

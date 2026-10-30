@@ -3,22 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Work — Dana Kim</title>
+  <title>CV — Dana Kim</title>
   <meta name="description" content="Dana Kim · Works, research and projects." />
-  <meta name="robots" content="noindex" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
   <link rel="stylesheet" href="css/site.css" />
 </head>
-<body class="p-work">
+<body class="p-cv">
   <aside class="side">
     <a class="side__name" href="index.html">Dana Kim</a>
     <nav class="side__nav" aria-label="Primary">
-      <a href="work.html" aria-current="page">Work</a>
+      <a href="work.html">Work</a>
       <a href="about.html">About</a>
-      <a href="cv.html">CV</a>
+      <a href="cv.html" aria-current="page">CV</a>
     </nav>
     <div class="side__contact">
       <a href="mailto:concom1416@gmail.com">concom1416@gmail.com</a>
@@ -28,15 +27,10 @@
   </aside>
 
   <main class="main">
-    <nav class="subnav" aria-label="Work sections">
-      <a href="#artwork" data-group="artwork">Artwork</a>
-      <a href="#research" data-group="research">Research</a>
-      <a href="#projects" data-group="projects">Funded projects</a>
-    </nav>
-    <section id="workRoot" aria-live="polite"></section>
+    <section class="cv" id="cvRoot"></section>
   </main>
 
-  <script src="../js/main.js"></script>
+  <script src="js/main.js"></script>
   <script src="js/site.js"></script>
 </body>
 </html>

@@ -4,77 +4,43 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dana Kim</title>
-  <meta name="description" content="Dana Kim · Artist. Archive of works, publications and profile." />
+  <meta name="description" content="Dana Kim · Works, research and projects." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/site.css" />
 </head>
-<body class="page page--home">
-  <header class="masthead">
-    <div class="masthead__inner">
-      <a href="index.html" class="wordmark">Dana&nbsp;Kim</a>
-      <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav">
-        <span></span><span></span><span></span>
-      </button>
-      <nav class="nav" id="primary-nav" aria-label="Primary">
-        <a href="profile.html">Profile</a>
-        <a href="artwork.html">Artwork</a>
-        <a href="academic.html">Academic</a>
-        <a href="project.html">Project</a>
-      </nav>
+<body class="p-home">
+  <aside class="side">
+    <a class="side__name" href="index.html">Dana Kim</a>
+    <nav class="side__nav" aria-label="Primary">
+      <a href="work.html">Work</a>
+      <a href="about.html">About</a>
+      <a href="cv.html">CV</a>
+    </nav>
+    <div class="side__contact">
+      <a href="mailto:concom1416@gmail.com">concom1416@gmail.com</a>
+      <a href="https://www.linkedin.com/in/dana-kim-0b0270181" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/by-dana-kim" target="_blank" rel="noopener">GitHub</a>
     </div>
-  </header>
+  </aside>
 
-  <main>
-    <!-- Cover -->
-    <section class="cover">
-      <div class="cover__head">
-        <h1 class="cover__name"><span class="hl">Dana</span><br /><span class="hl hl--grad cover__name-indent">Kim</span></h1>
-        <p class="cover__lead">
-          New media artist and researcher exploring cultural phenomena, communication,
-          and audience-driven experience.
-        </p>
+  <main class="main">
+    <section class="show" id="show" aria-roledescription="carousel" aria-label="Selected images">
+      <div class="show__frame" id="showFrame"></div>
+      <div class="show__bar">
+        <a class="show__cap" id="showCap" href="work.html"></a>
+        <div class="show__ctl">
+          <span class="show__count" id="showCount"></span>
+          <button class="show__btn" id="showPrev" type="button" aria-label="Previous image">←</button>
+          <button class="show__btn" id="showNext" type="button" aria-label="Next image">→</button>
+        </div>
       </div>
     </section>
-
-    <!-- Index / Contents -->
-    <nav class="index" aria-label="Sections">
-      <a class="index__item" href="profile.html">
-        <span class="index__num">01</span>
-        <span class="index__title">Profile</span>
-        <span class="index__desc">Bio · Education · Experience · Research</span>
-        <span class="index__go" aria-hidden="true">→</span>
-      </a>
-      <a class="index__item" href="artwork.html">
-        <span class="index__num">02</span>
-        <span class="index__title">Artwork</span>
-        <span class="index__desc">Archive of exhibited works</span>
-        <span class="index__go" aria-hidden="true">→</span>
-      </a>
-      <a class="index__item" href="academic.html">
-        <span class="index__num">03</span>
-        <span class="index__title">Academic</span>
-        <span class="index__desc">Papers · Thesis · Talks · Research</span>
-        <span class="index__go" aria-hidden="true">→</span>
-      </a>
-      <a class="index__item" href="project.html">
-        <span class="index__num">04</span>
-        <span class="index__title">Project</span>
-        <span class="index__desc">Funded research &amp; interactive demo</span>
-        <span class="index__go" aria-hidden="true">→</span>
-      </a>
-    </nav>
   </main>
 
-  <footer class="colophon">
-    <div class="colophon__inner">
-      <span>© <span data-year></span> Dana Kim</span>
-      <a href="mailto:dana.kim@kaist.ac.kr">dana.kim@kaist.ac.kr</a>
-    </div>
-  </footer>
-
   <script src="js/main.js"></script>
+  <script src="js/site.js"></script>
 </body>
 </html>

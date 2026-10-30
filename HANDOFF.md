@@ -21,12 +21,14 @@
 ```
 .
 ├── index.html      # Home (커버 + 섹션 목차)
-├── profile.html    # Profile (About · Education · Experience · Research Area · Contact)
-├── artwork.html    # Artwork (확장 리스트: 클릭 시 영상 임베드 + 설명)
-├── academic.html   # Academic (Publications · Funded Research · Academic Activities)
+├── work.html       # Work (Artwork grid · Research · Funded projects)
+├── project.html    # One work / paper / project, read from ?id=
+├── about.html      # About (bio · research area · contact)
+├── cv.html         # CV (education · experience · publications · projects · activities)
 ├── project.html    # Project (확장 리스트: 프로젝트 + 선택적 데모 임베드)
-├── css/style.css   # 전체 스타일 (디자인 토큰 · 컴포넌트 · 인터랙션)
-├── js/main.js      # 모든 콘텐츠 데이터 + 렌더링 + 인터랙션
+├── css/site.css   # 전체 스타일 (디자인 토큰 · 컴포넌트 · 인터랙션)
+├── js/main.js      # 모든 콘텐츠 데이터 (여기만 수정)
+├── js/site.js      # 페이지 렌더링 (home · work · project · about · cv)
 └── .claude/launch.json  # 로컬 미리보기용 dev server 정의 (name: "portfolio", 포트 5173)
 ```
 
@@ -61,7 +63,7 @@
 
 ## 4. 디자인 시스템
 
-`css/style.css` 최상단 `:root`에 토큰이 정의돼 있습니다.
+`css/site.css` 최상단 `:root`에 토큰이 정의돼 있습니다.
 
 - **배경**: 순백 `--paper: #ffffff` / **텍스트**: 차콜 `--ink: #17171a`
 - **메인 키컬러**: **퍼플** `--clay: #7c3aed` (네비·라벨·점·호버·선택영역 등)

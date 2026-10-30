@@ -8,12 +8,14 @@ Dana Kim의 개인 포트폴리오 · 전시 작품 아카이브. 순수 HTML / 
 ```
 .
 ├── index.html      # Home (cover · section index)
-├── profile.html    # Profile (bio · education · experience · research · contact)
-├── artwork.html    # Artwork (expandable list — click a row to open details)
-├── academic.html   # Academic (publications · funded research · activities)
+├── work.html       # Work (Artwork grid · Research · Funded projects)
+├── project.html    # One work / paper / project, read from ?id=
+├── about.html      # About (bio · research area · contact)
+├── cv.html         # CV (education · experience · publications · projects · activities)
 ├── project.html    # Project (funded research + interactive demo)
-├── css/style.css   # design tokens · typography · layout
-└── js/main.js      # data arrays + rendering
+├── css/site.css   # design tokens · typography · layout
+├── js/main.js      # data arrays (edit content here)
+└── js/site.js      # page rendering (home · work · project · about · cv)
 ```
 
 기본 언어는 영어입니다(한글 고유명사 제외).
@@ -26,8 +28,8 @@ Dana Kim의 개인 포트폴리오 · 전시 작품 아카이브. 순수 HTML / 
   - `desc`: 펼쳤을 때 보이는 설명 · `details`: 수상/상영 등 목록 · `links`: `[{ label, url }]`
 - **Academic**: `publications`(논문·학위논문·발표) · `grants`(지원사업) · `activities`(활동)
   - `tag`가 제목 위 `[ ]` 라벨, `abstract`가 있으면 접이식으로 표시
-- **소개(About) · 연락처**: `profile.html` 텍스트 직접 편집
-- **색상 / 폰트**: `css/style.css` 상단 `:root` 변수
+- **소개(About) · 연락처**: `about.html` 텍스트 직접 편집
+- **색상 / 폰트**: `css/site.css` 상단 `:root` 변수
 
 ## 이미지 추가
 

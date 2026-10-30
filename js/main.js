@@ -6,7 +6,7 @@
 /* --- Profile: education ------------------------------------- */
 const education = [
   { year: "2024–26", title: "MS, Metaverse / Culture Technology", venue: "KAIST (Korea Advanced Institute of Science and Technology) · Feb 2024 – Aug 2026" },
-  { year: "2012–17", title: "BA, Communications (언론홍보영상학)", venue: "Yonsei University (Minor in Business Administration)" },
+  { year: "2012–17", title: "BA, Communications", venue: "Yonsei University (Minor in Business Administration)" },
 ];
 
 /* --- Profile: career / experience --------------------------- */
@@ -59,7 +59,7 @@ const works = [
     links: [{ label: "Watch on YouTube", url: "https://www.youtube.com/watch?v=ziaP3HuxB0M" }],
   },
   {
-    title: "숲길을 걷는 시간 (The Time of Walking in the Forest Path)",
+    title: "The Time of Walking in the Forest Path",
     year: "2023",
     medium: "Documentary short, 12 min",
     embed: "2NYD9IhMjkU",
@@ -82,7 +82,7 @@ const publications = [
     year: "2026",
     title:
       "Quantum Memory Space: A Model of Superposition and Observation in Place Memory and Its Visual Implementation",
-    desc: "Master's Thesis, Graduate School of Metaverse, KAIST. 양자 기억 공간: 장소기억의 중첩과 관측에 대한 모델과 시각화 구현.",
+    desc: "Master's Thesis, Graduate School of Metaverse, KAIST.",
     tag: "Master's Thesis",
     link: "",
     abstract:
@@ -135,25 +135,25 @@ const projects = [
   {
     year: "2026",
     title:
-      "Art×Technology Convergence Project — Follow-up Support (예술기술 융합 프로젝트 후속지원)",
+      "Art×Technology Convergence Project — Follow-up Support",
     tag: "Funded Project",
-    meta: "문화체육관광부(Ministry of Culture, Sports and Tourism) · 예술경영지원센터(Korea Arts Management Service) · 아트코리아랩(Arts Korea Lab) · 2026",
-    desc: "Selected for Arts Korea Lab's Art×Technology Convergence Project follow-up support, funding the production and exhibition of a sequel to the 2025 work. 아트코리아랩 예술기술 융합 프로젝트 후속지원 사업에 선정되어 2025년 작품의 후속 작품 제작 및 전시를 지원받고 있다.",
+    meta: "Ministry of Culture, Sports and Tourism · Korea Arts Management Service · Arts Korea Lab · 2026",
+    desc: "Selected for Arts Korea Lab's Art×Technology Convergence Project follow-up support, funding the production and exhibition of a sequel to the 2025 work.",
   },
   {
     year: "2025",
-    title: "Art×Technology Super Testbed (예술기술 융합 수퍼 테스트베드)",
+    title: "Art×Technology Super Testbed",
     tag: "Funded Project",
-    meta: "문화체육관광부(Ministry of Culture, Sports and Tourism) · 예술경영지원센터(Korea Arts Management Service) · 아트코리아랩(Arts Korea Lab) · Dynamic XR Lab · 2025",
-    desc: "Selected for Arts Korea Lab's Art×Technology Super Testbed program; received training at the Dynamic XR Lab and produced and exhibited an art×technology convergence prototype. 아트코리아랩 예술기술 융합 수퍼 테스트베드 사업에 선정되어, 다이내믹 XR 랩에서 관련 교육을 받고 예술×기술 융합 기반의 작품 프로토타입을 제작·전시하였다.",
+    meta: "Ministry of Culture, Sports and Tourism · Korea Arts Management Service · Arts Korea Lab · Dynamic XR Lab · 2025",
+    desc: "Selected for Arts Korea Lab's Art×Technology Super Testbed program; received training at the Dynamic XR Lab and produced and exhibited an art×technology convergence prototype.",
   },
   {
     year: "2025",
     title:
-      "Metaverse Implementation of Digital Memory Using Moiré Patterns of 2D Materials (2D 물질의 모아레 패턴을 활용한 디지털 기억의 메타버스 구현)",
+      "Metaverse Implementation of Digital Memory Using Moiré Patterns of 2D Materials",
     tag: "Funded Research",
-    meta: "한국과학기술원(KAIST) 연구처 · 석박사 모험연구사업(Master's & Ph.D. Adventurous Research) · Apr–Nov 2025",
-    desc: "This research develops a system to visualize and interact with collective memory in virtual reality by drawing on the moiré patterns and superposition principles of graphene, a 2D material, together with its quantum-physical properties. 2D 물질인 그래핀의 모아레 패턴과 중첩 원리, 양자물리학적 특성을 활용하여 집단 기억을 가상현실에서 시각화하고 상호작용할 수 있는 시스템을 개발하는 것을 목표로 한다.",
+    meta: "KAIST Office of Research · Master's & Ph.D. Adventurous Research Program · Apr–Nov 2025",
+    desc: "This research develops a system to visualize and interact with collective memory in virtual reality by drawing on the moiré patterns and superposition principles of graphene, a 2D material, together with its quantum-physical properties.",
     demo: "https://quantum-memory-interference.ai.studio",
   },
 ];

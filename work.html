@@ -3,16 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Project — Dana Kim</title>
+  <title>Work — Dana Kim</title>
   <meta name="description" content="Dana Kim · Works, research and projects." />
-  <meta name="robots" content="noindex" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
   <link rel="stylesheet" href="css/site.css" />
 </head>
-<body class="p-project">
+<body class="p-work">
   <aside class="side">
     <a class="side__name" href="index.html">Dana Kim</a>
     <nav class="side__nav" aria-label="Primary">
@@ -28,10 +27,15 @@
   </aside>
 
   <main class="main">
-    <article class="proj" id="projectRoot"></article>
+    <nav class="subnav" aria-label="Work sections">
+      <a href="#artwork" data-group="artwork">Artwork</a>
+      <a href="#research" data-group="research">Research</a>
+      <a href="#projects" data-group="projects">Funded projects</a>
+    </nav>
+    <section id="workRoot" aria-live="polite"></section>
   </main>
 
-  <script src="../js/main.js"></script>
+  <script src="js/main.js"></script>
   <script src="js/site.js"></script>
 </body>
 </html>
