@@ -17,7 +17,7 @@ const experience = [
 ];
 
 /* --- Profile: research area --------------------------------- */
-const researchThemes = ["Place Memory", "Mourning", "Community"];
+const researchThemes = ["Place Memory", "Presence and Absence", "Collective Remembering"];
 const researchMedia = ["Immersive Storytelling", "3D Visualization", "Documentary Film", "Human-Computer Interaction"];
 const researchAreas = [...researchThemes, ...researchMedia];
 
