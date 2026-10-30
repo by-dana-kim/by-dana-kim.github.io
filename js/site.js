@@ -33,7 +33,7 @@
     ? `<span class="pills">${links.map((l) => `<a class="pill" href="${E(l.url)}" target="_blank" rel="noopener">${E(linkLabel(l))}</a>`).join("")}</span>` : "";
   const authors = (html) => (typeof boldAuthor === "function" ? boldAuthor(html) : html);
   // venue line for a publication: italic venue, year, and the type unless the venue already names it
-  const pubLine = (venue, year, type) => `<em>${E(venue)}</em>, ${E(year)}${type && !String(venue).toLowerCase().includes(String(type).toLowerCase()) ? " · " + E(type) : ""}`;
+  const pubLine = (venue, year, type) => `<em>${E(venue)}</em>${String(venue).includes(String(year)) ? "" : ", " + E(year)}${type && !String(venue).toLowerCase().includes(String(type).toLowerCase()) ? " · " + E(type) : ""}`;
 
   // upcoming: true, or "YYYY-MM-DD" (counts as upcoming through that day)
   const isUpcoming = (u) => u === true || (typeof u === "string" && new Date(u + "T23:59:59") >= new Date());
