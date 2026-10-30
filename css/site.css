@@ -58,6 +58,7 @@ img { max-width: 100%; }
 .tile img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: #f1f2f2; }
 .tile--text { border-top: 1px solid var(--line); padding-top: 12px; }
 .tile--text .tile__cap { margin-top: 0; }
+.tile__note { display: block; margin-top: 10px; font-size: 12px; color: var(--dim); }
 .tile__line { display: block; margin-top: 4px; font-size: 13px; line-height: 1.5; color: var(--ink-2); }
 .tile__cap { display: block; margin-top: 9px; font-size: 13.5px; line-height: 1.4; color: var(--ink); }
 .tile__cap span { color: var(--dim); margin-left: 6px; }

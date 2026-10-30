@@ -77,15 +77,6 @@ const exhibitions = [
 ------------------------------------------------------------- */
 const works = [
   {
-    title: "The Superposed Memory",
-    year: "2026",
-    medium: "Single-channel video projection, c. 10 min loop · VISAP 2026, MIT Met Warehouse, Cambridge, MA",
-    image: "assets/works/the-superposed-memory.jpg",
-    desc: "The Superposed Memory grew from photographs accumulated over years of walking Gyeongui Line Forest Park in Seoul. Scenes from different periods bound to the same place are trained into a single 3D Gaussian Splatting space, against the technique's assumption that all its input photographs show one moment. Instead of converging into a single image, different times of one place remain latent together and surface by turns as the viewpoint moves. In the installation the superposed scene is projected in a loop of about 10 minutes, and visitors sit on a park bench in front of it, as they would on the path itself.",
-    details: ["Selected for VISAP 2026: Amplification, the IEEE VIS Arts Program exhibition (MIT Met Warehouse, Cambridge, MA, 9–13 Nov 2026)"],
-    links: [{ label: "VISAP 2026 artwork page", url: "https://visap.net/2026/artwork-8.html" }],
-  },
-  {
     title: "Spheres of Memory",
     year: "2026",
     medium: "Interactive media · Arts Korea Lab AI-Convergence Festival 2026, Space S-50, Seoul",
@@ -99,11 +90,21 @@ const works = [
     desc: "A photographic work selected as a finalist in the 4th Coherence Art Competition of the IBS Center for Quantum Nanoscience. To be shown at the IBS Science Culture Center in Daejeon in 2027.",
   },
   {
+    title: "The Superposed Memory",
+    year: "2026",
+    medium: "Single-channel video projection, c. 10 min loop · VISAP 2026, MIT Met Warehouse, Cambridge, MA",
+    image: "assets/works/the-superposed-memory.jpg",
+    desc: "The Superposed Memory grew from photographs accumulated over years of walking Gyeongui Line Forest Park in Seoul. Scenes from different periods bound to the same place are trained into a single 3D Gaussian Splatting space, against the technique's assumption that all its input photographs show one moment. Instead of converging into a single image, different times of one place remain latent together and surface by turns as the viewpoint moves. In the installation the superposed scene is projected in a loop of about 10 minutes, and visitors sit on a park bench in front of it, as they would on the path itself.",
+    details: ["Selected for VISAP 2026: Amplification, the IEEE VIS Arts Program exhibition (MIT Met Warehouse, Cambridge, MA, 9–13 Nov 2026)"],
+    links: [{ label: "VISAP 2026 artwork page", url: "https://visap.net/2026/artwork-8.html" }],
+  },
+  {
     title: "Quantum Memory Space (VR)",
     year: "2025",
     medium: "VR / interactive media · Arts Korea Lab, Seoul",
     embed: "oKY3vPOFfLc",
-    desc: "A VR environment that combines viewpoint-conditioned observation with emotion-based visual modulation, built on the Quantum Memory Space (QMS) model.",
+    desc: "A VR environment built on the Quantum Memory Space (QMS) model, which treats the memory of a place as a state in which several memories coexist latently and surface differently depending on how they are observed. Scenes of Gyeongui Line Forest Park recorded at different times are trained together in 3D Gaussian Splatting so that their superposition becomes visible. In VR, the viewer's position and gaze condition which time comes forward, and an emotion-based visual modulation shifts the color and density of the scene, so the same place is met anew with each observation.",
+    details: ["Practice case of the master's thesis Quantum Memory Space: A Model of Superposition and Observation in Place Memory and Its Visual Implementation (KAIST, 2026)"],
     links: [{ label: "Watch on YouTube", url: "https://youtu.be/oKY3vPOFfLc" }],
   },
   {
@@ -111,7 +112,8 @@ const works = [
     year: "2025",
     medium: "Single-channel video projection, 4 min · Arts Korea Lab, Seoul",
     embed: "oKY3vPOFfLc",
-    desc: "A single-channel realization of viewpoint-conditioned observation within the QMS model.",
+    desc: "A single-channel realization of viewpoint-conditioned observation within the Quantum Memory Space model. Recordings of one spot in Gyeongui Line Forest Park, made across different seasons and times of day, are trained into a single 3D Gaussian Splatting scene instead of being kept as separate files. As the virtual camera moves, the different times of the place surface by turns, so that one bench holds several moments at once and the view never settles into a single image.",
+    details: ["Practice case of the master's thesis Quantum Memory Space (KAIST, 2026)"],
     links: [{ label: "Watch on YouTube", url: "https://youtu.be/oKY3vPOFfLc" }],
   },
   {
@@ -121,7 +123,7 @@ const works = [
     embed: "ziaP3HuxB0M",
     image: "assets/works/face-to-face-1.jpg",
     images: ["assets/works/face-to-face-1.jpg", "assets/works/face-to-face-2.jpg"],
-    desc: "Face to Face looks at Daeseong-dong, the South Korean village inside the DMZ that faces Kijong-dong across the border, as a place where binary ideas meet: individual and society, citizen and nation, peace and war, private and public, South and North. The projection unfolds in two halves. From a distance, the outline of the village becomes the pupil of an eye; the lines that divide the region extend from it, political and military facilities sit at the segment points, and news footage surrounding the village plays on either side. Up close, the eye opens onto daily life inside the village: a laser-cut architectural model of its buildings, roads and waterways receives projection-mapped video, photographs and sound.",
+    desc: "Face to Face looks at Daeseong-dong, the South Korean village inside the DMZ that faces Kijong-dong across the border, as a place where binary ideas meet: individual and society, citizen and nation, peace and war, private and public, South and North. The projection approaches the village in stages. From afar, the outline of the village reads as the pupil of an eye; the lines that divide the region radiate from it, military and political facilities sit along those lines, and news footage about the village plays on either side. Each time a fence is crossed, the view moves one step closer, and what was an outline on a map becomes a place with people in it. At the end the eye opens onto everyday life inside the village: a laser-cut architectural model of its buildings, roads and waterways, animated with projection-mapped video, photographs and sound.",
     details: [
       "With Yerim Han · Immersive Space (ID430), KAIST Dept. of Industrial Design, June 2024",
       "Architectural model: 3D modeling, rendering, laser cutting · Projection mapping: video, photo, sound",

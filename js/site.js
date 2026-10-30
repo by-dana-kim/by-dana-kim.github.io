@@ -120,6 +120,7 @@
           <a class="tile tile--text" href="project.html?id=${it.id}">
             <span class="tile__cap">${E(it.title)}<span>${E(it.year)}</span></span>
             <span class="tile__line">${E(it.line)}${it.venue ? " · " + E(it.venue) : ""}</span>
+            <span class="tile__note">Images coming soon</span>
           </a>`).join("");
         root.querySelectorAll("img[data-id]").forEach((img) => { const it = items.find((x) => x.id === img.dataset.id); if (it) stillInto(img, it); });
       } else {
