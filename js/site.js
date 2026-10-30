@@ -22,6 +22,7 @@
   function linkLabel(l) {
     const u = (l.url || "").toLowerCase(), t = (l.label || "");
     if (/\.pdf(\?|$)/.test(u)) return "PDF";
+    if (/library\.kaist/.test(u)) return "KAIST Library";
     if (/youtu\.?be/.test(u)) return "Video";
     if (/demo/i.test(t)) return "Demo";
     if (/visap/.test(u)) return "VISAP";
@@ -109,10 +110,14 @@
       const items = all.filter((i) => i.group === group);
       if (group === "artwork") {
         root.className = "grid";
-        root.innerHTML = items.map((it) => `
+        root.innerHTML = items.map((it) => (it.image || it.embed) ? `
           <a class="tile" href="project.html?id=${it.id}">
             <img alt="" loading="lazy" data-id="${it.id}" />
             <span class="tile__cap">${E(it.title)}<span>${E(it.year)}</span></span>
+          </a>` : `
+          <a class="tile tile--text" href="project.html?id=${it.id}">
+            <span class="tile__cap">${E(it.title)}<span>${E(it.year)}</span></span>
+            <span class="tile__line">${E(it.line)}${it.venue ? " · " + E(it.venue) : ""}</span>
           </a>`).join("");
         root.querySelectorAll("img[data-id]").forEach((img) => { const it = items.find((x) => x.id === img.dataset.id); if (it) stillInto(img, it); });
       } else {
