@@ -128,7 +128,6 @@
           <a class="tile tile--soon" href="project.html?id=${it.id}">
             <span class="tile__pic tile__pic--soft" style="--h:${hue(it.title)}"><i></i>${up(it)}</span>
             <span class="tile__cap">${E(it.title)}<span>${E(it.year)}</span></span>
-            <span class="tile__line">${E(it.line)}${it.venue ? " · " + E(it.venue) : ""}</span>
           </a>` : `
           <a class="tile tile--text" href="project.html?id=${it.id}">
             <span class="tile__cap">${E(it.title)}<span>${E(it.year)}</span></span>
