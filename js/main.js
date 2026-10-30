@@ -1,5 +1,5 @@
 /* ============================================================
-   Dana Kim — Artist Archive
+   Dana Kim - Artist Archive
    Edit the data arrays below to update the site.
    ============================================================ */
 
@@ -55,7 +55,7 @@ const works = [
     year: "2024",
     medium: "Projection mapping · KAIST Dept. of Industrial Design",
     embed: "ziaP3HuxB0M",
-    desc: "A projection-mapping project illuminating Daeseong-dong — the northernmost village in Korea — from far and near.",
+    desc: "A projection-mapping project illuminating Daeseong-dong - the northernmost village in Korea - from far and near.",
     links: [{ label: "Watch on YouTube", url: "https://www.youtube.com/watch?v=ziaP3HuxB0M" }],
   },
   {
@@ -65,7 +65,7 @@ const works = [
     embed: "2NYD9IhMjkU",
     desc: "A documentary short reflecting on what we discover or lose while walking a forest path.",
     details: [
-      "Selected, Korean Competition — 15th DMZ International Documentary Film Festival (2023)",
+      "Selected, Korean Competition - 15th DMZ International Documentary Film Festival (2023)",
       "Screened, 2nd Banjjak Documentary Festival (2024)",
       "Screened, 4th Seongbuk Cheongchun Bulpae Film Festival (2024)",
     ],
@@ -91,7 +91,7 @@ const publications = [
   {
     year: "2025",
     title: "AI Voice and the Performativity of Absence in Documentary Theatre",
-    desc: "The 20th TaPRA (Theatre and Performance Research Association), University of Warwick, 27–29 Aug 2025. Session: Telling Times — Multiform Disruption and Documentary Practices.",
+    desc: "The 20th TaPRA (Theatre and Performance Research Association), University of Warwick, 27–29 Aug 2025. Session: Telling Times - Multiform Disruption and Documentary Practices.",
     tag: "Conference Presentation",
     link: "",
   },
@@ -111,7 +111,7 @@ const grants = [
   {
     year: "2025",
     title: "Metaverse Implementation of Digital Memory Using Moiré Patterns of 2D Materials",
-    desc: "KAIST Office of Research — Master's & Ph.D. Adventurous Research Program (Apr–Nov 2025).",
+    desc: "KAIST Office of Research - Master's & Ph.D. Adventurous Research Program (Apr–Nov 2025).",
     tag: "Funded Research",
     link: "project.html",
     abstract:
@@ -123,7 +123,7 @@ const grants = [
 const activities = [
   {
     year: "2026",
-    title: "Teaching Assistant — 2026 KAIST–MIT Quantum Information Winter School",
+    title: "Teaching Assistant - 2026 KAIST–MIT Quantum Information Winter School",
     desc: "Jan 5–16, 2026. Lectures and poster sessions across quantum information science with KAIST–MIT faculty; student guidance and event support.",
     tag: "Academic Activity",
     link: "https://www.youtube.com/watch?v=xVER_JpaYEw",
@@ -135,7 +135,7 @@ const projects = [
   {
     year: "2026",
     title:
-      "Art×Technology Convergence Project — Follow-up Support",
+      "Art×Technology Convergence Project - Follow-up Support",
     tag: "Funded Project",
     meta: "Ministry of Culture, Sports and Tourism · Korea Arts Management Service · Arts Korea Lab · 2026",
     desc: "Selected for Arts Korea Lab's Art×Technology Convergence Project follow-up support, funding the production and exhibition of a sequel to the 2025 work.",
@@ -217,7 +217,7 @@ function renderWorks() {
         const embed = w.embed
           ? `<div class="mp__embed"><iframe
                 data-src="https://www.youtube.com/embed/${esc(w.embed)}?rel=0"
-                title="${esc(w.title)} — video"
+                title="${esc(w.title)} - video"
                 loading="lazy"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen></iframe></div>`
@@ -281,7 +281,7 @@ function renderProjects() {
              <p class="acad-group__title">Interactive Demo</p>
              <a class="demo__open" href="${esc(p.demo)}" target="_blank" rel="noopener">Open in new tab ↗</a>
            </div>
-           <div class="demo__frame"><iframe src="${esc(p.demo)}" title="${esc(p.title)} — interactive demo" loading="lazy" allowfullscreen></iframe></div>
+           <div class="demo__frame"><iframe src="${esc(p.demo)}" title="${esc(p.title)} - interactive demo" loading="lazy" allowfullscreen></iframe></div>
            <p class="demo__note">If the demo does not load in this frame, open it in a new tab.</p>`
         : "";
       const links =
@@ -400,7 +400,7 @@ function initDeco() {
 }
 
 /* ============================================================
-   Navigation — hamburger, liquid pill, shrink on scroll
+   Navigation - hamburger, liquid pill, shrink on scroll
    ============================================================ */
 function initNav() {
   const masthead = document.querySelector(".masthead");

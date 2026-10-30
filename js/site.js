@@ -1,4 +1,4 @@
-/* Site script — sidebar layout. Data comes from js/main.js (works, publications, projects, ...). */
+/* Site script - sidebar layout. Data comes from js/main.js (works, publications, projects, ...). */
 (function () {
   const E = typeof esc === "function" ? esc : (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const YT = (id, q) => `https://img.youtube.com/vi/${id}/${q}.jpg`;
@@ -20,7 +20,7 @@
     });
     (typeof publications !== "undefined" ? publications : []).forEach((q, i) => {
       const tag = q.tag || "Publication";
-      const venue = (q.desc || "").replace(new RegExp("^" + tag.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\s*[,·:—-]?\\s*"), "");
+      const venue = (q.desc || "").replace(new RegExp("^" + tag.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\s*[,·:--]?\\s*"), "");
       items.push({ id: `paper-${i}`, group: "research", year: q.year, title: q.title, line: tag, venue,
         desc: q.abstract, links: q.link ? [{ label: "Read the paper", url: q.link }] : [] });
     });
@@ -117,10 +117,10 @@
     const id = new URLSearchParams(location.search).get("id");
     const it = all.find((i) => i.id === id) || all[0];
     if (!it) return;
-    document.title = `${it.title} — Dana Kim`;
+    document.title = `${it.title} - Dana Kim`;
     const media = it.embed
       ? `<div class="media"><iframe src="https://www.youtube.com/embed/${E(it.embed)}?rel=0" title="${E(it.title)}" allow="${ALLOW}" allowfullscreen loading="lazy"></iframe></div>`
-      : it.demo ? `<div class="media media--demo"><iframe src="${E(it.demo)}" title="${E(it.title)} — interactive demo" allowfullscreen loading="lazy"></iframe></div>` : "";
+      : it.demo ? `<div class="media media--demo"><iframe src="${E(it.demo)}" title="${E(it.title)} - interactive demo" allowfullscreen loading="lazy"></iframe></div>` : "";
     const links = [...(it.demo ? [{ label: "Open demo in new tab", url: it.demo }] : []), ...it.links];
     const meta = `<dl class="meta">
         <dt>${it.group === "artwork" ? "Medium" : "Type"}</dt><dd>${E(it.line)}</dd>
