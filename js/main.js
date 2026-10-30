@@ -89,7 +89,7 @@ const exhibitions = [
 const works = [
   {
     title: "Memories in the Forest Path",
-    year: "2026",
+    year: "2027",
     upcoming: "2027-04-30",
     medium: "Photography · Finalist, 4th Coherence Art Competition, IBS Center for Quantum Nanoscience (QNS)",
     desc: "A photographic work selected as a finalist in the 4th Coherence Art Competition of the IBS Center for Quantum Nanoscience. To be shown at the IBS Science Culture Center in Daejeon in 2027.",
