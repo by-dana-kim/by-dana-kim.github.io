@@ -44,7 +44,7 @@
     (typeof works !== "undefined" ? works : []).forEach((w, i) => {
       const parts = (w.medium || "").split(" · ");
       items.push({ id: slug(w.title), group: "artwork", year: w.year, title: w.title, line: parts[0] || "", venue: parts.slice(1).join(" · "),
-        embed: w.embed, image: w.image, images: w.images || [], desc: w.desc, details: w.details, keywords: w.keywords, links: w.links || [], upcoming: isUpcoming(w.upcoming) });
+        embed: w.embed, image: w.image, images: w.images || [], desc: w.desc, details: w.details, keywords: w.keywords, links: w.links || [], upcoming: isUpcoming(w.upcoming), gridBlur: !!w.gridBlur && isUpcoming(w.upcoming) });
     });
     (typeof publications !== "undefined" ? publications : []).forEach((q, i) => {
       const tag = q.tag || "Publication";
@@ -120,7 +120,7 @@
         const up = (it) => it.upcoming ? '<span class="tag">Upcoming</span>' : "";
         // a soft, blurred field for upcoming works that have no image yet; hue varies per title
         const hue = (t) => [...t].reduce((h, ch) => (h * 31 + ch.charCodeAt(0)) % 360, 7);
-        root.innerHTML = items.map((it) => (it.image || it.embed) ? `
+        root.innerHTML = items.map((it) => (it.image || it.embed) && !it.gridBlur ? `
           <a class="tile" href="project.html?id=${it.id}">
             <span class="tile__pic"><img alt="" loading="lazy" data-id="${it.id}" />${up(it)}</span>
             <span class="tile__cap">${E(it.title)}<span>${E(it.year)}</span></span>
