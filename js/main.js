@@ -28,6 +28,16 @@ const awards = [
     title: "Finalist, 4th Coherence Art Competition",
     venue: "IBS Center for Quantum Nanoscience (QNS) · Memories in the Forest Path, photography",
   },
+  {
+    year: "2024",
+    title: "Official Selection, 4th Seongbuk Cheongchun Bulpae Film Festival",
+    venue: "The Time of Walking in the Forest Path · Arirang Cine Center, Seoul",
+  },
+  {
+    year: "2023",
+    title: "Official Selection, Korean Competition (Shorts), 15th DMZ International Documentary Film Festival",
+    venue: "The Time of Walking in the Forest Path · World premiere",
+  },
 ];
 
 /* --- Exhibitions (newest first; upcoming: "YYYY-MM-DD" shows an Upcoming tag until that day) --- */
