@@ -122,14 +122,14 @@ img { max-width: 100%; }
 
 /* cv */
 .cv { max-width: 1400px; }
-.cvrow { display: grid; grid-template-columns: minmax(150px, 220px) minmax(0, 1fr); gap: 20px 40px; padding: 24px 0 26px; border-top: 1px solid var(--line); }
+.cvrow { display: grid; grid-template-columns: 136px minmax(0, 1fr); gap: 20px 24px; padding: 22px 0 24px; border-top: 1px solid var(--line); }
 .cvrow:last-child { border-bottom: 1px solid var(--line); }
 .cvrow__label { margin: 0; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--dim); font-weight: 500; padding-top: 4px; }
-.cvitem { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 14px; margin: 0 0 10px; font-size: 16px; line-height: 1.5; max-width: 880px; }
+.cvitem { display: grid; grid-template-columns: 60px minmax(0, 1fr); gap: 12px; margin: 0 0 10px; font-size: 16px; line-height: 1.5; max-width: 1000px; }
 .cvitem__year { color: var(--dim); font-size: 13px; padding-top: 2px; font-variant-numeric: tabular-nums; }
 .cvitem__text a { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line); }
 .cvitem__text a:hover { color: var(--green); text-decoration-color: var(--green); }
-.cvitem__sub { display: block; font-size: 14px; color: var(--ink-2); margin-top: 2px; }
+.cvitem__sub { display: block; font-size: 13.5px; color: var(--ink-2); margin-top: 2px; }
 
 /* ---- small screens: sidebar becomes a header ---- */
 @media (max-width: 760px) {

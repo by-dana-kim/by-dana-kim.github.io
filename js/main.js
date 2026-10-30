@@ -5,13 +5,13 @@
 
 /* --- Profile: education ------------------------------------- */
 const education = [
-  { year: "2024–26", title: "MS, Metaverse / Culture Technology", venue: "KAIST (Korea Advanced Institute of Science and Technology) · Feb 2024 – Aug 2026" },
-  { year: "2012–17", title: "BA, Communications", venue: "Yonsei University (Minor in Business Administration)" },
+  { year: "2024–26", title: "MS, Metaverse / Culture Technology", venue: "KAIST, Daejeon · Feb 2024 – Aug 2026" },
+  { year: "2012–17", title: "BA, Communications", venue: "Yonsei University, Seoul · Minor in Business Administration" },
 ];
 
 /* --- Profile: career / experience --------------------------- */
 const experience = [
-  { year: "2019–24", title: "Media Marketing Executive", venue: "KT (Korea Telecom), Seoul · Full-time, Jul 2019 – Feb 2024" },
+  { year: "2019–24", title: "Media Marketing Executive", venue: "KT (Korea Telecom), Seoul · Jul 2019 – Feb 2024" },
   { year: "2016–17", title: "Digital Contents Creator (Intern)", venue: "KBS (Korean Broadcasting System), Seoul · Dec 2016 – Feb 2017" },
 ];
 
@@ -25,7 +25,7 @@ const awards = [
   {
     year: "2026",
     title: "Finalist, 4th Coherence Art Competition",
-    venue: "IBS Center for Quantum Nanoscience (QNS), Ewha Womans University · Memories in the Forest Path (photography)",
+    venue: "IBS Center for Quantum Nanoscience (QNS) · Memories in the Forest Path, photography",
   },
 ];
 
@@ -35,14 +35,14 @@ const exhibitions = [
     year: "2027",
     title: "Finalists' Exhibition, 4th Coherence Art Competition",
     venue: "IBS Science Culture Center, Daejeon",
-    meta: "IBS Center for Quantum Nanoscience (QNS) · Memories in the Forest Path · 2027, expected around April",
+    meta: "Memories in the Forest Path · expected Apr 2027",
     upcoming: true,
   },
   {
     year: "2026",
     title: "VISAP 2026: Amplification",
     venue: "MIT Met Warehouse, Cambridge, MA",
-    meta: "IEEE VIS Arts Program exhibition · The Superposed Memory · 9–13 Nov 2026",
+    meta: "IEEE VIS Arts Program · The Superposed Memory · 9–13 Nov 2026",
     link: "https://visap.net/2026/artwork-8.html",
     upcoming: true,
   },
@@ -50,7 +50,7 @@ const exhibitions = [
     year: "2026",
     title: "Walking Through Superposed Memories",
     venue: "Onsu Gong-gan, Seoul",
-    meta: "Solo exhibition · Arts Korea Lab Art×Technology Convergence Project, follow-up exhibition · 25–29 Nov 2026",
+    meta: "Solo exhibition · Arts Korea Lab follow-up support · 25–29 Nov 2026",
     upcoming: true,
   },
   {
@@ -63,8 +63,8 @@ const exhibitions = [
   {
     year: "2025",
     title: "Peer to Peer Labday",
-    venue: "Arts Korea Lab 6F Showroom, Seoul",
-    meta: "2025 Arts Korea Lab Super Testbed showcase · Dynamic XR Lab · Quantum Memory Space (VR), Bench Scene · 4–6 Dec 2025",
+    venue: "Arts Korea Lab, Seoul",
+    meta: "Super Testbed showcase · Quantum Memory Space (VR), Bench Scene · 4–6 Dec 2025",
   },
 ];
 
@@ -169,14 +169,15 @@ const publications = [
   {
     year: "2025",
     title: "AI Voice and the Performativity of Absence in Documentary Theatre",
-    desc: "The 20th TaPRA (Theatre and Performance Research Association), University of Warwick, 27–29 Aug 2025. Session: Telling Times - Multiform Disruption and Documentary Practices.",
+    desc: "TaPRA 2025 (Theatre and Performance Research Association), University of Warwick, 27–29 Aug 2025",
     tag: "Conference Presentation",
     link: "",
+    abstract: "Presented in the session Telling Times: Multiform Disruption and Documentary Practices at the 20th annual conference of the Theatre and Performance Research Association (TaPRA), University of Warwick.",
   },
   {
     year: "2025",
     title: "Mourning Dew: Storytelling of Nectar Ritual Painting through the Digital Moktak",
-    desc: "Kim, D., Choi, Y., & Lee, J. Proceedings of the International Symposium on Electronic/Emerging Art (ISEA), 554–559.",
+    desc: "Kim, D., Choi, Y., & Lee, J. · Proceedings of ISEA 2025 (International Symposium on Electronic Art), 554–559",
     tag: "Conference Paper",
     link: "https://www.isea-symposium-archives.org/wp-content/uploads/2025/09/2025_Kim_Mourning-Dew-Storytelling-of-Nectar-Ritual-Painting-through-the-Digital-Moktak.pdf",
     abstract:
@@ -202,7 +203,7 @@ const activities = [
   {
     year: "2026",
     title: "Teaching Assistant - 2026 KAIST–MIT Quantum Information Winter School",
-    desc: "Jan 5–16, 2026. Lectures and poster sessions across quantum information science with KAIST–MIT faculty; student guidance and event support.",
+    desc: "KAIST, Daejeon · 5–16 Jan 2026",
     tag: "Academic Activity",
     link: "https://www.youtube.com/watch?v=xVER_JpaYEw",
   },
@@ -215,14 +216,14 @@ const projects = [
     title:
       "Art×Technology Convergence Project - Follow-up Support",
     tag: "Funded Project",
-    meta: "Ministry of Culture, Sports and Tourism · Korea Arts Management Service · Arts Korea Lab · 2026",
+    meta: "Arts Korea Lab (Korea Arts Management Service, Ministry of Culture, Sports and Tourism) · 2026",
     desc: "Selected for Arts Korea Lab's Art×Technology Convergence Project follow-up support, funding the production and exhibition of a sequel to the 2025 work.",
   },
   {
     year: "2025",
     title: "Art×Technology Super Testbed",
     tag: "Funded Project",
-    meta: "Ministry of Culture, Sports and Tourism · Korea Arts Management Service · Arts Korea Lab · Dynamic XR Lab · 2025",
+    meta: "Arts Korea Lab, Dynamic XR Lab (Korea Arts Management Service, Ministry of Culture, Sports and Tourism) · 2025",
     desc: "Selected for Arts Korea Lab's Art×Technology Super Testbed program; received training at the Dynamic XR Lab and produced and exhibited an art×technology convergence prototype.",
   },
   {
