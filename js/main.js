@@ -40,17 +40,17 @@ const exhibitions = [
   },
   {
     year: "2026",
-    title: "VISAP 2026: Amplification",
-    venue: "MIT Met Warehouse, Cambridge, MA",
-    meta: "IEEE VIS Arts Program · The Superposed Memory · 9–13 Nov 2026",
-    link: "https://visap.net/2026/artwork-8.html",
+    title: "Walking Through Superposed Memories",
+    venue: "Onsu Gong-gan, Seoul",
+    meta: "Solo exhibition · Arts Korea Lab follow-up support · 25–29 Nov 2026",
     upcoming: true,
   },
   {
     year: "2026",
-    title: "Walking Through Superposed Memories",
-    venue: "Onsu Gong-gan, Seoul",
-    meta: "Solo exhibition · Arts Korea Lab follow-up support · 25–29 Nov 2026",
+    title: "VISAP 2026: Amplification",
+    venue: "MIT Met Warehouse, Cambridge, MA",
+    meta: "IEEE VIS Arts Program · The Superposed Memory · 9–13 Nov 2026",
+    link: "https://visap.net/2026/artwork-8.html",
     upcoming: true,
   },
   {
@@ -64,7 +64,7 @@ const exhibitions = [
     year: "2025",
     title: "Peer to Peer Labday",
     venue: "Arts Korea Lab, Seoul",
-    meta: "Super Testbed showcase · Quantum Memory Space (VR), Bench Scene · 4–6 Dec 2025",
+    meta: "Super Testbed showcase · Quantum Memory Space · 4–6 Dec 2025",
   },
 ];
 
