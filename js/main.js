@@ -5,13 +5,14 @@
 
 /* --- Profile: education ------------------------------------- */
 const education = [
-  { year: "2024–26", title: "MS, Graduate School of Metaverse", venue: "KAIST (Double Major in Culture Technology)" },
-  { year: "2012–17", title: "BA, Communication", venue: "Yonsei University (Minor in Business Administration)" },
+  { year: "2024–26", title: "MS, Metaverse / Culture Technology", venue: "KAIST (Korea Advanced Institute of Science and Technology) · Feb 2024 – Aug 2026" },
+  { year: "2012–17", title: "BA, Communications (언론홍보영상학)", venue: "Yonsei University (Minor in Business Administration)" },
 ];
 
 /* --- Profile: career / experience --------------------------- */
 const experience = [
-  { year: "2019–24", title: "Marketing Planning", venue: "KT (Korea Telecom)" },
+  { year: "2019–24", title: "Media Marketing Executive", venue: "KT (Korea Telecom), Seoul · Full-time, Jul 2019 – Feb 2024" },
+  { year: "2016–17", title: "Digital Contents Creator (Intern)", venue: "KBS (Korean Broadcasting System), Seoul · Dec 2016 – Feb 2017" },
 ];
 
 /* --- Profile: research area --------------------------------- */
