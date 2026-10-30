@@ -16,7 +16,7 @@ const experience = [
 ];
 
 /* --- Profile: research area --------------------------------- */
-const researchAreas = ["New Media Art", "Immersive Film", "Visual Anthropology"];
+const researchAreas = ["Place Memory", "Documentary Film", "3D Reconstruction", "Spatial Media"];
 
 /* --- Artwork: works ----------------------------------------
    embed   : YouTube video id (embedded when the row is expanded)
