@@ -330,7 +330,81 @@ function renderProjectGrid() {
   }
 }
 
+/* ---------- Plain list home (list.html): title · type · year; hover shows a still; click expands ---------- */
+function renderPlainList() {
+  const root = document.getElementById("plainList");
+  if (!root) return;
+  const items = allProjects();
+  const thumbSrc = (id, q) => `https://img.youtube.com/vi/${id}/${q}.jpg`;
+  root.innerHTML = items
+    .map((it, i) => {
+      const embed = it.embed
+        ? `<div class="mp__embed"><iframe data-src="https://www.youtube.com/embed/${esc(it.embed)}?rel=0" title="${esc(it.title)} — video" loading="lazy"
+             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>` : "";
+      const demo = it.demo ? `<div class="mp__demo"><div class="demo__frame"><iframe data-src="${esc(it.demo)}" title="${esc(it.title)} — interactive demo" loading="lazy" allowfullscreen></iframe></div></div>` : "";
+      const desc = it.desc ? `<p class="mp__desc">${esc(it.desc)}</p>` : "";
+      const abstract = it.abstract ? `<details class="pub__abstract"><summary>Abstract</summary><p>${esc(it.abstract)}</p></details>` : "";
+      const details = it.details && it.details.length ? `<ul class="mp__details">${it.details.map((d) => `<li>${esc(d)}</li>`).join("")}</ul>` : "";
+      const linkList = [...(it.links || [])];
+      if (it.demo) linkList.unshift({ label: "Open demo in new tab", url: it.demo });
+      const links = linkList.length ? `<div class="mp__links">${linkList.map((l) => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join("")}</div>` : "";
+      const sub = it.kind === "paper" ? it.venue : it.type + (it.venue ? " · " + it.venue : "");
+      return `
+      <article class="row" id="p${i}" data-still="${it.embed ? thumbSrc(it.embed, "hqdefault") : ""}">
+        <button class="row__head" aria-expanded="false" aria-controls="row-panel-${i}">
+          <span class="row__title">${esc(it.title)}</span>
+          <span class="row__sub">${esc(sub)}</span>
+          <span class="row__year">${esc(it.year)}</span>
+        </button>
+        <div class="row__panel" id="row-panel-${i}"><div class="row__inner">${embed}${demo}${desc}${abstract}${details}${links}</div></div>
+      </article>`;
+    })
+    .join("");
+
+  const rows = [...root.querySelectorAll(".row")];
+  const setOpen = (row, open) => {
+    row.classList.toggle("is-open", open);
+    row.querySelector(".row__head").setAttribute("aria-expanded", open ? "true" : "false");
+    if (open) row.querySelectorAll("iframe[data-src]").forEach((f) => { if (!f.src) f.src = f.dataset.src; });
+  };
+  rows.forEach((row) => row.querySelector(".row__head").addEventListener("click", () => {
+    const willOpen = !row.classList.contains("is-open");
+    rows.forEach((r) => r !== row && r.classList.contains("is-open") && setOpen(r, false));
+    setOpen(row, willOpen);
+  }));
+
+  // hover still: floats at the right, level with the pointer
+  const peek = document.getElementById("peek");
+  const img = peek && peek.querySelector("img");
+  const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  if (peek && fine) {
+    rows.forEach((row) => {
+      row.addEventListener("mouseenter", () => {
+        const src = row.dataset.still;
+        if (!src || row.classList.contains("is-open")) { peek.classList.remove("is-on"); return; }
+        img.src = src; peek.classList.add("is-on");
+      });
+      row.addEventListener("mouseleave", () => peek.classList.remove("is-on"));
+    });
+    img.addEventListener("error", () => peek.classList.remove("is-on"));
+    const placePeek = () => {
+      const r = root.getBoundingClientRect();
+      const left = r.right + 40;
+      const w = Math.min(340, window.innerWidth - left - 24);
+      peek.style.left = left + "px";
+      peek.style.width = w + "px";
+      peek.style.visibility = w < 180 ? "hidden" : "visible";
+    };
+    placePeek();
+    window.addEventListener("resize", placePeek);
+    root.addEventListener("mousemove", (e) => { peek.style.top = Math.min(window.innerHeight - 200, Math.max(80, e.clientY - 90)) + "px"; });
+  }
+  const m = location.hash.match(/^#p(\d+)$/);
+  if (m) { const row = root.querySelector(`#p${m[1]}`); if (row) { setOpen(row, true); setTimeout(() => row.scrollIntoView({ behavior: "smooth", block: "start" }), 50); } }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initDrum();
   renderProjectGrid();
+  renderPlainList();
 });
