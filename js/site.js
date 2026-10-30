@@ -20,7 +20,7 @@
     });
     (typeof publications !== "undefined" ? publications : []).forEach((q, i) => {
       const tag = q.tag || "Publication";
-      const venue = (q.desc || "").replace(new RegExp("^" + tag.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\s*[,·:--]?\\s*"), "");
+      const venue = (q.desc || "").replace(new RegExp("^" + tag.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\s*[,·:-]?\\s*"), "");
       items.push({ id: `paper-${i}`, group: "research", year: q.year, title: q.title, line: tag, venue,
         desc: q.abstract, links: q.link ? [{ label: "Read the paper", url: q.link }] : [] });
     });
