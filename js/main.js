@@ -16,7 +16,35 @@ const experience = [
 ];
 
 /* --- Profile: research area --------------------------------- */
-const researchAreas = ["Place Memory", "Documentary Film", "3D Reconstruction", "Spatial Media"];
+const researchThemes = ["Place Memory", "Mourning", "Community"];
+const researchMedia = ["Immersive Storytelling", "3D Visualization", "Documentary Film", "Human-Computer Interaction"];
+const researchAreas = [...researchThemes, ...researchMedia];
+
+/* --- Exhibitions (newest first; upcoming: true marks a planned show) --- */
+const exhibitions = [
+  {
+    year: "2026",
+    title: "VISAP 2026: Amplification",
+    venue: "MIT Met Warehouse, Cambridge, MA",
+    meta: "IEEE VIS Arts Program exhibition · The Superposed Memory · 9–13 Nov 2026",
+    link: "https://visap.net/2026/artwork-8.html",
+    upcoming: true,
+  },
+  {
+    year: "2026",
+    title: "Walking Through Superposed Memories",
+    venue: "Onsu Gong-gan, Seoul",
+    meta: "Arts Korea Lab Art×Technology Convergence Project, follow-up exhibition · 25–29 Nov 2026",
+    upcoming: true,
+  },
+  {
+    year: "2026",
+    title: "Spheres of Memory",
+    venue: "",
+    meta: "Details to be announced",
+    upcoming: true,
+  },
+];
 
 /* --- Artwork: works ----------------------------------------
    embed   : YouTube video id (embedded when the row is expanded)
@@ -26,6 +54,15 @@ const researchAreas = ["Place Memory", "Documentary Film", "3D Reconstruction", 
    Clicking a row expands it (hover lifts it); clicking again collapses.
 ------------------------------------------------------------- */
 const works = [
+  {
+    title: "The Superposed Memory",
+    year: "2026",
+    medium: "Single-channel video projection, c. 10 min loop · VISAP 2026, MIT Met Warehouse, Cambridge, MA",
+    image: "assets/works/the-superposed-memory.jpg",
+    desc: "The Superposed Memory grew from photographs accumulated over years of walking Gyeongui Line Forest Park in Seoul. Scenes from different periods bound to the same place are trained into a single 3D Gaussian Splatting space, against the technique's assumption that all its input photographs show one moment. Instead of converging into a single image, different times of one place remain latent together and surface by turns as the viewpoint moves. In the installation the superposed scene is projected in a loop of about 10 minutes, and visitors sit on a park bench in front of it, as they would on the path itself.",
+    details: ["Selected for VISAP 2026: Amplification, the IEEE VIS Arts Program exhibition (MIT Met Warehouse, Cambridge, MA, 9–13 Nov 2026)"],
+    links: [{ label: "VISAP 2026 artwork page", url: "https://visap.net/2026/artwork-8.html" }],
+  },
   {
     title: "Quantum Memory Space (VR)",
     year: "2025",

@@ -11,12 +11,19 @@
     img.onerror = () => { if (!img.dataset.fb) { img.dataset.fb = "1"; img.src = YT(id, "hqdefault"); } else if (onFail) onFail(); };
   }
 
+  // Put an item's still into <img>: local image first, else the YouTube thumbnail.
+  function stillInto(img, it, onFail) {
+    if (it.image) { img.src = it.image; img.onerror = () => { if (it.embed) ytImage(img, it.embed, onFail); else if (onFail) onFail(); }; }
+    else if (it.embed) ytImage(img, it.embed, onFail);
+    else if (onFail) onFail();
+  }
+
   function catalog() {
     const items = [];
     (typeof works !== "undefined" ? works : []).forEach((w, i) => {
       const parts = (w.medium || "").split(" · ");
       items.push({ id: `work-${i}`, group: "artwork", year: w.year, title: w.title, line: parts[0] || "", venue: parts.slice(1).join(" · "),
-        embed: w.embed, desc: w.desc, details: w.details, links: w.links || [] });
+        embed: w.embed, image: w.image, desc: w.desc, details: w.details, links: w.links || [] });
     });
     (typeof publications !== "undefined" ? publications : []).forEach((q, i) => {
       const tag = q.tag || "Publication";
@@ -41,12 +48,12 @@
     if (!root) return;
     const frame = document.getElementById("showFrame"), cap = document.getElementById("showCap"), count = document.getElementById("showCount");
     const slides = [{ ...HOME_IMAGE, year: "" }];
-    catalog().filter((i) => i.embed).forEach((i) => slides.push({ yt: i.embed, title: i.title, year: i.year, href: `project.html?id=${i.id}` }));
+    catalog().filter((i) => i.embed || i.image).forEach((i) => slides.push({ it: i, title: i.title, year: i.year, href: `project.html?id=${i.id}` }));
     const imgs = slides.map((sl) => {
       const img = document.createElement("img");
       img.alt = sl.title; img.decoding = "async";
       frame.appendChild(img);
-      if (sl.yt) ytImage(img, sl.yt, () => drop(sl));
+      if (sl.it) stillInto(img, sl.it, () => drop(sl));
       else { img.src = sl.src; img.onerror = () => drop(sl); }
       return img;
     });
@@ -90,10 +97,10 @@
         root.className = "grid";
         root.innerHTML = items.map((it) => `
           <a class="tile" href="project.html?id=${it.id}">
-            <img alt="" loading="lazy" data-yt="${E(it.embed || "")}" />
+            <img alt="" loading="lazy" data-id="${it.id}" />
             <span class="tile__cap">${E(it.title)}<span>${E(it.year)}</span></span>
           </a>`).join("");
-        root.querySelectorAll("img[data-yt]").forEach((img) => { if (img.dataset.yt) ytImage(img, img.dataset.yt); });
+        root.querySelectorAll("img[data-id]").forEach((img) => { const it = items.find((x) => x.id === img.dataset.id); if (it) stillInto(img, it); });
       } else {
         root.className = "textlist";
         root.innerHTML = items.map((it) => `
@@ -120,6 +127,7 @@
     document.title = `${it.title} - Dana Kim`;
     const media = it.embed
       ? `<div class="media"><iframe src="https://www.youtube.com/embed/${E(it.embed)}?rel=0" title="${E(it.title)}" allow="${ALLOW}" allowfullscreen loading="lazy"></iframe></div>`
+      : it.image ? `<figure class="media media--image"><img src="${E(it.image)}" alt="${E(it.title)}" /></figure>`
       : it.demo ? `<div class="media media--demo"><iframe src="${E(it.demo)}" title="${E(it.title)} - interactive demo" allowfullscreen loading="lazy"></iframe></div>` : "";
     const links = [...(it.demo ? [{ label: "Open demo in new tab", url: it.demo }] : []), ...it.links];
     const meta = `<dl class="meta">
@@ -144,8 +152,9 @@
 
   /* about: research-area line */
   function initAbout() {
-    const el = document.getElementById("areaLine");
-    if (el && typeof researchAreas !== "undefined") el.textContent = researchAreas.join(" · ");
+    const t = document.getElementById("areaThemes"), m = document.getElementById("areaMedia");
+    if (t && typeof researchThemes !== "undefined") t.textContent = researchThemes.join(" · ");
+    if (m && typeof researchMedia !== "undefined") m.textContent = researchMedia.join(" · ");
   }
 
   /* cv: label column + year/text rows */
@@ -160,8 +169,13 @@
     const pubs = (typeof publications !== "undefined" ? publications : []).map((q, i) => item(q.year, `<a href="project.html?id=paper-${i}">${E(q.title)}</a>`, E(q.desc && q.desc.startsWith(q.tag || "\u0000") ? q.desc : `${q.tag || ""}${q.desc ? " · " + q.desc : ""}`)));
     const funded = (typeof projects !== "undefined" ? projects : []).map((p, i) => item(p.year, `<a href="project.html?id=project-${i}">${E(p.title)}</a>`, E(p.meta || "")));
     const acts = (typeof activities !== "undefined" ? activities : []).map((a) => item(a.year, a.link ? `<a href="${E(a.link)}" target="_blank" rel="noopener">${E(a.title)}</a>` : E(a.title), E(a.desc || "")));
-    const areas = typeof researchAreas !== "undefined" ? [item("", E(researchAreas.join(" · ")))] : [];
-    root.innerHTML = row("Education", edu) + row("Experience", exp) + row("Publications &amp; talks", pubs) + row("Funded projects", funded) + row("Activities", acts) + row("Research area", areas);
+    const shows = (typeof exhibitions !== "undefined" ? exhibitions : []).map((x) => item(x.year,
+      `${x.link ? `<a href="${E(x.link)}" target="_blank" rel="noopener">${E(x.title)}</a>` : E(x.title)}${x.upcoming ? ' <span class="tag">Upcoming</span>' : ""}`,
+      [x.venue, x.meta].filter(Boolean).map(E).join(" · ")));
+    const areas = [];
+    if (typeof researchThemes !== "undefined") areas.push(item("Themes", E(researchThemes.join(" · "))));
+    if (typeof researchMedia !== "undefined") areas.push(item("Media", E(researchMedia.join(" · "))));
+    root.innerHTML = row("Education", edu) + row("Exhibitions", shows) + row("Publications &amp; talks", pubs) + row("Funded projects", funded) + row("Experience", exp) + row("Activities", acts) + row("Research", areas);
   }
 
   document.addEventListener("DOMContentLoaded", () => { initShow(); initWork(); initProject(); initAbout(); initCV(); });
