@@ -165,6 +165,7 @@
     const meta = `<dl class="meta">
         <dt>${it.group === "artwork" ? "Medium" : "Type"}</dt><dd>${E(it.line)}</dd>
         ${it.venue ? `<dt>${it.group === "research" ? "Venue" : it.group === "projects" ? "Supported by" : "Shown at"}</dt><dd>${authors(E(it.credit || it.venue))}</dd>` : ""}
+        ${it.links.length ? `<dt>Links</dt><dd>${pills(it.links)}</dd>` : ""}
       </dl>`;
     const siblings = all.filter((i) => i.group === it.group);
     const k = siblings.indexOf(it);
@@ -172,11 +173,10 @@
     root.innerHTML = `
       <header class="proj__head"><h1 class="proj__title">${E(it.title)}</h1><span class="proj__year">${E(it.year)}</span>${it.upcoming ? '<span class="tag">Upcoming</span>' : ""}</header>
       ${media ? `<div class="proj__body">${media}${meta}</div>`
-              : `<p class="proj__line">${E(it.line)}${it.venue ? " · " + authors(E(it.credit || it.venue)) : ""}</p>`}
+              : `<p class="proj__line">${E(it.line)}${it.venue ? " · " + authors(E(it.credit || it.venue)) : ""}</p>${it.links.length ? `<p class="proj__links proj__links--top">${pills(it.links)}</p>` : ""}`}
       ${it.desc ? `<p class="proj__desc">${E(it.desc)}</p>` : ""}
       ${it.details && it.details.length ? `<ul class="proj__details">${it.details.map((d) => `<li>${E(d)}</li>`).join("")}</ul>` : ""}
       ${it.keywords && it.keywords.length ? `<p class="proj__keywords"><span>Keywords</span>${it.keywords.map(E).join(" · ")}</p>` : ""}
-      ${it.links.length ? `<p class="proj__links">${pills(it.links)}</p>` : ""}
       ${it.images && it.images.length ? `<div class="gallery">${it.images.map((src) => `<figure><img src="${E(src)}" alt="${E(it.title)}" loading="lazy" /></figure>`).join("")}</div>` : ""}
       <nav class="proj__nav" aria-label="More">
         <span>${prev ? `<a href="project.html?id=${prev.id}">← ${E(prev.title)}</a>` : ""}</span>
