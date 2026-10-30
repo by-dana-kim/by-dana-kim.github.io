@@ -50,7 +50,7 @@
     });
     (typeof projects !== "undefined" ? projects : []).forEach((p, i) => {
       items.push({ id: "project-" + slug(p.title), group: "projects", year: p.year, title: p.title, line: p.tag || "Project", venue: p.meta || "",
-        image: p.image, images: p.images || [], details: p.details, keywords: p.keywords, desc: p.desc, demo: p.demo, links: [...(p.demo ? [{ label: "Demo", url: p.demo }] : []), ...(p.links || [])] });
+        image: p.image, images: p.images || [], details: p.details, keywords: p.keywords, credit: p.credit, desc: p.desc, demo: p.demo, links: [...(p.demo ? [{ label: "Demo", url: p.demo }] : []), ...(p.links || [])] });
     });
     return items.map((it, order) => ({ ...it, order }))
       .sort((a, b) => (parseInt(b.year, 10) || 0) - (parseInt(a.year, 10) || 0) || a.order - b.order);
@@ -154,7 +154,7 @@
       : it.demo ? `<div class="media media--demo"><iframe src="${E(it.demo)}" title="${E(it.title)} - interactive demo" allowfullscreen loading="lazy"></iframe></div>` : "";
     const meta = `<dl class="meta">
         <dt>${it.group === "artwork" ? "Medium" : "Type"}</dt><dd>${E(it.line)}</dd>
-        ${it.venue ? `<dt>${it.group === "research" ? "Venue" : it.group === "projects" ? "Supported by" : "Shown at"}</dt><dd>${authors(E(it.venue))}</dd>` : ""}
+        ${it.venue ? `<dt>${it.group === "research" ? "Venue" : it.group === "projects" ? "Supported by" : "Shown at"}</dt><dd>${authors(E(it.credit || it.venue))}</dd>` : ""}
       </dl>`;
     const siblings = all.filter((i) => i.group === it.group);
     const k = siblings.indexOf(it);
@@ -162,7 +162,7 @@
     root.innerHTML = `
       <header class="proj__head"><h1 class="proj__title">${E(it.title)}</h1><span class="proj__year">${E(it.year)}</span></header>
       ${media ? `<div class="proj__body">${media}${meta}</div>`
-              : `<p class="proj__line">${E(it.line)}${it.venue ? " · " + authors(E(it.venue)) : ""}</p>`}
+              : `<p class="proj__line">${E(it.line)}${it.venue ? " · " + authors(E(it.credit || it.venue)) : ""}</p>`}
       ${it.desc ? `<p class="proj__desc">${E(it.desc)}</p>` : ""}
       ${it.details && it.details.length ? `<ul class="proj__details">${it.details.map((d) => `<li>${E(d)}</li>`).join("")}</ul>` : ""}
       ${it.keywords && it.keywords.length ? `<p class="proj__keywords"><span>Keywords</span>${it.keywords.map(E).join(" · ")}</p>` : ""}

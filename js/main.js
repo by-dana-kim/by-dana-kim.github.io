@@ -42,7 +42,7 @@ const exhibitions = [
     year: "2026",
     title: "Walking Through Superposed Memories",
     venue: "Onsu Gong-gan, Seoul",
-    meta: "Solo exhibition · 25–29 Nov 2026 · Hosted by the Ministry of Culture, Sports and Tourism · Organized by Korea Arts Management Service and Arts Korea Lab",
+    meta: "Solo exhibition · MCST · KAMS · Arts Korea Lab · 25–29 Nov 2026",
     upcoming: true,
   },
   {
@@ -57,14 +57,14 @@ const exhibitions = [
     year: "2026",
     title: "Arts Korea Lab AI-Convergence Festival 2026",
     venue: "Space S-50, Seongsu, Seoul",
-    meta: "Spheres of Memory · 4–8 Nov 2026 · Hosted by the Ministry of Culture, Sports and Tourism · Organized by Korea Arts Management Service and Arts Korea Lab",
+    meta: "Spheres of Memory · MCST · KAMS · Arts Korea Lab · 4–8 Nov 2026",
     upcoming: true,
   },
   {
     year: "2025",
     title: "Peer to Peer Labday",
     venue: "Arts Korea Lab, Seoul",
-    meta: "Super Testbed showcase · Quantum Memory Space · 4–6 Dec 2025 · Hosted by the Ministry of Culture, Sports and Tourism · Organized by Korea Arts Management Service and Arts Korea Lab",
+    meta: "Super Testbed showcase · Quantum Memory Space · MCST · KAMS · Arts Korea Lab · 4–6 Dec 2025",
   },
 ];
 
@@ -103,6 +103,8 @@ const works = [
     year: "2025",
     medium: "VR / interactive media · Arts Korea Lab, Seoul",
     embed: "oKY3vPOFfLc",
+    image: "assets/works/quantum-memory-space-vr.jpg",
+    images: ["assets/works/quantum-memory-space-vr.jpg"],
     desc: "A VR environment built on the Quantum Memory Space (QMS) model, which treats the memory of a place as a state in which several memories coexist latently and surface differently depending on how they are observed. Scenes of Gyeongui Line Forest Park recorded at different times are trained together in 3D Gaussian Splatting so that their superposition becomes visible. In VR, the viewer's position and gaze condition which time comes forward, and an emotion-based visual modulation shifts the color and density of the scene, so the same place is met anew with each observation.",
     details: ["Practice case of the master's thesis Quantum Memory Space: A Model of Superposition and Observation in Place Memory and Its Visual Implementation (KAIST, 2026)"],
     links: [{ label: "Watch on YouTube", url: "https://youtu.be/oKY3vPOFfLc" }],
@@ -221,14 +223,16 @@ const projects = [
     title:
       "Art×Technology Convergence Project - Follow-up Support",
     tag: "Funded Project",
-    meta: "Hosted by the Ministry of Culture, Sports and Tourism · Organized by Korea Arts Management Service and Arts Korea Lab · 2026",
+    meta: "MCST · KAMS · Arts Korea Lab · 2026",
+    credit: "Hosted by the Ministry of Culture, Sports and Tourism · Organized by Korea Arts Management Service and Arts Korea Lab",
     desc: "Selected for Arts Korea Lab's Art×Technology Convergence Project follow-up support, funding the production and exhibition of a sequel to the 2025 work.",
   },
   {
     year: "2025",
     title: "Art×Technology Super Testbed",
     tag: "Funded Project",
-    meta: "Hosted by the Ministry of Culture, Sports and Tourism · Organized by Korea Arts Management Service and Arts Korea Lab · Dynamic XR Lab · 2025",
+    meta: "MCST · KAMS · Arts Korea Lab · Dynamic XR Lab · 2025",
+    credit: "Hosted by the Ministry of Culture, Sports and Tourism · Organized by Korea Arts Management Service and Arts Korea Lab · Dynamic XR Lab",
     desc: "Selected for Arts Korea Lab's Art×Technology Super Testbed program; received training at the Dynamic XR Lab and produced and exhibited an art×technology convergence prototype.",
   },
   {
