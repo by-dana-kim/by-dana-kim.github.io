@@ -136,8 +136,8 @@ const works = [
     medium: "Single-channel video, 1 min 39 sec",
     image: "assets/works/mourning-dew-1.jpg",
     images: ["assets/works/mourning-dew-2.jpg", "assets/works/mourning-dew-3.jpg", "assets/works/mourning-dew-4.jpg"],
-    desc: "Mourning Dew collages imagery from two Nectar Ritual Paintings (Gamnodo), a genre of Korean Buddhist painting made to guide wandering spirits through ceremony, and maps it onto the surface of a digitally rendered moktak, the wooden percussion instrument used in Buddhist ritual. The work carries the painting's ceremonial purpose into a digital experience, bridging spiritual heritage and contemporary media.",
-    details: ["Discussed in the ISEA 2025 paper Mourning Dew: Storytelling of Nectar Ritual Painting through the Digital Moktak"],
+    desc: "Mourning Dew draws on Nectar Ritual Painting, or Gamnodo, a genre of Korean Buddhist painting originally made to guide wandering spirits toward liberation through ceremonial practice. Over time Gamnodo took on secular and social dimensions, recording the daily realities and cultural changes of its era, so that scenes of ordinary life sit beside the ritual itself. The video collages imagery from two Gamnodo paintings and maps it onto the surface of a digitally rendered moktak, the wooden percussion instrument struck during Buddhist ceremony. As the camera moves over the grain of the wood, hungry ghosts, mourners and small vignettes of everyday life surface and recede, turning the painting into a ceremonial digital experience. The work asks how a traditional form can be carried into contemporary storytelling while its original purpose, the consolation of the dead and the living, is kept intact.",
+    details: ["Developed in the ISEA 2025 paper Mourning Dew: Storytelling of Nectar Ritual Painting through the Digital Moktak (Kim, Choi & Lee)"],
     links: [{ label: "Paper", url: "https://www.isea-symposium-archives.org/wp-content/uploads/2025/09/2025_Kim_Mourning-Dew-Storytelling-of-Nectar-Ritual-Painting-through-the-Digital-Moktak.pdf" }],
   },
   {
@@ -177,7 +177,7 @@ const publications = [
     tag: "Conference Presentation",
     link: "",
     image: "assets/works/voice-of-nobody-tapra.jpg",
-    abstract: "Presented in Open Panels 2, Telling Times: Multiform Disruption and Documentary Practices, at the 20th annual conference of the Theatre and Performance Research Association (TaPRA), University of Warwick. Presenter: Dana Kim, Graduate School of Metaverse, KAIST.",
+    abstract: "The talk asks how documentary theatre can stage records whose subjects are absent, and proposes AI voice as a proxy without a body. Voices that sound human yet keep a trace of otherness create a familiar-strange distance, close to Brecht's alienation effect, that invites audiences to engage critically with documentary fact. The experimental piece Voice of NObody (2025) lets AI voices, rendered through a multi-speaker system, lead a performance built from the personal records of three real people, extending the proxy logic of Rimini Protokoll's Conference of the Absent (2021) into technological mediation. Presented in Open Panels 2, Telling Times: Multiform Disruption and Documentary Practices.",
   },
   {
     year: "2025",
