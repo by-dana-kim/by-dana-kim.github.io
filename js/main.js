@@ -116,10 +116,10 @@ const works = [
     title: "Bench Scene",
     year: "2025",
     medium: "Single-channel video projection, 4 min · Arts Korea Lab, Seoul",
-    embed: "oKY3vPOFfLc",
+    embed: "FsmxMrNcjWs",
     desc: "A single-channel realization of viewpoint-conditioned observation within the Quantum Memory Space model. Recordings of one spot in Gyeongui Line Forest Park, made across different seasons and times of day, are trained into a single 3D Gaussian Splatting scene instead of being kept as separate files. As the virtual camera moves, the different times of the place surface by turns, so that one bench holds several moments at once and the view never settles into a single image.",
     details: ["Practice case of the master's thesis Quantum Memory Space (KAIST, 2026)"],
-    links: [{ label: "Watch on YouTube", url: "https://youtu.be/oKY3vPOFfLc" }],
+    links: [{ label: "Watch on YouTube", url: "https://youtu.be/FsmxMrNcjWs" }],
   },
   {
     title: "Face to Face",
