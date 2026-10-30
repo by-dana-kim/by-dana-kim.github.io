@@ -123,7 +123,7 @@
             <span class="tile__cap">${E(it.title)}<span>${E(it.year)}</span></span>
           </a>` : it.upcoming ? `
           <a class="tile tile--soon" href="project.html?id=${it.id}">
-            <span class="tile__pic tile__pic--soft" style="--h:${hue(it.title)}"><i></i><span class="tile__soon">Upcoming</span></span>
+            <span class="tile__pic tile__pic--soft" style="--h:${hue(it.title)}"><i></i>${up(it)}</span>
             <span class="tile__cap">${E(it.title)}<span>${E(it.year)}</span></span>
             <span class="tile__line">${E(it.line)}${it.venue ? " · " + E(it.venue) : ""}</span>
           </a>` : `
@@ -158,10 +158,32 @@
     const it = all.find((i) => i.id === id) || all[0];
     if (!it) return;
     document.title = `${it.title} - Dana Kim`;
-    const media = it.embed
-      ? `<div class="media"><iframe src="https://www.youtube.com/embed/${E(it.embed)}?rel=0" title="${E(it.title)}" allow="${ALLOW}" allowfullscreen loading="lazy"></iframe></div>`
-      : it.image ? `<figure class="media media--image"><img src="${E(it.image)}" alt="${E(it.title)}" /></figure>`
-      : it.demo ? `<div class="media media--demo"><iframe src="${E(it.demo)}" title="${E(it.title)} - interactive demo" allowfullscreen loading="lazy"></iframe></div>` : "";
+    // slides: the video first (if any), then the main image and the gallery images
+    const slides = [];
+    if (it.embed) slides.push({ kind: "video", id: it.embed });
+    [it.image, ...(it.images || [])].filter(Boolean).forEach((src) => { if (!slides.some((s) => s.src === src)) slides.push({ kind: "image", src }); });
+    const videoFrame = (id) => `<iframe src="https://www.youtube.com/embed/${E(id)}?rel=0" title="${E(it.title)}" allow="${ALLOW}" allowfullscreen loading="lazy"></iframe>`;
+    let media = "";
+    if (slides.length > 1) {
+      media = `<div class="viewer" id="viewer">
+          <div class="viewer__stage">
+            ${slides.map((s, n) => s.kind === "video"
+              ? `<div class="viewer__slide${n === 0 ? " is-on" : ""}" data-video="${E(s.id)}">${n === 0 ? videoFrame(s.id) : ""}</div>`
+              : `<div class="viewer__slide${n === 0 ? " is-on" : ""}"><img src="${E(s.src)}" alt="${E(it.title)}" loading="${n === 0 ? "eager" : "lazy"}" /></div>`).join("")}
+            <button class="viewer__btn viewer__btn--prev" type="button" aria-label="Previous image">←</button>
+            <button class="viewer__btn viewer__btn--next" type="button" aria-label="Next image">→</button>
+          </div>
+          <div class="thumbs" role="tablist">
+            ${slides.map((s, n) => `<button class="thumb${n === 0 ? " is-on" : ""}${s.kind === "video" ? " thumb--video" : ""}" type="button" role="tab" aria-label="${s.kind === "video" ? "Video" : "Image " + (n + 1)}">${s.kind === "video" ? `<img alt="" data-yt="${E(s.id)}" />` : `<img src="${E(s.src)}" alt="" loading="lazy" />`}</button>`).join("")}
+          </div>
+        </div>`;
+    } else if (it.embed) {
+      media = `<div class="media">${videoFrame(it.embed)}</div>`;
+    } else if (it.image) {
+      media = `<figure class="media media--image"><img src="${E(it.image)}" alt="${E(it.title)}" /></figure>`;
+    } else if (it.demo) {
+      media = `<div class="media media--demo"><iframe src="${E(it.demo)}" title="${E(it.title)} - interactive demo" allowfullscreen loading="lazy"></iframe></div>`;
+    }
     const meta = `<dl class="meta">
         <dt>${it.group === "artwork" ? "Medium" : "Type"}</dt><dd>${E(it.line)}</dd>
         ${it.venue ? `<dt>${it.group === "research" ? "Venue" : it.group === "projects" ? "Supported by" : "Shown at"}</dt><dd>${authors(E(it.credit || it.venue))}</dd>` : ""}
@@ -177,12 +199,40 @@
       ${it.desc ? `<p class="proj__desc">${E(it.desc)}</p>` : ""}
       ${it.details && it.details.length ? `<ul class="proj__details">${it.details.map((d) => `<li>${E(d)}</li>`).join("")}</ul>` : ""}
       ${it.keywords && it.keywords.length ? `<p class="proj__keywords"><span>Keywords</span>${it.keywords.map(E).join(" · ")}</p>` : ""}
-      ${it.images && it.images.length ? `<div class="gallery">${it.images.map((src) => `<figure><img src="${E(src)}" alt="${E(it.title)}" loading="lazy" /></figure>`).join("")}</div>` : ""}
       <nav class="proj__nav" aria-label="More">
         <span>${prev ? `<a href="project.html?id=${prev.id}">← ${E(prev.title)}</a>` : ""}</span>
         <a href="work.html#${it.group}">All ${GROUPS[it.group].toLowerCase()}</a>
         <span>${next ? `<a href="project.html?id=${next.id}">${E(next.title)} →</a>` : ""}</span>
       </nav>`;
+    initViewer(root.querySelector("#viewer"));
+  }
+
+  /* image viewer on project pages: arrows, thumbnails, keys, swipe */
+  function initViewer(v) {
+    if (!v) return;
+    const slides = [...v.querySelectorAll(".viewer__slide")], thumbs = [...v.querySelectorAll(".thumb")];
+    thumbs.forEach((t) => { const im = t.querySelector("img[data-yt]"); if (im) ytImage(im, im.dataset.yt); });
+    let k = 0;
+    const show = (n) => {
+      k = (n + slides.length) % slides.length;
+      slides.forEach((s, i) => {
+        const on = i === k;
+        s.classList.toggle("is-on", on);
+        if (on && s.dataset.video && !s.querySelector("iframe")) {
+          s.innerHTML = `<iframe src="https://www.youtube.com/embed/${s.dataset.video}?rel=0" title="Video" allow="${ALLOW}" allowfullscreen loading="lazy"></iframe>`;
+        }
+        if (!on && s.dataset.video && s.querySelector("iframe")) s.innerHTML = ""; // stop playback when leaving the video
+      });
+      thumbs.forEach((t, i) => { t.classList.toggle("is-on", i === k); t.setAttribute("aria-selected", i === k ? "true" : "false"); });
+    };
+    v.querySelector(".viewer__btn--prev").addEventListener("click", () => show(k - 1));
+    v.querySelector(".viewer__btn--next").addEventListener("click", () => show(k + 1));
+    thumbs.forEach((t, i) => t.addEventListener("click", () => show(i)));
+    window.addEventListener("keydown", (e) => { if (e.target.closest("input, textarea")) return; if (e.key === "ArrowLeft") show(k - 1); else if (e.key === "ArrowRight") show(k + 1); });
+    const stage = v.querySelector(".viewer__stage");
+    let x0 = null;
+    stage.addEventListener("touchstart", (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+    stage.addEventListener("touchend", (e) => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; x0 = null; if (Math.abs(dx) > 40) show(dx < 0 ? k + 1 : k - 1); });
   }
 
   /* about: research-area line */
