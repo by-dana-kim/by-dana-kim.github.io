@@ -120,7 +120,7 @@ const works = [
     image: "assets/works/quantum-memory-space-vr.jpg",
     images: ["assets/works/quantum-memory-space-vr.jpg"],
     desc: "A VR environment built on the Quantum Memory Space (QMS) model, which treats the memory of a place as a state in which several memories coexist latently and surface differently depending on how they are observed. Scenes of Gyeongui Line Forest Park recorded at different times are trained together in 3D Gaussian Splatting so that their superposition becomes visible. In VR, the viewer's position and gaze condition which time comes forward, and an emotion-based visual modulation shifts the color and density of the scene, so the same place is met anew with each observation.",
-    details: ["Practice case of the master's thesis Quantum Memory Space: A Model of Superposition and Observation in Place Memory and Its Visual Implementation (KAIST, 2026)"],
+    details: [{ text: "Practice case of the master's thesis", paper: "Quantum Memory Space: A Model of Superposition and Observation in Place Memory and Its Visual Implementation", after: "(KAIST, 2026)" }],
     links: [{ label: "Watch on YouTube", url: "https://youtu.be/oKY3vPOFfLc" }],
   },
   {
@@ -131,7 +131,7 @@ const works = [
     image: "assets/works/bench-scene.jpg",
     images: ["assets/works/bench-scene.jpg"],
     desc: "A single-channel realization of viewpoint-conditioned observation within the Quantum Memory Space model. Recordings of one spot in Gyeongui Line Forest Park, made across different seasons and times of day, are trained into a single 3D Gaussian Splatting scene instead of being kept as separate files. As the virtual camera moves, the different times of the place surface by turns, so that one bench holds several moments at once and the view never settles into a single image.",
-    details: ["Practice case of the master's thesis Quantum Memory Space (KAIST, 2026)"],
+    details: [{ text: "Practice case of the master's thesis", paper: "Quantum Memory Space: A Model of Superposition and Observation in Place Memory and Its Visual Implementation", after: "(KAIST, 2026)" }],
     links: [{ label: "Watch on YouTube", url: "https://youtu.be/FsmxMrNcjWs" }],
   },
   {
@@ -154,7 +154,7 @@ const works = [
     image: "assets/works/mourning-dew-2.jpg",
     images: ["assets/works/mourning-dew-1.jpg", "assets/works/mourning-dew-3.jpg", "assets/works/mourning-dew-4.jpg"],
     desc: "Mourning Dew draws on Nectar Ritual Painting, or Gamnodo, a genre of Korean Buddhist painting originally made to guide wandering spirits toward liberation through ceremonial practice. Over time Gamnodo took on secular and social dimensions, recording the daily realities and cultural changes of its era, so that scenes of ordinary life sit beside the ritual itself. The video collages imagery from two Gamnodo paintings and maps it onto the surface of a digitally rendered moktak, the wooden percussion instrument struck during Buddhist ceremony. As the camera moves over the grain of the wood, hungry ghosts, mourners and small vignettes of everyday life surface and recede, turning the painting into a ceremonial digital experience. The work asks how a traditional form can be carried into contemporary storytelling while its original purpose, the consolation of the dead and the living, is kept intact.",
-    details: ["Developed in the ISEA 2025 paper Mourning Dew: Storytelling of Nectar Ritual Painting through the Digital Moktak (Kim, Choi & Lee)"],
+    details: [{ text: "Developed in the ISEA 2025 paper", paper: "Mourning Dew: Storytelling of Nectar Ritual Painting through the Digital Moktak", after: "(Kim, Choi & Lee)" }],
     links: [{ label: "Paper", url: "https://www.isea-symposium-archives.org/wp-content/uploads/2025/09/2025_Kim_Mourning-Dew-Storytelling-of-Nectar-Ritual-Painting-through-the-Digital-Moktak.pdf" }],
   },
   {

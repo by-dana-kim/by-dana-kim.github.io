@@ -106,6 +106,8 @@ img { max-width: 100%; }
 .proj__desc { max-width: 820px; font-size: 17px; line-height: 1.65; margin: 34px 0 0; }
 .proj__details { max-width: 820px; margin: 18px 0 0; padding-left: 18px; font-size: 14.5px; color: var(--ink-2); }
 .proj__details li { margin: 4px 0; }
+.proj__details a { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: #c9cdcb; }
+.proj__details a:hover { color: var(--green); text-decoration-color: var(--green); }
 /* viewer: one stage, arrows, thumbnails */
 .viewer__stage { position: relative; aspect-ratio: 16 / 9; background: #0f1211; overflow: hidden; }
 .viewer__slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.35s ease; pointer-events: none; }

@@ -197,7 +197,8 @@
       ${media ? `<div class="proj__body">${media}${meta}</div>`
               : `<p class="proj__line">${E(it.line)}${it.venue ? " · " + authors(E(it.credit || it.venue)) : ""}</p>${it.links.length ? `<p class="proj__links proj__links--top">${pills(it.links)}</p>` : ""}`}
       ${it.desc ? `<p class="proj__desc">${E(it.desc)}</p>` : ""}
-      ${it.details && it.details.length ? `<ul class="proj__details">${it.details.map((d) => `<li>${E(d)}</li>`).join("")}</ul>` : ""}
+      ${it.details && it.details.length ? `<ul class="proj__details">${it.details.map((d) => typeof d === "string" ? `<li>${E(d)}</li>`
+          : `<li>${E(d.text)} <a href="project.html?id=paper-${slug(d.paper)}">${E(d.paper)}</a>${d.after ? " " + E(d.after) : ""}</li>`).join("")}</ul>` : ""}
       ${it.keywords && it.keywords.length ? `<p class="proj__keywords"><span>Keywords</span>${it.keywords.map(E).join(" · ")}</p>` : ""}
       <nav class="proj__nav" aria-label="More">
         <span>${prev ? `<a href="project.html?id=${prev.id}">← ${E(prev.title)}</a>` : ""}</span>
