@@ -236,7 +236,8 @@ const projects = [
     meta: "KAIST Office of Research · Master's & Ph.D. Adventurous Research Program · Apr–Nov 2025",
     image: "assets/works/qms-moire-4.jpg",
     images: ["assets/works/qms-moire-5.jpg", "assets/works/qms-moire-generation.jpg", "assets/works/qms-moire-nebula.jpg"],
-    details: ["With Yang-geun Ju, MS–PhD student, Department of Physics, KAIST"],
+    details: ["With Yang-Geun Joo, MS–PhD student, Department of Physics, KAIST"],
+    keywords: ["Moiré Pattern", "Quantum Art", "Memory Space", "Memory Visualization", "Collective Remembering"],
     desc: "This research takes the moiré superposition found in quantum physics as a structural concept and systematizes, as a Quantum Memory Space, the process by which collective memory around a particular place and event forms through the superposition of scenes and emotions. Memory is treated not as a fixed record but as a process whose structure emerges through observation and interaction, and that structure is proposed as a visualization framework that can be tested in a metaverse environment.",
   },
 ];

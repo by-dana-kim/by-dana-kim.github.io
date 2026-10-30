@@ -40,7 +40,7 @@
     (typeof works !== "undefined" ? works : []).forEach((w, i) => {
       const parts = (w.medium || "").split(" · ");
       items.push({ id: slug(w.title), group: "artwork", year: w.year, title: w.title, line: parts[0] || "", venue: parts.slice(1).join(" · "),
-        embed: w.embed, image: w.image, images: w.images || [], desc: w.desc, details: w.details, links: w.links || [] });
+        embed: w.embed, image: w.image, images: w.images || [], desc: w.desc, details: w.details, keywords: w.keywords, links: w.links || [] });
     });
     (typeof publications !== "undefined" ? publications : []).forEach((q, i) => {
       const tag = q.tag || "Publication";
@@ -50,7 +50,7 @@
     });
     (typeof projects !== "undefined" ? projects : []).forEach((p, i) => {
       items.push({ id: "project-" + slug(p.title), group: "projects", year: p.year, title: p.title, line: p.tag || "Project", venue: p.meta || "",
-        image: p.image, images: p.images || [], details: p.details, desc: p.desc, demo: p.demo, links: [...(p.demo ? [{ label: "Demo", url: p.demo }] : []), ...(p.links || [])] });
+        image: p.image, images: p.images || [], details: p.details, keywords: p.keywords, desc: p.desc, demo: p.demo, links: [...(p.demo ? [{ label: "Demo", url: p.demo }] : []), ...(p.links || [])] });
     });
     return items.map((it, order) => ({ ...it, order }))
       .sort((a, b) => (parseInt(b.year, 10) || 0) - (parseInt(a.year, 10) || 0) || a.order - b.order);
@@ -165,6 +165,7 @@
               : `<p class="proj__line">${E(it.line)}${it.venue ? " · " + authors(E(it.venue)) : ""}</p>`}
       ${it.desc ? `<p class="proj__desc">${E(it.desc)}</p>` : ""}
       ${it.details && it.details.length ? `<ul class="proj__details">${it.details.map((d) => `<li>${E(d)}</li>`).join("")}</ul>` : ""}
+      ${it.keywords && it.keywords.length ? `<p class="proj__keywords"><span>Keywords</span>${it.keywords.map(E).join(" · ")}</p>` : ""}
       ${it.links.length ? `<p class="proj__links">${pills(it.links)}</p>` : ""}
       ${it.images && it.images.length ? `<div class="gallery">${it.images.map((src) => `<figure><img src="${E(src)}" alt="${E(it.title)}" loading="lazy" /></figure>`).join("")}</div>` : ""}
       <nav class="proj__nav" aria-label="More">
