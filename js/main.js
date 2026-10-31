@@ -194,7 +194,7 @@ const publications = [
   {
     year: "2025",
     title: "Voice of NObody: AI Voice and the Performativity of Absence in Documentary Theatre",
-    authors: "Dana Kim, Jinkyung Her",
+    authors: "Dana Kim · Jinkyung Her",
     venue: "TaPRA 2025 Annual Conference, University of Warwick, 27–29 Aug 2025",
     desc: "TaPRA 2025 (Theatre and Performance Research Association), University of Warwick, 27–29 Aug 2025",
     tag: "Conference Presentation",
