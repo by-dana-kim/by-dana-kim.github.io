@@ -21,14 +21,14 @@
   // Short labels for link pills, from the URL / existing label
   function linkLabel(l) {
     const u = (l.url || "").toLowerCase(), t = (l.label || "");
-    if (/\.pdf(\?|$)/.test(u)) return "paper";
-    if (/library\.kaist/.test(u)) return "library";
-    if (/youtu\.?be/.test(u)) return "video";
-    if (/demo/i.test(t)) return "demo";
-    if (/visap/.test(u)) return "visap";
-    if (/dmzdocs/.test(u)) return "festival";
-    if (/read|paper/i.test(t)) return "paper";
-    return t.toLowerCase() || "link";
+    if (/\.pdf(\?|$)/.test(u)) return "PDF";
+    if (/library\.kaist/.test(u)) return "KAIST Library";
+    if (/youtu\.?be/.test(u)) return "Video";
+    if (/demo/i.test(t)) return "Demo";
+    if (/visap/.test(u)) return "VISAP";
+    if (/dmzdocs/.test(u)) return "DMZ Docs";
+    if (/read|paper/i.test(t)) return "Paper";
+    return t || "Link";
   }
   const pills = (links) => links && links.length
     ? `<span class="pills">${links.map((l) => `<a class="pill" href="${E(l.url)}" target="_blank" rel="noopener">${E(linkLabel(l))}</a>`).join("")}</span>` : "";
