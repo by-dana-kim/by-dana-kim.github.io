@@ -157,7 +157,7 @@ const works = [
     image: "assets/works/mourning-dew-2.jpg",
     images: ["assets/works/mourning-dew-1.jpg", "assets/works/mourning-dew-3.jpg", "assets/works/mourning-dew-4.jpg"],
     desc: "Mourning Dew draws on Nectar Ritual Painting, or Gamnodo, a genre of Korean Buddhist painting originally made to guide wandering spirits toward liberation through ceremonial practice. Over time Gamnodo took on secular and social dimensions, recording the daily realities and cultural changes of its era, so that scenes of ordinary life sit beside the ritual itself. The video collages imagery from two Gamnodo paintings and maps it onto the surface of a digitally rendered moktak, the wooden percussion instrument struck during Buddhist ceremony. As the camera moves over the grain of the wood, hungry ghosts, mourners and small vignettes of everyday life surface and recede, turning the painting into a ceremonial digital experience. The work asks how a traditional form can be carried into contemporary storytelling while its original purpose, the consolation of the dead and the living, is kept intact.",
-    details: [{ text: "Developed in the ISEA 2025 paper", paper: "Mourning Dew: Storytelling of Nectar Ritual Painting through the Digital Moktak", after: "(Kim, Choi & Lee)" }],
+    details: [{ text: "Developed in the ISEA 2025 paper", paper: "Mourning Dew: Storytelling of Nectar Ritual Painting through the Digital Moktak", after: "(with Youngjun Choi and Jinjoon Lee)" }],
     links: [{ label: "Paper", url: "https://www.isea-symposium-archives.org/wp-content/uploads/2025/09/2025_Kim_Mourning-Dew-Storytelling-of-Nectar-Ritual-Painting-through-the-Digital-Moktak.pdf" }],
   },
   {
@@ -194,7 +194,7 @@ const publications = [
   {
     year: "2025",
     title: "Voice of NObody: AI Voice and the Performativity of Absence in Documentary Theatre",
-    authors: "Dana Kim, J. Her",
+    authors: "Dana Kim, Jinkyung Her",
     venue: "TaPRA 2025 Annual Conference (Theatre and Performance Research Association), University of Warwick, 27–29 Aug 2025",
     desc: "TaPRA 2025 (Theatre and Performance Research Association), University of Warwick, 27–29 Aug 2025",
     tag: "Conference Presentation",
@@ -204,7 +204,7 @@ const publications = [
   {
     year: "2025",
     title: "Mourning Dew: Storytelling of Nectar Ritual Painting through the Digital Moktak",
-    authors: "Dana Kim, Y. Choi, J. Lee",
+    authors: "Dana Kim, Youngjun Choi, Jinjoon Lee",
     venue: "Proceedings of ISEA 2025, the 30th International Symposium on Electronic Art, Seoul, pp. 554–559",
     desc: "Kim, D., Choi, Y., & Lee, J. · Proceedings of ISEA 2025 (International Symposium on Electronic Art), 554–559",
     tag: "Conference Paper",
