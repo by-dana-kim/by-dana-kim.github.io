@@ -1,4 +1,5 @@
 Site images.
 
-- main.jpg     first slide on the home page (any size; shown 16:9, cropped to fit)
-- profile.jpg  portrait on the About page (shown 4:5)
+- main.jpg      still of Spheres of Memory (first slide on the home page; referenced from js/main.js)
+- profile.jpg   portrait on the About page (shown 4:5)
+- works/        one or more JPGs per work, listed in js/main.js (image / images / homeImage)

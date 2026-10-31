@@ -1,27 +1,36 @@
 /* ============================================================
-   Dana Kim - Artist Archive
-   Edit the data arrays below to update the site.
+   Dana Kim — site content
+   Everything shown on the site lives in the arrays below; the
+   pages are rendered by js/site.js. Edit text here, not in HTML.
+
+   Fields that js/site.js understands
+   - works:        title, year, medium ("Medium · Shown at"), embed (YouTube id),
+                   image (cover/thumbnail), homeImage (home slideshow only),
+                   images [gallery], desc, details [strings or {text, paper, after}],
+                   keywords [], links [{label, url}], upcoming ("YYYY-MM-DD" shows an
+                   Upcoming tag through that day), gridBlur (keep the blurred tile)
+   - publications: title, year, tag (type), authors, venue, desc (fallback line),
+                   abstract (page text), link (PDF or record), image
+   - projects:     title, year, tag, meta (short credit for CV/lists), credit (full
+                   credit for the page), image, images, details, keywords, desc, demo
+   - exhibitions:  title, year, venue, meta, link, upcoming
+   - awards / activities / education / experience: see the entries below
    ============================================================ */
 
-/* --- Profile: education ------------------------------------- */
+/* --- Profile ------------------------------------------------ */
 const education = [
   { year: "2024–26", title: "MS, Metaverse / Culture Technology", venue: "KAIST, Daejeon · Feb 2024 – Aug 2026" },
   { year: "2012–17", title: "BA, Communications", venue: "Yonsei University, Seoul · Minor in Business Administration" },
 ];
-
-/* --- Profile: career / experience --------------------------- */
 const experience = [
   { year: "2026", company: "Rebel9", role: "Research Intern", meta: "Sep – Nov 2026" },
   { year: "2019–24", company: "KT (Korea Telecom)", role: "Media Marketing Executive", meta: "Seoul · Jul 2019 – Feb 2024" },
   { year: "2016–17", company: "KBS (Korean Broadcasting System)", role: "Digital Contents Creator, Intern", meta: "Seoul · Dec 2016 – Feb 2017" },
 ];
-
-/* --- Profile: research area --------------------------------- */
 const researchThemes = ["Place Memory", "Presence and Absence", "Collective Remembering"];
 const researchMedia = ["Immersive Storytelling", "3D Visualization", "Documentary Film", "Human-Computer Interaction"];
-const researchAreas = [...researchThemes, ...researchMedia];
 
-/* --- Awards & selections ------------------------------------ */
+/* --- CV: awards & selections, exhibitions ------------------- */
 const awards = [
   {
     year: "2026",
@@ -39,8 +48,6 @@ const awards = [
     venue: "The Time of Walking in the Forest Path · World premiere",
   },
 ];
-
-/* --- Exhibitions (newest first; upcoming: "YYYY-MM-DD" shows an Upcoming tag until that day) --- */
 const exhibitions = [
   {
     year: "2027",
@@ -78,14 +85,7 @@ const exhibitions = [
     meta: "Super Testbed showcase · Quantum Memory Space · MCST · KAMS · Arts Korea Lab · 4–6 Dec 2025",
   },
 ];
-
-/* --- Artwork: works ----------------------------------------
-   embed   : YouTube video id (embedded when the row is expanded)
-   desc    : short text shown when the item is expanded
-   details : bullet list (screenings, awards, exhibition notes)
-   links   : [{ label, url }] shown when expanded
-   Clicking a row expands it (hover lifts it); clicking again collapses.
-------------------------------------------------------------- */
+/* --- Works (Artwork) ---------------------------------------- */
 const works = [
   {
     title: "Memories in the Forest Path",
@@ -177,8 +177,7 @@ const works = [
     ],
   },
 ];
-
-/* --- Academic: publications (papers, thesis, talks) --------- */
+/* --- Publications & talks (Research) ------------------------ */
 const publications = [
   {
     year: "2026",
@@ -214,21 +213,7 @@ const publications = [
       "This paper examines Nectar Ritual Painting, also known as Gamnodo, a genre of Korean Buddhist painting originally intended to guide the liberation of wandering spirits through ceremonial practices. Over time, Gamnodo expanded to reflect secular and societal dimensions, offering a rich narrative of the daily realities and cultural transformations of its era. Building on this tradition, the paper focuses on Mourning Dew (2024, Single Channel Video, 1'39\"), a video piece that collages imagery from two Gamnodo paintings and maps it onto the surface of a digitally rendered moktak, a wooden percussion instrument in Buddhism. This project creates a ceremonial digital experience, bridging spiritual heritage with contemporary media. The reimagination of Gamnodo in this project demonstrates how traditional art forms can be transformed into modern storytelling while preserving and revitalizing their original cultural context and purpose in the digital age.",
   },
 ];
-
-/* --- Academic: funded research / grants --------------------- */
-const grants = [
-  {
-    year: "2025",
-    title: "Quantum Memory Space: Using Moiré Patterns in 2D Materials to Enable a Metaverse of Digital Memory",
-    desc: "KAIST Office of Research - Master's & Ph.D. Adventurous Research Program (Apr–Nov 2025).",
-    tag: "Funded Research",
-    link: "project.html",
-    abstract:
-      "This research develops a system to visualize and interact with collective memory in virtual reality by drawing on the moiré patterns and superposition principles of graphene, a 2D material, together with its quantum-physical properties.",
-  },
-];
-
-/* --- Academic: activities ----------------------------------- */
+/* --- Activities --------------------------------------------- */
 const activities = [
   {
     year: "2026",
@@ -238,8 +223,7 @@ const activities = [
     link: "https://www.youtube.com/watch?v=xVER_JpaYEw",
   },
 ];
-
-/* --- Project: projects (expandable; optional embedded demo) -- */
+/* --- Funded projects ---------------------------------------- */
 const projects = [
   {
     year: "2026",
@@ -271,17 +255,14 @@ const projects = [
     desc: "This research takes the moiré superposition found in quantum physics as a structural concept and systematizes, as a Quantum Memory Space, the process by which collective memory around a particular place and event forms through the superposition of scenes and emotions. Memory is treated not as a fixed record but as a process whose structure emerges through observation and interaction, and that structure is proposed as a visualization framework that can be tested in a metaverse environment.",
   },
 ];
-
 /* ============================================================
-   Helpers
+   Helpers used by js/site.js
    ============================================================ */
 function esc(s) {
   return String(s).replace(/[&<>"]/g, (c) =>
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])
   );
 }
-
-// Bold the artist's own name in citations (applied to already-escaped text)
 const AUTHOR_NAMES = ["Kim, D.", "Dana Kim", "김단아"];
 function boldAuthor(html) {
   return AUTHOR_NAMES.reduce(
@@ -289,320 +270,3 @@ function boldAuthor(html) {
     html
   );
 }
-
-/* ============================================================
-   Profile rendering
-   ============================================================ */
-function renderCV(id, items) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  el.innerHTML = items
-    .map(
-      (e) => `
-      <li>
-        <span class="cv__year">${esc(e.year)}</span>
-        <span class="cv__title">${esc(e.title)}<em>${e.venueHtml || esc(e.venue)}</em></span>
-      </li>`
-    )
-    .join("");
-}
-
-function renderResearch() {
-  const el = document.getElementById("researchList");
-  if (!el) return;
-  el.innerHTML = researchAreas.map((t) => `<li>${esc(t)}</li>`).join("");
-}
-
-/* ============================================================
-   Artwork rendering (mosspark-style table: hover lifts a row,
-   click expands its panel with an embedded video; click collapses)
-   ============================================================ */
-function renderWorks() {
-  const list = document.getElementById("workGrid");
-  if (!list) return;
-  const labels = `
-    <div class="mplist__labels" aria-hidden="true">
-      <span>Work</span><span>Medium</span><span>Year</span>
-    </div>`;
-  list.innerHTML =
-    labels +
-    works
-      .map((w, i) => {
-        const embed = w.embed
-          ? `<div class="mp__embed"><iframe
-                data-src="https://www.youtube.com/embed/${esc(w.embed)}?rel=0"
-                title="${esc(w.title)} - video"
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe></div>`
-          : "";
-        const desc = w.desc ? `<p class="mp__desc">${esc(w.desc)}</p>` : "";
-        const details =
-          w.details && w.details.length
-            ? `<ul class="mp__details">${w.details.map((d) => `<li>${esc(d)}</li>`).join("")}</ul>`
-            : "";
-        const links =
-          w.links && w.links.length
-            ? `<div class="mp__links">${w.links
-                .map((l) => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`)
-                .join("")}</div>`
-            : "";
-        return `
-      <article class="mp reveal">
-        <button class="mp__head" aria-expanded="false" aria-controls="mp-panel-${i}">
-          <span class="mp__title">${esc(w.title)}</span>
-          <span class="mp__medium">${esc(w.medium)}</span>
-          <span class="mp__year">${esc(w.year)}</span>
-        </button>
-        <div class="mp__panel" id="mp-panel-${i}">
-          <div class="mp__inner">
-            <div class="mp__box">
-              ${embed}${desc}${details}${links}
-            </div>
-          </div>
-        </div>
-      </article>`;
-      })
-      .join("");
-
-  list.querySelectorAll(".mp__head").forEach((head) => {
-    head.addEventListener("click", () => {
-      const item = head.closest(".mp");
-      const open = item.classList.toggle("is-open");
-      head.setAttribute("aria-expanded", open ? "true" : "false");
-      if (open) {
-        // load the embed only on first expansion
-        const frame = item.querySelector("iframe[data-src]");
-        if (frame && !frame.src) frame.src = frame.dataset.src;
-      }
-    });
-  });
-}
-
-/* ============================================================
-   Project rendering (expandable list with optional demo)
-   ============================================================ */
-function renderProjects() {
-  const list = document.getElementById("projectList");
-  if (!list) return;
-  list.innerHTML = projects
-    .map((p, i) => {
-      const kind = p.tag ? `<span class="wl__kind">[${esc(p.tag)}]</span>` : "";
-      const meta = p.meta ? `<span class="wl__medium">${esc(p.meta)}</span>` : "";
-      const desc = p.desc ? `<p class="wl__desc">${esc(p.desc)}</p>` : "";
-      const demo = p.demo
-        ? `<div class="demo__head">
-             <p class="acad-group__title">Interactive Demo</p>
-             <a class="demo__open" href="${esc(p.demo)}" target="_blank" rel="noopener">Open in new tab ↗</a>
-           </div>
-           <div class="demo__frame"><iframe src="${esc(p.demo)}" title="${esc(p.title)} - interactive demo" loading="lazy" allowfullscreen></iframe></div>
-           <p class="demo__note">If the demo does not load in this frame, open it in a new tab.</p>`
-        : "";
-      const links =
-        p.links && p.links.length
-          ? `<div class="wl__links">${p.links
-              .map((l) => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`)
-              .join("")}</div>`
-          : "";
-      return `
-      <article class="wl reveal">
-        <button class="wl__head" aria-expanded="false" aria-controls="pj-panel-${i}">
-          <span class="wl__year">${esc(p.year)}</span>
-          <span class="wl__meta">
-            ${kind}
-            <span class="wl__title">${esc(p.title)}</span>
-            ${meta}
-          </span>
-          <span class="wl__toggle" aria-hidden="true"></span>
-        </button>
-        <div class="wl__panel" id="pj-panel-${i}">
-          <div class="wl__panel-inner">
-            ${desc}${demo}${links}
-          </div>
-        </div>
-      </article>`;
-    })
-    .join("");
-
-  list.querySelectorAll(".wl__head").forEach((head) => {
-    head.addEventListener("click", () => {
-      const item = head.closest(".wl");
-      const open = item.classList.toggle("is-open");
-      head.setAttribute("aria-expanded", open ? "true" : "false");
-    });
-  });
-}
-
-/* ============================================================
-   Academic rendering (publications / grants / activities)
-   ============================================================ */
-function renderEntries(id, items) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  el.innerHTML = items
-    .map((p) => {
-      const external = p.link && /^https?:/i.test(p.link);
-      const title = p.link
-        ? `<a class="pub__link" href="${esc(p.link)}"${external ? ' target="_blank" rel="noopener"' : ""}>${esc(p.title)}</a>`
-        : esc(p.title);
-      const kind = p.tag ? `<span class="pub__kind">[${esc(p.tag)}]</span>` : "";
-      const desc = p.desc ? `<p class="pub__desc">${boldAuthor(esc(p.desc))}</p>` : "";
-      const abstract = p.abstract
-        ? `<details class="pub__abstract"><summary>${esc(p.abstractLabel || "Abstract")}</summary><p>${esc(p.abstract)}</p></details>`
-        : "";
-      return `
-      <article class="pub reveal">
-        <span class="pub__year">${esc(p.year)}</span>
-        <div class="pub__body">
-          ${kind}
-          <h2 class="pub__title">${title}</h2>
-          ${desc}
-          ${abstract}
-        </div>
-      </article>`;
-    })
-    .join("");
-}
-
-/* ============================================================
-   Interactive decorative shapes (parallax to the cursor)
-   ============================================================ */
-// scattered around the whole viewport (corners + edges), small and subtle
-const DECO_SHAPES = [
-  { cls: "shape--disc", color: "var(--c-violet)", size: "44px", pos: "top:15%;left:5%",     depth: 14, rot: 0 },
-  { cls: "shape--sq",   color: "var(--c-blue)",   size: "26px", pos: "top:40%;left:3%",      depth: 22, rot: 14 },
-  { cls: "shape--ring", color: "var(--c-cyan)",   size: "30px", pos: "bottom:16%;left:9%",   depth: -18, rot: 0 },
-  { cls: "shape--disc", color: "var(--c-blue)",   size: "20px", pos: "bottom:10%;left:20%",  depth: 16, rot: 0 },
-  { cls: "shape--disc", color: "var(--c-cyan)",   size: "34px", pos: "top:12%;right:8%",     depth: -16, rot: 0 },
-  { cls: "shape--ring", color: "var(--c-violet)", size: "50px", pos: "top:56%;right:5%",     depth: 20, rot: 0 },
-  { cls: "shape--sq",   color: "var(--c-teal)",   size: "24px", pos: "bottom:14%;right:12%", depth: -24, rot: 20 },
-];
-
-function initDeco() {
-  if (document.querySelector(".deco")) return;
-  const deco = document.createElement("div");
-  deco.className = "deco";
-  deco.setAttribute("aria-hidden", "true");
-  deco.innerHTML = DECO_SHAPES.map(
-    (s) =>
-      `<span class="shape ${s.cls}" style="--c:${s.color};width:${s.size};${s.pos}" data-depth="${s.depth}" data-rot="${s.rot}"></span>`
-  ).join("");
-  document.body.appendChild(deco);
-
-  const shapes = [...deco.querySelectorAll(".shape")];
-  const base = (s) => `rotate(${s.dataset.rot || 0}deg)`;
-  shapes.forEach((s) => (s.style.transform = base(s)));
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-  let raf = null, tx = 0, ty = 0;
-  function apply() {
-    raf = null;
-    shapes.forEach((s) => {
-      const d = parseFloat(s.dataset.depth) || 0;
-      s.style.transform = `translate(${(tx * d).toFixed(1)}px, ${(ty * d).toFixed(1)}px) ${base(s)}`;
-    });
-  }
-  window.addEventListener(
-    "mousemove",
-    (e) => {
-      tx = (e.clientX / window.innerWidth - 0.5) * 2;
-      ty = (e.clientY / window.innerHeight - 0.5) * 2;
-      if (!raf) raf = requestAnimationFrame(apply);
-    },
-    { passive: true }
-  );
-}
-
-/* ============================================================
-   Navigation - hamburger, liquid pill, shrink on scroll
-   ============================================================ */
-function initNav() {
-  const masthead = document.querySelector(".masthead");
-  const toggle = document.querySelector(".nav-toggle");
-  const nav = document.getElementById("primary-nav");
-
-  // hamburger (mobile)
-  if (toggle && nav) {
-    toggle.addEventListener("click", () => {
-      const open = nav.classList.toggle("is-open");
-      toggle.classList.toggle("is-open", open);
-      toggle.setAttribute("aria-expanded", open ? "true" : "false");
-    });
-  }
-
-  // liquid pill that follows the hovered / active nav item (desktop)
-  if (nav) {
-    const pill = document.createElement("span");
-    pill.className = "nav__pill";
-    pill.setAttribute("aria-hidden", "true");
-    nav.prepend(pill);
-    const links = [...nav.querySelectorAll("a")];
-    const moveTo = (el) => {
-      pill.style.left = el.offsetLeft + "px";
-      pill.style.top = el.offsetTop + "px";
-      pill.style.width = el.offsetWidth + "px";
-      pill.style.height = el.offsetHeight + "px";
-      pill.style.opacity = "1";
-    };
-    const settle = () => {
-      const active = nav.querySelector('a[aria-current="page"]');
-      if (active) moveTo(active);
-      else pill.style.opacity = "0";
-    };
-    links.forEach((a) => a.addEventListener("mouseenter", () => moveTo(a)));
-    nav.addEventListener("mouseleave", settle);
-    settle();
-    window.addEventListener("resize", settle, { passive: true });
-  }
-
-  // shrink the masthead once the page is scrolled
-  if (masthead) {
-    const onScroll = () => masthead.classList.toggle("is-scrolled", window.scrollY > 24);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-  }
-}
-
-/* ============================================================
-   Reveal on scroll
-   ============================================================ */
-function initReveal() {
-  const items = document.querySelectorAll(".reveal");
-  if (!items.length) return;
-  if (!("IntersectionObserver" in window)) {
-    items.forEach((el) => el.classList.add("is-in"));
-    return;
-  }
-  const io = new IntersectionObserver(
-    (entries, obs) => {
-      entries.forEach((en) => {
-        if (en.isIntersecting) {
-          en.target.classList.add("is-in");
-          obs.unobserve(en.target);
-        }
-      });
-    },
-    { rootMargin: "0px 0px -8% 0px" }
-  );
-  items.forEach((el) => io.observe(el));
-}
-
-/* ============================================================
-   Init
-   ============================================================ */
-document.addEventListener("DOMContentLoaded", () => {
-  renderCV("educationList", education);
-  renderCV("experienceList", experience);
-  renderResearch();
-  renderWorks();
-  renderEntries("pubList", publications);
-  renderEntries("grantList", grants);
-  renderEntries("activityList", activities);
-  renderProjects();
-  // initDeco();  // decorative shapes temporarily disabled
-  initNav();
-  initReveal();
-  document.querySelectorAll("[data-year]").forEach((el) => {
-    el.textContent = new Date().getFullYear();
-  });
-});
