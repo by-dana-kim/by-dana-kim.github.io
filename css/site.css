@@ -28,8 +28,9 @@ img { max-width: 100%; }
 .side__contact { position: absolute; left: var(--pad); bottom: var(--pad); font-size: 12.5px; color: var(--dim); }
 .side__contact a { display: inline-flex; line-height: 1; }
 .side__contact a:hover { color: var(--green); }
-.side__contact { display: flex; gap: 12px; }
-.side__contact .icon { display: inline-flex; margin: 0; color: var(--ink-2); }
+.side__contact { display: flex; align-items: center; gap: 12px; }
+.side__contact .icon { display: inline-flex; align-items: center; margin: 0; color: var(--ink-2); }
+.side__contact .icon svg { width: 16px; height: 16px; }
 .side__contact .icon svg { display: block; }
 
 /* ---- content ---- */
@@ -168,7 +169,8 @@ img { max-width: 100%; }
 .tag { display: inline-block; vertical-align: 2px; margin-left: 8px; padding: 1px 7px; border: 1px solid var(--green); border-radius: 999px; color: var(--green); font-size: 11px; letter-spacing: 0.03em; }
 .bio .contact { display: flex; align-items: center; gap: 12px; }
 .bio .contact a { line-height: 1.9; }
-.bio .contact .icon { display: inline-flex; text-decoration: none; color: var(--ink-2); }
+.bio .contact .icon { display: inline-flex; align-items: center; text-decoration: none; color: var(--ink-2); }
+.bio .contact .icon svg { width: 16px; height: 16px; }
 .bio .contact .icon:hover { color: var(--green); }
 
 /* cv */
@@ -186,7 +188,7 @@ img { max-width: 100%; }
 
 /* copy-to-clipboard mail link */
 .copy-mail { position: relative; cursor: copy; display: inline-flex; align-items: center; }
-.copy-mail .mailico { flex: none; width: 17px; height: 17px; }
+.copy-mail .mailico { flex: none; width: 16px; height: 16px; }
 .copy-mail::after { content: "Copied"; position: absolute; left: 50%; bottom: calc(100% + 6px); transform: translateX(-50%) translateY(3px); padding: 2px 8px; border-radius: 999px; background: var(--green); color: #fff; font-size: 11px; letter-spacing: 0.03em; line-height: 1.6; opacity: 0; transform: translateY(-3px); transition: opacity 0.2s, transform 0.2s; pointer-events: none; white-space: nowrap; }
 .copy-mail.is-copied::after { opacity: 1; transform: translateX(-50%); }
 
