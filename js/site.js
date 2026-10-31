@@ -191,7 +191,7 @@
     }
     const meta = `<dl class="meta">
         <dt>${it.group === "artwork" ? "Medium" : "Type"}</dt><dd>${E(it.line)}</dd>
-        ${it.authors ? `<dt>Authors</dt><dd>${authors(E(it.authors))}</dd>` : ""}
+        ${it.authors ? `<dt>Authors</dt><dd>${authors(E(it.authors))}${it.authors.includes("†") ? '<span class="dagger">† Corresponding author</span>' : ""}</dd>` : ""}
         ${it.venue ? `<dt>${it.group === "research" ? "Venue" : it.group === "projects" ? "Supported by" : "Shown at"}</dt><dd>${authors(E(it.credit || it.venue))}</dd>` : ""}
         ${it.links.length ? `<dt>Links</dt><dd>${pills(it.links)}</dd>` : ""}
       </dl>`;
@@ -201,7 +201,7 @@
     root.innerHTML = `
       <header class="proj__head"><h1 class="proj__title">${E(it.title)}</h1><span class="proj__year">${E(it.year)}</span>${it.upcoming ? '<span class="tag">Upcoming</span>' : ""}</header>
       ${media ? `<div class="proj__body">${media}${meta}</div>`
-              : `${it.authors ? `<p class="proj__authors">${authors(E(it.authors))}</p>` : ""}<p class="proj__line">${it.authors && it.venue ? pubLine(it.venue, it.year, it.line) : `${E(it.line)}${it.venue ? " · " + authors(E(it.credit || it.venue)) : ""}`}</p>${it.links.length ? `<p class="proj__links proj__links--top">${pills(it.links)}</p>` : ""}`}
+              : `${it.authors ? `<p class="proj__authors">${authors(E(it.authors))}${it.authors.includes("†") ? '<span class="dagger">† Corresponding author</span>' : ""}</p>` : ""}<p class="proj__line">${it.authors && it.venue ? pubLine(it.venue, it.year, it.line) : `${E(it.line)}${it.venue ? " · " + authors(E(it.credit || it.venue)) : ""}`}</p>${it.links.length ? `<p class="proj__links proj__links--top">${pills(it.links)}</p>` : ""}`}
       ${it.desc ? `<p class="proj__desc">${E(it.desc)}</p>` : ""}
       ${it.details && it.details.length ? `<ul class="proj__details">${it.details.map((d) => typeof d === "string" ? `<li>${E(d)}</li>`
           : `<li>${E(d.text)} <a href="project.html?id=paper-${slug(d.paper)}">${E(d.paper)}</a>${d.after ? " " + E(d.after) : ""}</li>`).join("")}</ul>` : ""}
