@@ -10,7 +10,7 @@
                    keywords [], links [{label, url}], upcoming ("YYYY-MM-DD" shows an
                    Upcoming tag through that day), gridBlur (keep the blurred tile)
    - publications: title, year, tag (type), authors, venue, desc (fallback line),
-                   abstract (page text), link (PDF or record), image
+                   abstract (page text), link (main record) or links [{label, url}], image
    - projects:     title, year, tag, meta (short credit for CV/lists), credit (full
                    credit for the page), image, images, details, keywords, desc, demo
    - exhibitions:  title, year, venue, meta, link, upcoming
@@ -216,7 +216,11 @@ const publications = [
     venue: "Proceedings of ISEA 2025 (International Symposium on Electronic Art), Seoul, pp. 554–559",
     desc: "Kim, D., Choi, Y., & Lee, J. · Proceedings of ISEA 2025 (International Symposium on Electronic Art), 554–559",
     tag: "Conference Paper",
-    link: "https://www.isea-symposium-archives.org/wp-content/uploads/2025/09/2025_Kim_Mourning-Dew-Storytelling-of-Nectar-Ritual-Painting-through-the-Digital-Moktak.pdf",
+    link: "https://www.isea-symposium-archives.org/presentation/mourning-dew-storytelling-of-nectar-ritual-painting-through-the-digital-moktak-presented-by-kim-choi-and-lee/",
+    links: [
+      { label: "ISEA Archive", url: "https://www.isea-symposium-archives.org/presentation/mourning-dew-storytelling-of-nectar-ritual-painting-through-the-digital-moktak-presented-by-kim-choi-and-lee/" },
+      { label: "PDF", url: "https://www.isea-symposium-archives.org/wp-content/uploads/2025/09/2025_Kim_Mourning-Dew-Storytelling-of-Nectar-Ritual-Painting-through-the-Digital-Moktak.pdf" },
+    ],
     abstract:
       "This paper examines Nectar Ritual Painting, also known as Gamnodo, a genre of Korean Buddhist painting originally intended to guide the liberation of wandering spirits through ceremonial practices. Over time, Gamnodo expanded to reflect secular and societal dimensions, offering a rich narrative of the daily realities and cultural transformations of its era. Building on this tradition, the paper focuses on Mourning Dew (2024, Single Channel Video, 1'39\"), a video piece that collages imagery from two Gamnodo paintings and maps it onto the surface of a digitally rendered moktak, a wooden percussion instrument in Buddhism. This project creates a ceremonial digital experience, bridging spiritual heritage with contemporary media. The reimagination of Gamnodo in this project demonstrates how traditional art forms can be transformed into modern storytelling while preserving and revitalizing their original cultural context and purpose in the digital age.",
   },

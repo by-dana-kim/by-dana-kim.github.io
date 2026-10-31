@@ -22,6 +22,7 @@
   function linkLabel(l) {
     const u = (l.url || "").toLowerCase(), t = (l.label || "");
     if (/\.pdf(\?|$)/.test(u)) return "PDF";
+    if (/isea-symposium-archives/.test(u)) return "ISEA Archive";
     if (/library\.kaist/.test(u)) return "KAIST Library";
     if (/youtu\.?be/.test(u)) return "Video";
     if (/demo/i.test(t)) return "Demo";
@@ -51,7 +52,7 @@
       const tag = q.tag || "Publication";
       const venue = (q.desc || "").replace(new RegExp("^" + tag.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\s*[,·:-]?\\s*"), "");
       items.push({ id: "paper-" + slug(q.title), group: "research", year: q.year, title: q.title, line: tag, venue: q.venue || venue, authors: q.authors || "",
-        image: q.image, desc: q.abstract, links: q.link ? [{ label: "Paper", url: q.link }] : [] });
+        image: q.image, desc: q.abstract, links: q.links || (q.link ? [{ label: "Paper", url: q.link }] : []) });
     });
     (typeof projects !== "undefined" ? projects : []).forEach((p, i) => {
       items.push({ id: "project-" + slug(p.title), group: "projects", year: p.year, title: p.title, line: p.tag || "Project", venue: p.meta || "",
