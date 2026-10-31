@@ -273,7 +273,7 @@
     const areas = [];
     if (typeof researchThemes !== "undefined") areas.push(item("Themes", E(researchThemes.join(" · "))));
     if (typeof researchMedia !== "undefined") areas.push(item("Media", E(researchMedia.join(" · "))));
-    root.innerHTML = row("Education", edu) + row("Exhibitions", shows) + row("Awards &amp; selections", prizes) + row("Publications &amp; talks", pubs) + row("Funded projects", funded) + row("Experience", exp) + row("Activities", acts) + row("Research", areas);
+    root.innerHTML = row("Education", edu) + row("Exhibitions", shows) + row("Awards &amp; selections", prizes) + row("Publications &amp; talks", pubs) + row("Funded projects", funded) + row("Experience", exp) + row("Activities", acts) + row("Research areas", areas);
   }
 
   /* contact: clicking the address copies it and says so; falls back to mailto if the clipboard is unavailable */
