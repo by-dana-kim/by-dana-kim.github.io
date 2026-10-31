@@ -262,10 +262,8 @@
       : item(e.year, E(e.title), E(e.venue)));
     const pubs = (typeof publications !== "undefined" ? publications : []).map((q, i) => item(q.year, `<a href="project.html?id=paper-${slug(q.title)}">${E(q.title)}</a>`,
       (q.authors ? `<span class="cvitem__authors">${authors(E(q.authors))}</span>${pubLine(q.venue || "", q.year, q.tag || "")}`
-                 : authors(E(q.desc && q.desc.startsWith(q.tag || "\u0000") ? q.desc : `${q.tag || ""}${q.desc ? " · " + q.desc : ""}`)))
-      + pills(q.link ? [{ label: "Paper", url: q.link }] : [])));
-    const funded = (typeof projects !== "undefined" ? projects : []).map((p, i) => item(p.year, `<a href="project.html?id=project-${slug(p.title)}">${E(p.title)}</a>`,
-      E(p.meta || "") + pills(p.demo ? [{ label: "Demo", url: p.demo }] : [])));
+                 : authors(E(q.desc && q.desc.startsWith(q.tag || "\u0000") ? q.desc : `${q.tag || ""}${q.desc ? " · " + q.desc : ""}`)))));
+    const funded = (typeof projects !== "undefined" ? projects : []).map((p, i) => item(p.year, `<a href="project.html?id=project-${slug(p.title)}">${E(p.title)}</a>`, E(p.meta || "")));
     const acts = (typeof activities !== "undefined" ? activities : []).map((a) => item(a.year, a.link ? `<a href="${E(a.link)}" target="_blank" rel="noopener">${E(a.title)}</a>` : E(a.title), E(a.desc || "")));
     const shows = (typeof exhibitions !== "undefined" ? exhibitions : []).map((x) => item(x.year,
       `${x.link ? `<a href="${E(x.link)}" target="_blank" rel="noopener">${E(x.title)}</a>` : E(x.title)}${isUpcoming(x.upcoming) ? ' <span class="tag">Upcoming</span>' : ""}`,
