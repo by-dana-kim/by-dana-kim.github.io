@@ -215,7 +215,7 @@ const publications = [
     authors: "Dana Kim, Youngjun Choi, Jinjoon Lee†", // † corresponding author
     venue: "Proceedings of ISEA 2025 (International Symposium on Electronic Art), Seoul, pp. 554–559",
     desc: "Kim, D., Choi, Y., & Lee, J. · Proceedings of ISEA 2025 (International Symposium on Electronic Art), 554–559",
-    tag: "Conference Paper",
+    tag: "Conference Paper (Long Paper)",
     link: "https://www.isea-symposium-archives.org/presentation/mourning-dew-storytelling-of-nectar-ritual-painting-through-the-digital-moktak-presented-by-kim-choi-and-lee/",
     links: [
       { label: "ISEA Archive", url: "https://www.isea-symposium-archives.org/presentation/mourning-dew-storytelling-of-nectar-ritual-painting-through-the-digital-moktak-presented-by-kim-choi-and-lee/" },
