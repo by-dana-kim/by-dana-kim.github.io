@@ -45,7 +45,7 @@
     (typeof works !== "undefined" ? works : []).forEach((w, i) => {
       const parts = (w.medium || "").split(" · ");
       items.push({ id: slug(w.title), group: "artwork", year: w.year, title: w.title, line: parts[0] || "", venue: parts.slice(1).join(" · "),
-        embed: w.embed, image: w.image, homeImage: w.homeImage, images: w.images || [], desc: w.desc, details: w.details, keywords: w.keywords, links: w.links || [], upcoming: isUpcoming(w.upcoming), gridBlur: !!w.gridBlur && isUpcoming(w.upcoming) });
+        where: w.where || w.year, embed: w.embed, image: w.image, homeImage: w.homeImage, images: w.images || [], desc: w.desc, details: w.details, keywords: w.keywords, links: w.links || [], upcoming: isUpcoming(w.upcoming), gridBlur: !!w.gridBlur && isUpcoming(w.upcoming) });
     });
     (typeof publications !== "undefined" ? publications : []).forEach((q, i) => {
       const tag = q.tag || "Publication";
@@ -124,11 +124,11 @@
         root.innerHTML = items.map((it) => (it.image || it.embed) && !it.gridBlur ? `
           <a class="tile" href="project.html?id=${it.id}">
             <span class="tile__pic"><img alt="" loading="lazy" data-id="${it.id}" />${up(it)}</span>
-            <span class="tile__cap">${E(it.title)}<span>${E(it.year)}</span></span>
+            <span class="tile__cap">${E(it.title)}</span><span class="tile__where">${E(it.where)}</span>
           </a>` : it.upcoming ? `
           <a class="tile tile--soon" href="project.html?id=${it.id}">
             <span class="tile__pic tile__pic--soft" style="--h:${hue(it.title)}"><i></i>${up(it)}</span>
-            <span class="tile__cap">${E(it.title)}<span>${E(it.year)}</span></span>
+            <span class="tile__cap">${E(it.title)}</span><span class="tile__where">${E(it.where)}</span>
           </a>` : `
           <a class="tile tile--text" href="project.html?id=${it.id}">
             <span class="tile__cap">${E(it.title)}<span>${E(it.year)}</span></span>

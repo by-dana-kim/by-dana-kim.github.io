@@ -4,7 +4,7 @@
    pages are rendered by js/site.js. Edit text here, not in HTML.
 
    Fields that js/site.js understands
-   - works:        title, year, medium ("Medium · Shown at"), embed (YouTube id),
+   - works:        title, year, where (short venue tag under the thumbnail), medium ("Medium · Shown at"), embed (YouTube id),
                    image (cover/thumbnail), homeImage (home slideshow only),
                    images [gallery], desc, details [strings or {text, paper, after}],
                    keywords [], links [{label, url}], upcoming ("YYYY-MM-DD" shows an
@@ -90,6 +90,7 @@ const works = [
   {
     title: "Memories in the Forest Path",
     year: "2027",
+    where: "QNS Coherence Art 2027",
     upcoming: "2027-04-30",
     medium: "Photography · Finalist, 4th Coherence Art Competition, IBS Center for Quantum Nanoscience (QNS)",
     desc: "A photographic work selected as a finalist in the 4th Coherence Art Competition of the IBS Center for Quantum Nanoscience. To be shown at the IBS Science Culture Center in Daejeon in 2027.",
@@ -97,6 +98,7 @@ const works = [
   {
     title: "Spheres of Memory",
     year: "2026",
+    where: "Arts Korea Lab Festival 2026",
     upcoming: "2026-11-08",
     medium: "Interactive media · Arts Korea Lab AI-Convergence Festival 2026, Space S-50, Seoul",
     image: "assets/main.jpg",
@@ -107,6 +109,7 @@ const works = [
   {
     title: "The Superposed Memory",
     year: "2026",
+    where: "VISAP 2026",
     upcoming: "2026-11-13",
     medium: "Single-channel video projection, c. 10 min loop · VISAP 2026, MIT Met Warehouse, Cambridge, MA",
     image: "assets/works/the-superposed-memory.jpg",
@@ -117,6 +120,7 @@ const works = [
   {
     title: "Quantum Memory Space (VR)",
     year: "2025",
+    where: "Arts Korea Lab 2025",
     medium: "VR / interactive media · Arts Korea Lab, Seoul",
     embed: "oKY3vPOFfLc",
     image: "assets/works/quantum-memory-space-vr.jpg",
@@ -128,6 +132,7 @@ const works = [
   {
     title: "Bench Scene",
     year: "2025",
+    where: "Arts Korea Lab 2025",
     medium: "Single-channel video projection, 4 min · Arts Korea Lab, Seoul",
     embed: "FsmxMrNcjWs",
     image: "assets/works/bench-scene.jpg",
@@ -139,9 +144,11 @@ const works = [
   {
     title: "Face to Face",
     year: "2024",
+    where: "KAIST 2024",
     medium: "Projection mapping on a laser-cut architectural model · KAIST Dept. of Industrial Design (Immersive Space, ID430)",
     embed: "ziaP3HuxB0M",
-    homeImage: "assets/works/face-to-face-2.jpg", // home slideshow; the Work grid keeps the video still
+    image: "assets/works/face-to-face-1.jpg",
+    homeImage: "assets/works/face-to-face-2.jpg", // home slideshow
     images: ["assets/works/face-to-face-1.jpg", "assets/works/face-to-face-2.jpg"],
     desc: "Face to Face looks at Daeseong-dong, the South Korean village inside the DMZ that faces Kijong-dong across the border, as a place where binary ideas meet: individual and society, citizen and nation, peace and war, private and public, South and North. The projection approaches the village in stages. From afar, the outline of the village reads as the pupil of an eye; the lines that divide the region radiate from it, military and political facilities sit along those lines, and news footage about the village plays on either side. Each time the viewer steps over another fence, the view moves one step closer, and what was an outline on a map becomes a place with people in it. At the end the eye opens onto everyday life inside the village: a laser-cut architectural model of its buildings, roads and waterways, animated with projection-mapped video, photographs and sound.",
     details: [
@@ -153,6 +160,7 @@ const works = [
   {
     title: "Mourning Dew",
     year: "2024",
+    where: "ISEA 2025",
     medium: "Single-channel video, 1 min 39 sec",
     image: "assets/works/mourning-dew-2.jpg",
     images: ["assets/works/mourning-dew-1.jpg", "assets/works/mourning-dew-3.jpg", "assets/works/mourning-dew-4.jpg"],
@@ -163,6 +171,7 @@ const works = [
   {
     title: "The Time of Walking in the Forest Path",
     year: "2023",
+    where: "DMZ Docs 2023",
     medium: "Documentary short, 12 min",
     embed: "2NYD9IhMjkU",
     desc: "A documentary short reflecting on what we discover or lose while walking a forest path.",

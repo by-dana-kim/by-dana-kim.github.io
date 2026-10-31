@@ -78,6 +78,7 @@ img { max-width: 100%; }
 .tile__line { display: block; margin-top: 4px; font-size: 13px; line-height: 1.5; color: var(--ink-2); }
 .tile__cap { display: block; margin-top: 9px; font-size: 13.5px; line-height: 1.4; color: var(--ink); }
 .tile__cap span { color: var(--dim); margin-left: 6px; }
+.tile__where { display: block; margin-top: 2px; font-size: 13px; color: var(--ink-2); }
 .tile:hover .tile__cap { color: var(--green); }
 .textlist { max-width: 760px; }
 .entry { display: block; padding: 20px 0; border-top: 1px solid var(--line); }
