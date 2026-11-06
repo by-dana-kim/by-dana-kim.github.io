@@ -191,7 +191,7 @@ const publications = [
     year: "2026",
     title:
       "Quantum Memory Space: A Model of Superposition and Observation in Place Memory and Its Visual Implementation",
-    authors: "Dana Kim",
+    authors: "Dana Kim (Advisor: Jinjoon Lee)",
     venue: "Master's thesis, Graduate School of Metaverse, KAIST",
     desc: "Master's Thesis, Graduate School of Metaverse, KAIST.",
     tag: "Master's Thesis",
