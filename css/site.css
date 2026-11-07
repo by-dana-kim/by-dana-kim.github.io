@@ -101,6 +101,9 @@ img { max-width: 100%; }
 .media { aspect-ratio: 16 / 9; background: #0f1211; }
 .media--image { margin: 0; aspect-ratio: auto; background: #f1f2f2; }
 .media--image img { display: block; width: 100%; height: auto; }
+/* a portrait photo sits in the same 16:9 dark stage as the videos */
+.media--image.media--tall { aspect-ratio: 16 / 9; background: #0f1211; }
+.media--image.media--tall img { height: 100%; object-fit: contain; }
 .media--demo { aspect-ratio: 4 / 3; background: #fff; border: 1px solid var(--line); }
 .media iframe { display: block; width: 100%; height: 100%; border: 0; }
 .meta { font-size: 13.5px; line-height: 1.55; color: var(--ink-2); }

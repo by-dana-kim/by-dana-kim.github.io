@@ -186,7 +186,7 @@
     } else if (it.embed) {
       media = `<div class="media">${videoFrame(it.embed)}</div>`;
     } else if (it.image) {
-      media = `<figure class="media media--image"><img src="${E(it.image)}" alt="${E(it.title)}" /></figure>`;
+      media = `<figure class="media media--image"><img src="${E(it.image)}" alt="${E(it.title)}" onload="if (this.naturalHeight > this.naturalWidth) this.parentNode.classList.add('media--tall')" /></figure>`;
     } else if (it.demo) {
       media = `<div class="media media--demo"><iframe src="${E(it.demo)}" title="${E(it.title)} - interactive demo" allowfullscreen loading="lazy"></iframe></div>`;
     }
