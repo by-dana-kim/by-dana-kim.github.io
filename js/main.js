@@ -173,7 +173,7 @@ const works = [
     where: "KAIST 2024",
     medium: "Interactive installation (two projectors, AI-generated faces, sound) · KAIST Graduate School of Culture Technology · Special Topics in Art: What is Future Art? (CTP406)",
     image: "assets/works/mutant-1.jpg",
-    images: ["assets/works/mutant-1.jpg", "assets/works/mutant-3.jpg", "assets/works/mutant-4.jpg", "assets/works/mutant-2.jpg"],
+    images: ["assets/works/mutant-1.jpg", "assets/works/mutant-4.jpg", "assets/works/mutant-2.jpg"],
     desc: "Mutant is an interactive installation for two projectors. On one wall, a palette of 49 AI-generated faces spreads a single person across a spectrum of gender and age. On the other, a silhouetted figure moves behind a translucent curtain. Visitors click on the faces with a mouse; each click triggers sound and image from behind the curtain, one of 49 randomized voices somewhere between laughing and crying, while the shadow keeps changing on its own, regardless of what is chosen. The work treats the click as an act of gender passing. It asks how quickly a face is sorted as male or female, and whether a palette of possibilities has to pass as anything at all. The faces were produced with StyleGAN latent editing for gender and age variation, with one alien face hidden in the grid, and the installation runs in TouchDesigner.",
     details: [
       "With Junyeong Im · Final project for the course taught by Jinjoon Lee, Spring 2024",
