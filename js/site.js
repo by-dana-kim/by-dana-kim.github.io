@@ -21,7 +21,6 @@
   // Short labels for link pills, from the URL / existing label
   function linkLabel(l) {
     const u = (l.url || "").toLowerCase(), t = (l.label || "");
-    if (/report/i.test(t)) return "Report";
     if (/\.pdf(\?|$)/.test(u)) return "PDF";
     if (/isea-symposium-archives/.test(u)) return "ISEA Archive";
     if (/library\.kaist/.test(u)) return "KAIST Library";
