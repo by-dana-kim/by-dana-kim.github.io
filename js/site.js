@@ -21,6 +21,7 @@
   // Short labels for link pills, from the URL / existing label
   function linkLabel(l) {
     const u = (l.url || "").toLowerCase(), t = (l.label || "");
+    if (/report/i.test(t)) return "Report";
     if (/\.pdf(\?|$)/.test(u)) return "PDF";
     if (/isea-symposium-archives/.test(u)) return "ISEA Archive";
     if (/library\.kaist/.test(u)) return "KAIST Library";
@@ -45,7 +46,7 @@
     const items = [];
     (typeof works !== "undefined" ? works : []).forEach((w, i) => {
       const parts = (w.medium || "").split(" · ");
-      items.push({ id: slug(w.title), group: "artwork", year: w.year, title: w.title, line: parts[0] || "", venue: parts.slice(1).join(" · "),
+      items.push({ id: slug(w.title), group: "projects", year: w.year, title: w.title, line: parts[0] || "", venue: parts.slice(1).join(" · "),
         where: w.where || w.year, embed: w.embed, image: w.image, homeImage: w.homeImage, images: w.images || [], desc: w.desc, details: w.details, keywords: w.keywords, links: w.links || [], upcoming: isUpcoming(w.upcoming), gridBlur: !!w.gridBlur && isUpcoming(w.upcoming) });
     });
     (typeof publications !== "undefined" ? publications : []).forEach((q, i) => {
@@ -55,13 +56,13 @@
         image: q.image, desc: q.abstract, links: q.links || (q.link ? [{ label: "Paper", url: q.link }] : []) });
     });
     (typeof projects !== "undefined" ? projects : []).forEach((p, i) => {
-      items.push({ id: "project-" + slug(p.title), group: "projects", year: p.year, title: p.title, line: p.tag || "Project", venue: p.meta || "",
+      items.push({ id: "project-" + slug(p.title), group: "grants", year: p.year, title: p.title, line: p.tag || "Project", venue: p.meta || "",
         image: p.image, images: p.images || [], details: p.details, keywords: p.keywords, credit: p.credit, desc: p.desc, demo: p.demo, links: [...(p.demo ? [{ label: "Demo", url: p.demo }] : []), ...(p.links || [])] });
     });
     return items.map((it, order) => ({ ...it, order }))
       .sort((a, b) => (parseInt(b.year, 10) || 0) - (parseInt(a.year, 10) || 0) || a.order - b.order);
   }
-  const GROUPS = { artwork: "Artwork", research: "Research", projects: "Funded projects" };
+  const GROUPS = { projects: "Projects", research: "Research", grants: "Grants" };
 
   /* home: slideshow. One still per work that has one, newest first.
      Auto-advances every 4.2 s; arrows, swipe and ←/→ keys step through and pause the timer for a while. */
@@ -107,7 +108,7 @@
     render(); start();
   }
 
-  /* work: artwork grid / research list / funded list */
+  /* work: projects grid / research list / grants list */
   function initWork() {
     const root = document.getElementById("workRoot");
     if (!root) return;
@@ -117,7 +118,7 @@
     const render = (group) => {
       tabs.forEach((a) => a.classList.toggle("is-current", a.dataset.group === group));
       const items = all.filter((i) => i.group === group);
-      if (group === "artwork") {
+      if (group === "projects") {
         root.className = "grid";
         const up = (it) => it.upcoming ? '<span class="tag">Upcoming</span>' : "";
         // a soft, blurred field for upcoming works that have no image yet; hue varies per title
@@ -150,7 +151,7 @@
           </div>`).join("");
       }
     };
-    const fromHash = () => { const g = (location.hash || "").slice(1); render(GROUPS[g] ? g : "artwork"); };
+    const fromHash = () => { const g = (location.hash || "").slice(1); render(GROUPS[g] ? g : "projects"); };
     window.addEventListener("hashchange", fromHash);
     fromHash();
   }
@@ -191,9 +192,9 @@
       media = `<div class="media media--demo"><iframe src="${E(it.demo)}" title="${E(it.title)} - interactive demo" allowfullscreen loading="lazy"></iframe></div>`;
     }
     const meta = `<dl class="meta">
-        <dt>${it.group === "artwork" ? "Medium" : "Type"}</dt><dd>${E(it.line)}</dd>
+        <dt>${it.group === "projects" ? "Medium" : "Type"}</dt><dd>${E(it.line)}</dd>
         ${it.authors ? `<dt>Authors</dt><dd>${authors(E(it.authors))}${it.authors.includes("†") ? '<span class="dagger">† Corresponding author</span>' : ""}</dd>` : ""}
-        ${it.venue ? `<dt>${it.group === "research" ? "Venue" : it.group === "projects" ? "Supported by" : "Shown at"}</dt><dd>${authors(E(it.credit || it.venue))}</dd>` : ""}
+        ${it.venue ? `<dt>${it.group === "research" ? "Venue" : it.group === "grants" ? "Supported by" : "Shown at"}</dt><dd>${authors(E(it.credit || it.venue))}</dd>` : ""}
         ${it.links.length ? `<dt>Links</dt><dd>${pills(it.links)}</dd>` : ""}
       </dl>`;
     const siblings = all.filter((i) => i.group === it.group);
@@ -274,7 +275,7 @@
     if (typeof researchThemes !== "undefined") areas.push(item("Themes", E(researchThemes.join(" · "))));
     if (typeof researchMedia !== "undefined") areas.push(item("Media", E(researchMedia.join(" · "))));
     // order: study → research (areas, papers, funded work) → art (shows, selections) → work history
-    root.innerHTML = row("Education", edu) + row("Research", pubs) + row("Funded projects", funded) + row("Exhibitions", shows) + row("Awards &amp; selections", prizes) + row("Experience", exp) + row("Activities", acts) + row("Research areas", areas);
+    root.innerHTML = row("Education", edu) + row("Research", pubs) + row("Grants", funded) + row("Exhibitions", shows) + row("Awards &amp; selections", prizes) + row("Experience", exp) + row("Activities", acts) + row("Research areas", areas);
   }
 
   /* contact: clicking the address copies it and says so; falls back to mailto if the clipboard is unavailable */

@@ -8,10 +8,10 @@ Dana Kim의 개인 사이트. 빌드 도구 없는 순수 HTML / CSS / JavaScrip
 ```
 .
 ├── index.html      # Home: 작품 스틸 슬라이드쇼 (자동 넘김, 화살표/키보드/스와이프)
-├── work.html       # Work: Artwork 그리드 · Research · Funded projects (서브탭)
+├── work.html       # Work: Projects 그리드 · Research · Grants (서브탭)
 ├── project.html    # 작품·논문·프로젝트 한 건 (?id=제목-슬러그)
 ├── about.html      # About: 사진 · 소개글 · Research(Themes, Media & methods) · Contact
-├── cv.html         # CV: Education · Exhibitions · Awards · Publications · Funded projects · Experience · Activities · Research
+├── cv.html         # CV: Education · Research · Grants · Exhibitions · Awards & selections · Experience · Activities · Research areas
 ├── css/site.css    # 스타일 전체 (상단 :root 에 색·폰트 토큰)
 ├── js/main.js      # 콘텐츠 데이터 (내용 수정은 여기서만)
 ├── js/site.js      # 페이지 렌더링

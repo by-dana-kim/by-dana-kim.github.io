@@ -1,5 +1,5 @@
 /* ============================================================
-   Dana Kim — site content
+   Dana Kim - site content
    Everything shown on the site lives in the arrays below; the
    pages are rendered by js/site.js. Edit text here, not in HTML.
 
@@ -85,7 +85,7 @@ const exhibitions = [
     meta: "Super Testbed showcase · Quantum Memory Space · MCST · KAMS · Arts Korea Lab · 4–6 Dec 2025",
   },
 ];
-/* --- Works (Artwork) ---------------------------------------- */
+/* --- Works (Projects) --------------------------------------- */
 const works = [
   {
     title: "Memories in the Forest Path",
@@ -168,6 +168,21 @@ const works = [
     links: [{ label: "Paper", url: "https://www.isea-symposium-archives.org/wp-content/uploads/2025/09/2025_Kim_Mourning-Dew-Storytelling-of-Nectar-Ritual-Painting-through-the-Digital-Moktak.pdf" }],
   },
   {
+    title: "Mutant",
+    year: "2024",
+    where: "KAIST 2024",
+    medium: "Interactive installation (two projectors, AI-generated faces, sound) · KAIST Graduate School of Culture Technology (CTP406)",
+    image: "assets/works/mutant-1.jpg",
+    images: ["assets/works/mutant-1.jpg", "assets/works/mutant-6.jpg", "assets/works/mutant-3.jpg", "assets/works/mutant-4.jpg", "assets/works/mutant-5.jpg", "assets/works/mutant-2.jpg"],
+    desc: "Mutant is an interactive installation for two projectors. On one wall, a palette of 49 AI-generated faces spreads a single person across a spectrum of gender and age. On the other, a silhouetted figure moves behind a translucent curtain. Visitors click on the faces with a mouse; each click triggers sound and image from behind the curtain, one of 49 randomized voices somewhere between laughing and crying, while the shadow keeps changing on its own, regardless of what is chosen. The work treats the click as an act of gender passing. It asks how quickly a face is sorted as male or female, and whether a palette of possibilities has to pass as anything at all. The faces were produced with StyleGAN latent editing for gender and age variation, with one alien face hidden in the grid, and the installation runs in TouchDesigner.",
+    details: [
+      "With Junyeong Im · Final project for CTP406, KAIST Graduate School of Culture Technology, June 2024",
+      "Faces: StyleGAN latent editing for gender and age variation (SAM) · Voices: 49 randomized voice morphs · Installation: TouchDesigner",
+    ],
+    keywords: ["Gender Performativity", "AI-Generated Faces", "Interactive Installation", "StyleGAN", "TouchDesigner"],
+    links: [{ label: "Report", url: "assets/docs/mutant-report-2024.pdf" }],
+  },
+  {
     title: "The Time of Walking in the Forest Path",
     year: "2023",
     where: "DMZ Docs 2023",
@@ -235,7 +250,7 @@ const activities = [
     link: "https://www.youtube.com/watch?v=xVER_JpaYEw",
   },
 ];
-/* --- Funded projects ---------------------------------------- */
+/* --- Grants (funded projects) ------------------------------- */
 const projects = [
   {
     year: "2026",
