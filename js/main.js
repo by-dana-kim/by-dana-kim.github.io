@@ -5,7 +5,7 @@
 
    Fields that js/site.js understands
    - works:        title, year, where (short venue tag under the thumbnail), medium ("Medium · Shown at"), embed (YouTube id),
-                   image (cover/thumbnail), homeImage (home slideshow only),
+                   image (cover/thumbnail), homeImage (home slideshow only), homeOrder (1 = first home slide),
                    images [gallery], desc, details [strings or {text, paper, after}],
                    keywords [], links [{label, url}], upcoming ("YYYY-MM-DD" shows an
                    Upcoming tag through that day), gridBlur (keep the blurred tile),
@@ -116,6 +116,7 @@ const works = [
     where: "VISAP 2026",
     upcoming: "2026-11-13",
     medium: "Single-channel video projection, c. 10 min loop · VISAP 2026, MIT Met Warehouse, Cambridge, MA",
+    homeOrder: 1, // first slide on the home page
     image: "assets/works/the-superposed-memory-1.jpg",
     images: ["assets/works/the-superposed-memory-1.jpg", "assets/works/the-superposed-memory-2.jpg"],
     desc: "The Superposed Memory grew from photographs accumulated over years of walking Gyeongui Line Forest Park in Seoul. Scenes from different periods bound to the same place are trained into a single 3D Gaussian Splatting space, against the technique's assumption that all its input photographs show one moment. Instead of converging into a single image, different times of one place remain latent together and surface by turns as the viewpoint moves. In the installation the superposed scene is projected in a loop of about 10 minutes, and visitors sit on a park bench in front of it, as they would on the path itself.",

@@ -46,7 +46,7 @@
     (typeof works !== "undefined" ? works : []).filter((w) => !w.hidden).forEach((w, i) => {
       const parts = (w.medium || "").split(" · ");
       items.push({ id: slug(w.title), group: "projects", year: w.year, title: w.title, line: parts[0] || "", venue: parts.slice(1).join(" · "),
-        where: w.where || w.year, embed: w.embed, image: w.image, homeImage: w.homeImage, images: w.images || [], desc: w.desc, details: w.details, keywords: w.keywords, links: w.links || [], upcoming: isUpcoming(w.upcoming), gridBlur: !!w.gridBlur && isUpcoming(w.upcoming) });
+        where: w.where || w.year, embed: w.embed, image: w.image, homeImage: w.homeImage, homeOrder: w.homeOrder, images: w.images || [], desc: w.desc, details: w.details, keywords: w.keywords, links: w.links || [], upcoming: isUpcoming(w.upcoming), gridBlur: !!w.gridBlur && isUpcoming(w.upcoming) });
     });
     (typeof publications !== "undefined" ? publications : []).filter((q) => !q.hidden).forEach((q, i) => {
       const tag = q.tag || "Publication";
@@ -75,6 +75,7 @@
     const slides = [];
     const seen = new Set();
     catalog().filter((i) => (i.embed || i.image || i.homeImage) && !seen.has(i.id) && seen.add(i.id)).forEach((i) => slides.push({ it: { ...i, image: i.homeImage || i.image }, title: i.title, year: i.year, href: `project.html?id=${i.id}` }));
+    slides.sort((a, b) => (a.it.homeOrder ?? 1e9) - (b.it.homeOrder ?? 1e9)); // homeOrder pulls a work forward on the home page only
     if (!slides.length) return;
     const imgs = slides.map((sl) => {
       const img = document.createElement("img");
