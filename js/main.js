@@ -8,7 +8,8 @@
                    image (cover/thumbnail), homeImage (home slideshow only),
                    images [gallery], desc, details [strings or {text, paper, after}],
                    keywords [], links [{label, url}], upcoming ("YYYY-MM-DD" shows an
-                   Upcoming tag through that day), gridBlur (keep the blurred tile)
+                   Upcoming tag through that day), gridBlur (keep the blurred tile),
+                   hidden (true keeps the entry out of every page; works for all three lists)
    - publications: title, year, tag (type), authors, venue, desc (fallback line),
                    abstract (page text), link (main record) or links [{label, url}], image
    - projects:     title, year, tag, meta (short credit for CV/lists), credit (full
@@ -168,6 +169,7 @@ const works = [
     links: [{ label: "Paper", url: "https://www.isea-symposium-archives.org/wp-content/uploads/2025/09/2025_Kim_Mourning-Dew-Storytelling-of-Nectar-Ritual-Painting-through-the-Digital-Moktak.pdf" }],
   },
   {
+    hidden: true, // kept out of the site for now; remove this line to show it again
     title: "Mutant",
     year: "2024",
     where: "KAIST 2024",

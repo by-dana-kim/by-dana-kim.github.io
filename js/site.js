@@ -43,18 +43,18 @@
 
   function catalog() {
     const items = [];
-    (typeof works !== "undefined" ? works : []).forEach((w, i) => {
+    (typeof works !== "undefined" ? works : []).filter((w) => !w.hidden).forEach((w, i) => {
       const parts = (w.medium || "").split(" · ");
       items.push({ id: slug(w.title), group: "projects", year: w.year, title: w.title, line: parts[0] || "", venue: parts.slice(1).join(" · "),
         where: w.where || w.year, embed: w.embed, image: w.image, homeImage: w.homeImage, images: w.images || [], desc: w.desc, details: w.details, keywords: w.keywords, links: w.links || [], upcoming: isUpcoming(w.upcoming), gridBlur: !!w.gridBlur && isUpcoming(w.upcoming) });
     });
-    (typeof publications !== "undefined" ? publications : []).forEach((q, i) => {
+    (typeof publications !== "undefined" ? publications : []).filter((q) => !q.hidden).forEach((q, i) => {
       const tag = q.tag || "Publication";
       const venue = (q.desc || "").replace(new RegExp("^" + tag.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\s*[,·:-]?\\s*"), "");
       items.push({ id: "paper-" + slug(q.title), group: "research", year: q.year, title: q.title, line: tag, venue: q.venue || venue, authors: q.authors || "",
         image: q.image, desc: q.abstract, links: q.links || (q.link ? [{ label: "Paper", url: q.link }] : []) });
     });
-    (typeof projects !== "undefined" ? projects : []).forEach((p, i) => {
+    (typeof projects !== "undefined" ? projects : []).filter((p) => !p.hidden).forEach((p, i) => {
       items.push({ id: "project-" + slug(p.title), group: "grants", year: p.year, title: p.title, line: p.tag || "Project", venue: p.meta || "",
         image: p.image, images: p.images || [], details: p.details, keywords: p.keywords, credit: p.credit, desc: p.desc, demo: p.demo, links: [...(p.demo ? [{ label: "Demo", url: p.demo }] : []), ...(p.links || [])] });
     });
