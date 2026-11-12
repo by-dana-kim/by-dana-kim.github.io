@@ -55,8 +55,10 @@
         image: q.image, desc: q.abstract, links: q.links || (q.link ? [{ label: "Paper", url: q.link }] : []) });
     });
     (typeof projects !== "undefined" ? projects : []).filter((p) => !p.hidden).forEach((p, i) => {
-      items.push({ id: "project-" + slug(p.title), group: "grants", year: p.year, title: p.title, line: p.tag || "Project", venue: p.meta || "",
-        image: p.image, images: p.images || [], details: p.details, keywords: p.keywords, credit: p.credit, desc: p.desc, demo: p.demo, links: [...(p.demo ? [{ label: "Demo", url: p.demo }] : []), ...(p.links || [])] });
+      const it = { id: "project-" + slug(p.title), group: "grants", year: p.year, title: p.title, line: p.tag || "Project", venue: p.meta || "", where: p.where || p.year,
+        image: p.image, images: p.images || [], details: p.details, keywords: p.keywords, credit: p.credit, desc: p.desc, demo: p.demo, links: [...(p.demo ? [{ label: "Demo", url: p.demo }] : []), ...(p.links || [])] };
+      items.push(it);
+      if (p.alsoProjects) items.push({ ...it, group: "projects" }); // same page, listed in the Projects grid as well
     });
     return items.map((it, order) => ({ ...it, order }))
       .sort((a, b) => (parseInt(b.year, 10) || 0) - (parseInt(a.year, 10) || 0) || a.order - b.order);
@@ -71,7 +73,8 @@
     if (!root) return;
     const frame = document.getElementById("showFrame"), cap = document.getElementById("showCap"), count = document.getElementById("showCount");
     const slides = [];
-    catalog().filter((i) => i.embed || i.image || i.homeImage).forEach((i) => slides.push({ it: { ...i, image: i.homeImage || i.image }, title: i.title, year: i.year, href: `project.html?id=${i.id}` }));
+    const seen = new Set();
+    catalog().filter((i) => (i.embed || i.image || i.homeImage) && !seen.has(i.id) && seen.add(i.id)).forEach((i) => slides.push({ it: { ...i, image: i.homeImage || i.image }, title: i.title, year: i.year, href: `project.html?id=${i.id}` }));
     if (!slides.length) return;
     const imgs = slides.map((sl) => {
       const img = document.createElement("img");

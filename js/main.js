@@ -13,7 +13,8 @@
    - publications: title, year, tag (type), authors, venue, desc (fallback line),
                    abstract (page text), link (main record) or links [{label, url}], image
    - projects:     title, year, tag, meta (short credit for CV/lists), credit (full
-                   credit for the page), image, images, details, keywords, desc, demo
+                   credit for the page), image, images, details, keywords, desc, demo,
+                   alsoProjects (true also lists it as a tile in the Projects grid), where (tile tag)
    - exhibitions:  title, year, venue, meta, link, upcoming
    - awards / activities / education / experience: see the entries below
    ============================================================ */
@@ -274,6 +275,8 @@ const projects = [
       "Quantum Memory Space: Using Moiré Patterns in 2D Materials to Enable a Metaverse of Digital Memory",
     tag: "Funded Research",
     meta: "KAIST Office of Research · Master's & Ph.D. Adventurous Research Program · Apr–Nov 2025",
+    alsoProjects: true, // also a tile in the Projects grid (same page)
+    where: "KAIST 2025",
     image: "assets/works/qms-moire-5.jpg",
     images: ["assets/works/qms-moire-4.jpg", "assets/works/qms-moire-generation.jpg", "assets/works/qms-moire-nebula.jpg"],
     details: ["With Yang-Geun Joo, MS–PhD student, Department of Physics, KAIST"],
