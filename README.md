@@ -15,7 +15,7 @@ Dana Kim의 개인 사이트. 빌드 도구 없는 순수 HTML / CSS / JavaScrip
 ├── css/site.css    # 스타일 전체 (상단 :root 에 색·폰트 토큰)
 ├── js/main.js      # 콘텐츠 데이터 (내용 수정은 여기서만)
 ├── js/site.js      # 페이지 렌더링
-└── assets/         # main.jpg(Spheres of Memory 스틸) · profile.jpg · works/ 작품 이미지
+└── assets/         # profile.jpg · works/ 작품 이미지
 ```
 
 사이트 언어는 영어이고 em dash(—) 대신 하이픈(-)을 씁니다.

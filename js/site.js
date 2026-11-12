@@ -65,7 +65,7 @@
 
   /* home: slideshow. One still per work that has one, newest first.
      Auto-advances every 4.2 s; arrows, swipe and ←/→ keys step through and pause the timer for a while. */
-  // Home slides come straight from the works that have a still (assets/main.jpg is Spheres of Memory's).
+  // Home slides come straight from the works that have a still.
   function initShow() {
     const root = document.getElementById("show");
     if (!root) return;

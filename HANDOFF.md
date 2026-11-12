@@ -28,7 +28,7 @@
 - `js/main.js`: 데이터만. 맨 위 주석에 필드 설명. 여기만 고치면 모든 페이지에 반영됨.
 - `js/site.js`: 렌더링. 작품 id는 제목의 슬러그(`slug()`)라 제목을 바꾸면 주소도 바뀜(About의 두 링크 확인).
 - `css/site.css`: 스타일 전체.
-- `assets/`: `main.jpg`(Spheres of Memory 스틸, 홈 첫 장), `profile.jpg`(About), `works/*.jpg`.
+- `assets/`: `profile.jpg`(About), `works/*.jpg`.
 
 ## 4. 남은 일 / 기다리는 자료
 

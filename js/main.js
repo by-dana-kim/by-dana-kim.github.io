@@ -102,8 +102,6 @@ const works = [
     where: "Arts Korea Lab Festival 2026",
     upcoming: "2026-11-08",
     medium: "Interactive media · Arts Korea Lab AI-Convergence Festival 2026, Space S-50, Seoul",
-    image: "assets/main.jpg",
-    gridBlur: true, // keep the blurred Upcoming field in the Work grid until the show opens
     desc: "Each time we encounter a place where many memories are superposed, a different scene comes to mind. The work begins with the artist's remembering, carried on by walking a forest path again and again. The next scene shifts with how visitors move around the sphere at the center of the space. The visitors' steps follow the path the artist has walked for years. The work does not restore or fix what has disappeared. Walking that path and sensing what is absent becomes a way of living in the present.",
     details: ["Arts Korea Lab AI-Convergence Festival 2026, Space S-50, Seongsu, Seoul, 4–8 Nov 2026"],
   },
@@ -113,7 +111,8 @@ const works = [
     where: "VISAP 2026",
     upcoming: "2026-11-13",
     medium: "Single-channel video projection, c. 10 min loop · VISAP 2026, MIT Met Warehouse, Cambridge, MA",
-    image: "assets/works/the-superposed-memory.jpg",
+    image: "assets/works/the-superposed-memory-1.jpg",
+    images: ["assets/works/the-superposed-memory-1.jpg", "assets/works/the-superposed-memory-2.jpg"],
     desc: "The Superposed Memory grew from photographs accumulated over years of walking Gyeongui Line Forest Park in Seoul. Scenes from different periods bound to the same place are trained into a single 3D Gaussian Splatting space, against the technique's assumption that all its input photographs show one moment. Instead of converging into a single image, different times of one place remain latent together and surface by turns as the viewpoint moves. In the installation the superposed scene is projected in a loop of about 10 minutes, and visitors sit on a park bench in front of it, as they would on the path itself.",
     details: ["Selected for VISAP 2026: Amplification, the IEEE VIS Arts Program exhibition (MIT Met Warehouse, Cambridge, MA, 9–13 Nov 2026)"],
     links: [{ label: "VISAP 2026 artwork page", url: "https://visap.net/2026/artwork-8.html" }],
