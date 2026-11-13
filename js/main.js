@@ -9,7 +9,8 @@
                    images [gallery], desc, details [strings or {text, paper, after}],
                    keywords [], links [{label, url}], upcoming ("YYYY-MM-DD" shows an
                    Upcoming tag through that day), gridBlur (keep the blurred tile),
-                   hidden (true keeps the entry out of every page; works for all three lists)
+                   hidden (true keeps the entry out of every page; works for all three lists).
+                   A blank line (\n\n) inside desc starts a new paragraph.
    - publications: title, year, tag (type), authors, venue, desc (fallback line),
                    abstract (page text), link (main record) or links [{label, url}], image
    - projects:     title, year, tag, meta (short credit for CV/lists), credit (full
@@ -106,7 +107,7 @@ const works = [
     embed: "H2nMNP0SZ5I",
     image: "assets/works/spheres-of-memory-1.jpg",
     images: ["assets/works/spheres-of-memory-1.jpg", "assets/works/spheres-of-memory-2.jpg"],
-    desc: "Each time we encounter a place where many memories are superposed, a different scene comes to mind. The work begins with the artist's remembering, carried on by walking a forest path again and again. The next scene shifts with how visitors move around the sphere at the center of the space. The visitors' steps follow the path the artist has walked for years. The work does not restore or fix what has disappeared. Walking that path and sensing what is absent becomes a way of living in the present.",
+    desc: "Each time we encounter a place where many memories are superposed, a different scene comes to mind. The work begins with the artist's remembering, carried on by walking a forest path again and again. The next scene shifts with how visitors move around the sphere at the center of the space. The visitors' steps follow the path the artist has walked for years. The work does not restore or fix what has disappeared. Walking that path and sensing what is absent becomes a way of living in the present.\n\nIn the space, a 3D-printed sphere stands on a table at the center of a semicircular floor area, with the superposed scene projected on the wall behind it. There is nothing to press or wear. A camera above the sphere follows the one visitor inside the boundary, and the program turns their position into an angle around the sphere. As they walk, that angle moves the viewpoint through the Gaussian-splatted scene; when they stop, the scene holds. A further layer, in development for the solo exhibition, divides the memories into groups: lingering near a cue in one scene, a dog, a season, a shopfront, raises the chance that a related group surfaces next, and a quantum random number decides which one appears, so that remembering drifts by association rather than along a fixed path.",
     details: ["Arts Korea Lab AI-Convergence Festival 2026, Space S-50, Seongsu, Seoul, 4–8 Nov 2026"],
     links: [{ label: "Watch on YouTube", url: "https://youtu.be/H2nMNP0SZ5I" }],
   },
