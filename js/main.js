@@ -118,11 +118,12 @@ const works = [
     upcoming: "2026-11-13",
     medium: "Single-channel video projection, c. 10 min loop · VISAP 2026, MIT Met Warehouse, Cambridge, MA",
     homeOrder: 1, // first slide on the home page
+    embed: "0wppz8lk81c",
     image: "assets/works/the-superposed-memory-1.jpg",
     images: ["assets/works/the-superposed-memory-1.jpg", "assets/works/the-superposed-memory-2.jpg"],
     desc: "The Superposed Memory grew from photographs accumulated over years of walking Gyeongui Line Forest Park in Seoul. Scenes from different periods bound to the same place are trained into a single 3D Gaussian Splatting space, against the technique's assumption that all its input photographs show one moment. Instead of converging into a single image, different times of one place remain latent together and surface by turns as the viewpoint moves. In the installation the superposed scene is projected in a loop of about 10 minutes, and visitors sit on a park bench in front of it, as they would on the path itself.",
     details: ["Selected for VISAP 2026: Amplification, the IEEE VIS Arts Program exhibition (MIT Met Warehouse, Cambridge, MA, 9–13 Nov 2026)"],
-    links: [{ label: "VISAP 2026 artwork page", url: "https://visap.net/2026/artwork-8.html" }],
+    links: [{ label: "VISAP 2026 artwork page", url: "https://visap.net/2026/artwork-8.html" }, { label: "Watch on YouTube", url: "https://youtu.be/0wppz8lk81c" }],
   },
   {
     title: "Quantum Memory Space (VR)",
